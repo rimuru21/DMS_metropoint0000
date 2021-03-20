@@ -119,15 +119,15 @@ include('auth.php');
             <div class="" style=" width:49%; position: fixed;margin-left:-1em">
                 <div style="height:10px;"></div>
 				        <table class="table table-striped table-bordered table-hover"  style="">
-                        <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
-                                <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>MAP</th>
-						</thead>
-						<tbody style="display: block;overflow:auto; width: 100%;height: 286px; word-break: break-word; scrollbar-width: none; background-size: cover;background-image: url(images/googlemap.png); background-repeat: no-repeat;  background-position: center;">
-							
-						</tbody>
-				</table>
-		</div>
-</div>
+                            <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
+                                    <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>MAP</th>
+                            </thead>
+                            <tbody style="display: block;overflow:auto; width: 100%;height: 286px; word-break: break-word; scrollbar-width: none; background-size: cover;background-image: url(images/googlemap.png); background-repeat: no-repeat;  background-position: center;">
+                                
+                            </tbody>
+				        </table>
+		    </div>
+        </div>
 </div>
 
 </div>
@@ -201,7 +201,7 @@ include('auth.php');
                         <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
                                 <th style="width:5%;border-bottom:none; font-size:1.5vw;text-align:center"><span class="ion-android-bus" style="padding-right:.5em"></span>RECENT DETAILS</th>
                         </thead>
-				</table>
+				        </table>
             </div>
             </div>
             </div>

@@ -41,7 +41,6 @@
 		<span class="pull-right"><a style="padding:8px; border-radius:4px  "href="#addnew_con" data-toggle="modal" class="btn btn-primary"><span class="ion-plus-round" style="padding-right:.5em"></span> Add Conductor</a></span>
 
 		<span class="pull-right"><a style="padding:8px; margin-right:.5em; border-radius:4px; margin-bottom:.5em;   "href="#addnew_dri" data-toggle="modal" class="btn btn-primary"><span class="ion-plus-round" style="padding-right:.5em"></span> Add Driver</a></span>
-
 		<div style="height:10px" ></div>
 				<table class="table table-striped table-bordered table-hover" id="myTable" >
 						<thead style="display: block; overflow: hidden; word-break: break-word;border-bottom:1px solid white; padding-bottom:10px; padding-top:10px">
