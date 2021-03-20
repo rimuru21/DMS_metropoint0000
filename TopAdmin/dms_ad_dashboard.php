@@ -22,8 +22,8 @@ include('auth.php');
 <div class="row" >
     <div class="col-lg-12" style="position:fixed; background-color:rgba(255,255,255,0.3);left:.8em;margin-top:.5em;width:98.5%;"> 
     <h1 class="col-lg-3 ion-calendar" style="font-size:2vw;text-align:left;margin-top:15px"></h1>
-    <h1 class="col-lg-6" style="font-size:2vw;text-align:center;padding:0px;margin-top:15px"">DAVAO METRO SHUTTLE - <i><b>MetroPoint</b></i></h1>
-    <h1 class="col-lg-3" style="font-size:2.2vw;text-align:right;padding-right: 20px;margin-top:15px""><span id="clock">&nbsp;</span></h1>
+    <h1 class="col-lg-6" style="font-size:2vw;text-align:center;padding:0px;margin-top:15px">DAVAO METRO SHUTTLE - <i><b>MetroPoint</b></i></h1>
+    <h1 class="col-lg-3" style="font-size:2.2vw;text-align:right;padding-right: 20px;margin-top:15px"><span id="clock">&nbsp;</span></h1>
     </div>
         <script>
                 var objToday = new Date(),
@@ -114,14 +114,15 @@ include('auth.php');
         <div class="col-md-6" style="">
         <div class="container" style="padding-top:0em;left:4em">
             <div style="height:90%;"></div>
-            <div class="" style=" width:49%; position: fixed;margin-left:-1em">
+            <div class=""  style=" width:49%; position: fixed;margin-left:-1em" >
                 <div style="height:10px;"></div>
-				        <table class="table table-striped table-bordered table-hover"  style="">
+				        <table class="table table-striped table-bordered table-hover"  style="" >
                         <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>MAP</th>
 						</thead>
-						<tbody style="display: block;overflow:auto; width: 100%;height: 286px; word-break: break-word; scrollbar-width: none; background-size: cover;background-image: url(images/googlemap.png); background-repeat: no-repeat;  background-position: center;">
-							
+						<tbody   style="display: block; width: 100%;height: 286px; ">
+							<div id="mapid">
+                            </div>
 						</tbody>
 				</table>
 		</div>
@@ -427,5 +428,37 @@ include('auth.php');
     </div>
 </div>
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var mymap = L.map('mapid').setView([7.3575577, 125.7035372], 8);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JoaXN1bGEiLCJhIjoiY2tqdjAzNjhwMnF1czJxcXVheG5zM2Z0dyJ9.ADUJmb8cso0RObOix5SzOQ', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'your.mapbox.access.token'
+        }).addTo(mymap);
+
+        //var marker = L.marker([7.353216, 125.702407]).addTo(mymap);
+
+        var count=0;
+        <?php foreach ($arrivals as $coordinate) : ?>
+            var name = 'marker'+count;
+            name = L.marker([<?= $coordinate->que_lat ?>, <?= $coordinate->que_long ?>]).addTo(mymap);
+            name.bindPopup("<?= '<b>'.$coordinate->bus_number.'</b>' ?>").openPopup();
+            count++;
+        <?php endforeach; ?>
+    });
+</script>
 </body>
 </html>
