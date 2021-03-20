@@ -114,7 +114,7 @@
 <!-- /.modal -->
 
 
-<!-- view map -->
+<!-- view map modal-->
 <div class="modal fade" id="view_map<?php echo $row['que_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:90%;">
             <div class="modal-content" style="width:100%;">
@@ -216,22 +216,24 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="col-lg-8" style="">
 						<div class="container" style="margin-top:-36em;padding-left:30em">
 						<div class="" style=" width:100%;">
 								<table class="table table-striped table-bordered table-hover"  style="">
-									<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
+									<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgb(165 161 161 / 50%);">
 											<th style="width:50%;border-bottom:none; font-size:1.5vw"><ion-icon name="location"style="padding-right:.5em"></ion-icon>LOCATION</th>
 									</thead>
-									<tbody style="display: block;overflow:auto; width: 100%;height: 450px; word-break: break-word; scrollbar-width: none; background-size: cover;background-image: url(images/googlemap.png); background-repeat: no-repeat;  background-position: center;">
-										
+									
+									<!-- dri ma display ang map -->
+									<tbody style="display: block;overflow:auto; width: 100%;height: 455px; word-break: break-word; scrollbar-width: none; background-size: cover;background-image: url(images/googlemap.png); background-repeat: no-repeat;  background-position: center;">
 									</tbody>
+									
 								</table>
 						</div>
 						</div>
 				</div>
-			
+		
 				</div>
 				</div>		
                 </div> 
@@ -243,5 +245,5 @@
             </div>
         </div>
 	</div>
-						
+					
 <!-- /.modal -->

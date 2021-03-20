@@ -12,11 +12,13 @@ include('auth.php');
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="images/icons/dashboard.ico"/>
 	<script src="js/jquery.crud.min.js"></script>
-	<link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.crud.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link href="css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 	<script src="js/bootstrap.crud.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 </head>
 <body  onload="updateClock(); setInterval('updateClock()', 1000 )">
 <div class="row" >
@@ -122,7 +124,7 @@ include('auth.php');
                             <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
                                     <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>MAP</th>
                             </thead>
-                            <tbody style="display: block;overflow:auto; width: 100%;height: 286px; word-break: break-word; scrollbar-width: none; background-size: cover;background-image: url(images/googlemap.png); background-repeat: no-repeat;  background-position: center;">
+                            <tbody style="display: block;overflow:auto; width: 100%;height: 286px; word-break: break-word; scrollbar-width: none; overflow: hidden; " id="mapid">
                                 
                             </tbody>
 				        </table>
@@ -431,5 +433,38 @@ include('auth.php');
     </div>
 </div>
 
+
+
+
+<script>
+
+    var mymap = L.map('mapid').setView([7.461092, 125.798725], 15);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JoaXN1bGEiLCJhIjoiY2tqdjAzNjhwMnF1czJxcXVheG5zM2Z0dyJ9.ADUJmb8cso0RObOix5SzOQ', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 15,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'your.mapbox.access.token'
+        }).addTo(mymap);
+
+
+	L.marker([7.461092, 125.798725]).addTo(mymap)
+		.bindPopup("TAGUM TERMINAL").openPopup();
+
+
+	var popup = L.popup();
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("You clicked the map at " + e.latlng.toString())
+			.openOn(mymap);
+	}
+
+	mymap.on('click', onMapClick);
+    
+    </script>
+   
 </body>
 </html>

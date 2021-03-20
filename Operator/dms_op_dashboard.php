@@ -12,12 +12,15 @@ include('auth.php');
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="images/icons/dashboard.ico"/>
 	<script src="js/jquery.crud.min.js"></script>
-	<link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.crud.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link href="css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+  
 	<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 	<script src="js/bootstrap.crud.min.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 </head>
 <body  onload="updateClock(); setInterval('updateClock()', 1000 )">
 <div class="row" >
@@ -119,7 +122,7 @@ include('auth.php');
 </div>
         <div class="col-md-6" style="margin-top:4.5em; witdth:100%" >
         <div class="col-md-6" style="">
-        <div class="container" style="padding-top:0em;left:4em">
+        <div class="container" style="padding-top:0em;left:4em" >
             <div style="height:90%;"></div>
             <div class="" style=" width:58.5%; margin-left:-1em">
                 <div style="height:10px;"></div>
@@ -138,7 +141,7 @@ include('auth.php');
                                 <th style="width:10%;text-align: center">DATE</th>
 								                <th style="width:13%; text-align: center">STATUS</th>
 						</thead>
-						<tbody style="display: block;overflow:auto; width: 100%;height: 435px; word-break: break-word; scrollbar-width: none; ">
+						<tbody style="display: block;overflow:auto; width: 100%;height: 435px; word-break: break-word; scrollbar-width: none; " >
 							<?php
 								include('conn.php');
 								
@@ -156,7 +159,7 @@ include('auth.php');
                                         <td style="width:10%;text-align:center" >
                                              <a style="font-size:1vw;padding:2px;padding-left:8px;padding-right:8px" class="label-primary">OnRoad</a>
                                             <br>
-										                      	<a style="font-size:1vw; padding:2px;"href="#view_map<?php echo $row['que_id']; ?>" data-toggle="modal" class="btn "><ion-icon name="location"></ion-icon> MAP</a>
+										                      	<a  style="font-size:1vw; padding:2px;"href="#view_map<?php echo $row['que_id']; ?>" data-toggle="modal" class="btn "><ion-icon name="location"></ion-icon> MAP</a>
 										                      	<?php include('action/action_op_dash.php'); ?>
 									                    	</td>
 									</tr>
