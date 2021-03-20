@@ -72,16 +72,15 @@ include('auth.php');
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>DEPARTURE</th>
 						</thead>
 						<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.3)">
-                                <th style="width:10%">TRIP #</th>
-                                <th style="width:10%">BUS #</th>
+                                <th style="width:11%">TRIP #</th>
+                                <th style="width:9%">BUS #</th>
                                 <th style="width:10%">TYPE</th>
-                                <th style="width:8%">SEAT CAP</th>
                                 <th style="width:10%">TO</th>
                                 <th style="width:10%">TIME</th>
                                 <th style="width:10%">DATE</th>
-								<th style="width:13.5%;padding-left:1.5em">STATUS</th>
+								<th style="width:11%;padding-left:1.5em">STATUS</th>
 						</thead>
-						<tbody style="display: block;overflow:auto; width: 100%;height: 235px; word-break: break-word; scrollbar-width: none; ">
+						<tbody style="display: block;overflow:auto; width: 100%;height: 257px; word-break: break-word; scrollbar-width: none; ">
                         <?php
 								include('conn.php');
 								
@@ -89,10 +88,9 @@ include('auth.php');
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white">
-                                        <td style="width:10%"><?php echo $row['trip_no']; ?></td>
+                                        <td style="width:12%"><?php echo $row['trip_no']; ?></td>
                                         <td style="width:10%"><?php echo $row['bus_no']; ?></td>
                                         <td style="width:10%;"><?php echo $row['type_descrip']; ?></td>
-                                        <td style="width:8%;"><?php echo $row['seat_cap']; ?></td>
                                         <td style="width:10%"><?php echo $row['to_ter']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
@@ -148,16 +146,15 @@ include('auth.php');
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>ARRIVAL</th>
 						</thead>
 						<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.3)">
-                                <th style="width:10%">TRIP #</th>
-                                <th style="width:10%">BUS #</th>
-                                <th style="width:10%">TYPE</th>
-                                <th style="width:8%">SEAT CAP</th>
+                                <th style="width:12%">TRIP #</th>
+                                <th style="width:9%">BUS #</th>
+                                <th style="width:9%">TYPE</th>
                                 <th style="width:10%">FROM</th>
                                 <th style="width:10%">TIME</th>
                                 <th style="width:10%">DATE</th>
-								<th style="width:13.5%;padding-left:1.5em">STATUS</th>
+								<th style="width:11%;padding-left:1.5em">STATUS</th>
 						</thead>
-						<tbody style="display: block;overflow:auto; height: 235px; word-break: break-word; scrollbar-width: none; ;">
+						<tbody style="display: block;overflow:auto; height: 257px; word-break: break-word; scrollbar-width: none; ;">
                         <?php
 								include('conn.php');
 								
@@ -165,10 +162,9 @@ include('auth.php');
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white">
-                                        <td style="width:10%"><?php echo $row['trip_no']; ?></td>
+                                        <td style="width:13%"><?php echo $row['trip_no']; ?></td>
                                         <td style="width:10%"><?php echo $row['bus_no']; ?></td>
-                                        <td style="width:10%;"><?php echo $row['type_descrip']; ?></td>
-                                        <td style="width:8%;"><?php echo $row['seat_cap']; ?></td>
+                                        <td style="width:9%;"><?php echo $row['type_descrip']; ?></td>
                                         <td style="width:10%"><?php echo $row['from_ter']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
