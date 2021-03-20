@@ -308,10 +308,10 @@
 							<label class="control-label" style="position:relative; top:7px;">Torno Date:</label>
 						</div>
 						<div class="col-lg-6">
-                            <input type="time" class="form-control" id="time" name="que_time" value="<?php echo $row['que_time']; ?>" />
+                            <input type="time" class="form-control" id="que_time" name="que_time" value="<?php echo $row['qued_time']; ?>" />
 						</div>
 						<div class="col-lg-6">
-                            <input type="date" class="form-control" id="date" name="que_date" value="<?php echo $row['que_date']; ?>"/>
+                            <input type="date" class="form-control" id="que_date" name="que_date" value="<?php echo $row['qued_date']; ?>"/>
 						</div>
 					</div>
                     </div>
@@ -326,23 +326,3 @@
         </div>
 	</div>
 	
-<script>
-var date = new Date();
-
-var day = date.getDate(),
-    month = date.getMonth() + 1,
-    year = date.getFullYear(),
-    hour = date.getHours(),
-    min  = date.getMinutes();
-
-month = (month < 10 ? "0" : "") + month;
-day = (day < 10 ? "0" : "") + day;
-hour = (hour < 10 ? "0" : "") + hour;
-min = (min < 10 ? "0" : "") + min;
-
-var today = year + "-" + month + "-" + day,
-    displayTime = hour + ":" + min; 
-
-document.getElementById('date').value = today;      
-document.getElementById("time").value = displayTime;
-</script>

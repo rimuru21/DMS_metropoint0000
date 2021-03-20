@@ -164,10 +164,10 @@
 							<label class="control-label" style="position:relative; top:7px;">TORNO DATE:</label>
 						</div>
 						<div class="col-lg-6">
-                            <input type="time" class="form-control" id="time" name="que_time" value=""/>
+                            <input type="time" class="form-control" id="qued_time" name="que_time" value=""/>
 						</div>
 						<div class="col-lg-6">
-                            <input type="date" class="form-control" id="date" name="que_date" value=""/>
+                            <input type="date" class="form-control" id="qued_date" name="que_date" value=""/>
 						</div>
 					</div>
 					
@@ -204,6 +204,6 @@ min = (min < 10 ? "0" : "") + min;
 var today = year + "-" + month + "-" + day,
     displayTime = hour + ":" + min; 
 
-document.getElementById('date').value = today;      
-document.getElementById("time").value = displayTime;
+document.getElementById('qued_date').value = today;      
+document.getElementById("qued_time").value = displayTime;
 </script>

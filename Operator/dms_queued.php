@@ -27,12 +27,12 @@
 						<thead style="display: block; overflow: hidden; word-break: break-word ">
 								<th style="width:10%; padding-top:10px; padding-bottom:10px ">TRIP #</th>
 								<th style="width:9%; padding-top:10px; padding-bottom:10px">BUS #</th>
-								<th style="width:9.5%; padding-top:10px; padding-bottom:10px">DRIVER</th>
+								<th style="width:10%; padding-top:10px; padding-bottom:10px">DRIVER</th>
 								<th style="width:10%; padding-top:10px; padding-bottom:10px">CONDOCTOR</th>
-                                <th style="width:9.5%; padding-top:10px; padding-bottom:10px">FROM TER.</th>
-                                <th style="width:10%; padding-top:10px; padding-bottom:10px">TO TER.</th>
-                                <th style="width:10%; padding-top:10px; padding-bottom:10px">TIMED TORNO</th>
-                                <th style="width:10%; padding-top:10px; padding-bottom:10px">DATE TORNO</th>
+                                <th style="width:9%; padding-top:10px; padding-bottom:10px">FROM TER.</th>
+                                <th style="width:9%; padding-top:10px; padding-bottom:10px">TO TER.</th>
+                                <th style="width:5%; padding-top:10px; padding-bottom:10px">TIME</th>
+                                <th style="width:7%; padding-top:10px; padding-bottom:10px">DATE </th>
 								<th style="width:11%; text-align:center; padding-top:10px; padding-bottom:10px">ACTION</th>
 						</thead>
 						<tbody style="display: block;overflow:auto; width: 100%;height: 280px; word-break: break-word; scrollbar-width: none; ">
@@ -41,7 +41,7 @@
 								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.bus_type_id as bus_type_id, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_date as qued_date, a.que_time as qued_time
 								FROM que_details a, bus_type b
 								WHERE a.bus_type_id = b.bus_type_id AND que_stat_id = 4 AND from_ter = 'Tagum'
-								ORDER BY que_id asc ");
+								ORDER BY que_id desc ");
 								 
 								while($row=mysqli_fetch_array($query)){
 									?>
@@ -50,10 +50,10 @@
 										<td style="width:9%"><?php echo $row['bus_no']; ?></td>
 										<td style="width:10%"><?php echo $row['ass_dri']; ?></td>
 										<td style="width:10%"><?php echo $row['ass_con']; ?></td>
-                                        <td style="width:10%"><?php echo $row['from_ter']; ?></td>
-										<td style="width:10%"><?php echo $row['to_ter']; ?></td>
-                                        <td style="width:10%"><?php echo $row['qued_time']; ?></td>
-                                        <td style="width:10%"><?php echo $row['qued_date']; ?></td>
+                                        <td style="width:9%"><?php echo $row['from_ter']; ?></td>
+										<td style="width:9%"><?php echo $row['to_ter']; ?></td>
+                                        <td style="width:5%;"><?php echo $row['qued_time']; ?></td>
+                                        <td style="width:7%;"><?php echo $row['qued_date']; ?></td>
 										<td style="width:10%; text-align:center">
 											<a style="font-size:1.5vw" href="#view_que<?php echo $row['que_id']; ?>" data-toggle="modal" class="btn "><span class="ion-eye"></span> </a> |
 											<a style="font-size:1.5vw" href="#edit_que<?php echo $row['que_id']; ?>" data-toggle="modal" class="btn "><span class="ion-edit"></span> </a> |
@@ -74,7 +74,7 @@
 						<tbody style="display: block;overflow:auto; width: 100%;height: 240px; word-break: break-word; scrollbar-width: none; ">
 							<?php
 								include('conn.php');  
-								$query=mysqli_query($conn,"SELECT a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.bus_type_id as bus_type_id, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_date as que_date, a.que_time as que_time, a.dep_time as dep_time
+								$query=mysqli_query($conn,"SELECT a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.bus_type_id as bus_type_id, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_date as qued_date, a.que_time as qued_time, a.dep_time as dep_time
 								FROM que_details a, bus_type b
 								WHERE a.bus_type_id = b.bus_type_id AND que_stat_id = 2 AND from_ter = 'Tagum'
 								ORDER BY que_id desc ");
@@ -88,8 +88,8 @@
 										<td style="width:10%"><?php echo $row['ass_con']; ?></td>
                                         <td style="width:10%"><?php echo $row['from_ter']; ?></td>
 										<td style="width:10%"><?php echo $row['to_ter']; ?></td>
-                                        <td style="width:10%"><?php echo $row['que_time']; ?></td>
-                                        <td style="width:10%"><?php echo $row['que_date']; ?></td>
+                                        <td style="width:10%"><?php echo $row['qued_time']; ?></td>
+                                        <td style="width:10%"><?php echo $row['qued_date']; ?></td>
 										<td style="width:10%;text-align:center"><?php echo $row['dep_time']; ?></td>
 									</tr>
 									<?php
@@ -100,7 +100,7 @@
 						</tbody>
 				</table>
 		</div>
-		<?php include('modal/add_torno_modal.php'); ?>
+		<?php include('modal/sample_torno.php'); ?>
 </div>
 </div>
 </div>
