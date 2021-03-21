@@ -202,7 +202,7 @@ $("#bus_n").on( 'change', function () {
                     success: function(data) {
 						$('#ass_dr').val(data['ass_dri']);
 						$('#ass_co').val(data['ass_con']);
-						$('#bus_type').val(data['abbr']);
+						$('#bus_type').val(data['bus_type_id']);
 						$('#seat_ca').val(data['seat_cap']);
                     }
                 });
