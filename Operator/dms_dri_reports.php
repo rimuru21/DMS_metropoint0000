@@ -48,9 +48,9 @@
 							<?php
 								include('conn.php');
 							
-                                $query=mysqli_query($conn,"SELECT   d.user_id as user_id, a.dri_id as dri_id, a.l_name as l_name, a.f_name as f_name, a.sufx as sufx, a.m_intl as m_intl,  a.u_name as u_name, b.ter_id as ter_id, b.descrip as ter_descrip, c.stat_id as stat_id, c.descrip as stat_descrip, a.sex as sex, a.cont_no as cont_no, a.emp_date as emp_date, a.licen_no as licen_no, a.licen_exp as licen_exp 
-								FROM user_dri a, ter_details b, user_stat c, user d 
-								WHERE a.ter_id = b.ter_id AND a.stat_id = c.stat_id AND a.user_id = d.user_id
+                                $query=mysqli_query($conn,"SELECT   d.user_id as user_id, a.dri_id as dri_id, a.l_name as l_name, a.f_name as f_name, a.sufx as sufx, a.m_intl as m_intl,  a.u_name as u_name, b.ter_id as ter_id, b.descrip as ter_descrip, c.stat_id as stat_id, c.descrip as stat_descrip, a.sex as sex, a.cont_no as cont_no, a.emp_date as emp_date, a.licen_no as licen_no, a.licen_exp as licen_exp, e.descrip as trip_descrip
+								FROM user_dri a, ter_details b, user_stat c, user d, trip_stat e 
+								WHERE a.ter_id = b.ter_id AND a.stat_id = c.stat_id AND a.user_id = d.user_id AND a.trip_stat_id = e.trip_stat_id
 								ORDER BY dri_id desc ");
 								 
 								while($row=mysqli_fetch_array($query)){
@@ -60,7 +60,7 @@
 										<td style="width:9%"><?php echo $row['f_name']; ?></td>
 										<td style="width:9%;"><?php echo $row['ter_descrip']; ?></td>
 										<td style="width:9% ; text-align:center"><?php echo $row['stat_descrip']; ?></td>
-										<td style="width:9%; text-align:center"><?php echo $row['stat_descrip']; ?></td>
+										<td style="width:9%; text-align:center"><?php echo $row['trip_descrip']; ?></td>
 										<td style="width:9%; text-align:center">
                                             <a style="font-size:1.5vw" href="#view_user<?php echo $row['dri_id']; ?>" data-toggle="modal" class="btn "><span class="ion-eye"></span> </a> |
 											<a style="font-size:1.5vw" href="#edit_user<?php echo $row['dri_id']; ?>" data-toggle="modal" class="btn "><span class="ion-edit"></span> </a> 
