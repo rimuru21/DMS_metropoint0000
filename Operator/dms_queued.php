@@ -100,7 +100,7 @@
 						</tbody>
 				</table>
 		</div>
-		<?php include('modal/sample_torno.php'); ?>
+		<?php include('modal/add_torno_modal.php'); ?>
 </div>
 </div>
 </div>

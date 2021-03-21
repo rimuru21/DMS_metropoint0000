@@ -53,7 +53,7 @@
 							<?php
 								include('conn.php');
 								
-								$query=mysqli_query($conn,"SELECT a.bus_id as bus_id, a.bus_no as bus_no, b.abbr as bus_type_id, b.bus_type_id as aaa, a.ass_dri as ass_dri, a.ass_con as ass_con, e.descrip as eng_id,e.eng_id as aab , a.plate_no as plate_no, a.sap_code as sap_code, CONCAT(f_descrip,' - ',l_descrip) as route_id, c.route_id as aac, a.seat_cap as seat_cap, d.descrip as bus_stat_id, d.bus_stat_id as aad, a.ip_add as ip_add,  a.ip_add1 as ip_add1,  a.ip_add2 as ip_add2,  a.ip_add3 as ip_add3 FROM bus_details a, bus_type b, route_details c, bus_stat d, bus_eng_type e WHERE b.bus_type_id = a.bus_type_id AND c.route_id = a.route_id AND d.bus_stat_id = a.bus_stat_id AND a.eng_id = e.eng_id  GROUP BY bus_id");
+								$query=mysqli_query($conn,"SELECT a.bus_id as bus_id, a.bus_no as bus_no, b.abbr as bus_type_id, b.bus_type_id as aaa, a.ass_dri as ass_dri, a.ass_con as ass_con, e.descrip as eng_id,e.eng_id as aab , a.plate_no as plate_no, a.sap_code as sap_code, CONCAT(f_descrip,' - ',l_descrip) as route_id, c.route_id as aac, a.seat_cap as seat_cap, d.descrip as bus_stat_id, d.bus_stat_id as aad FROM bus_details a, bus_type b, route_details c, bus_stat d, bus_eng_type e WHERE b.bus_type_id = a.bus_type_id AND c.route_id = a.route_id AND d.bus_stat_id = a.bus_stat_id AND a.eng_id = e.eng_id  GROUP BY bus_id");
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr class="<?php echo $row['bus_id']; ?>" style="border-bottom:1px solid white;margin-bottom:5px;height:50px">

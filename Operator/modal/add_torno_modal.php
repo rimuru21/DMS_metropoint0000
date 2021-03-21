@@ -23,7 +23,7 @@
 							<label class="control-label" style="position:relative; top:7px;">BUS #</label>
 						</div>
 						<div class="col-lg-8">
-							<select class="form-control" id="bus_no" name="bus_no" palceholder="" required>
+							<select class="form-control" id="bus_n" name="bus_no" palceholder="" required>
 								<option value="">---select bus #---</option> 
 								<?php 
 								include('conn.php');
@@ -34,7 +34,7 @@
 										while($data = mysqli_fetch_array($sql))
 										{
 								?>
-								<option value="<?php echo $data['bus_no']; ?>"> <?php echo $data['bus_no']; ?> </option>
+								<option id="bus_" value="<?php echo $data['bus_no']; ?>"> <?php echo $data['bus_no']; ?> </option>
 								<?php
 										}
 									} /*if condition*/
@@ -52,7 +52,7 @@
 							<label class="control-label" style="position:relative; top:7px;">ASSIGNED CONDOCTOR:</label>
 						</div>
 						<div class="col-lg-6">
-						<select class="form-control" id="ass_dri" name="ass_dri" placeholder="" value="<?php echo $row['ass_dri']; ?>">
+						<select class="form-control" id="ass_dr" name="ass_dri" placeholder="" value="<?php echo $row['ass_dri']; ?>">
 								<option value=""></option>
 								<?php 
 								include('conn.php');
@@ -71,7 +71,7 @@
                             </select>
 						</div>
 						<div class="col-lg-6">
-							<select class="form-control" id="ass_con" name="ass_con" placeholder="" value="<?php echo $row['ass_con']; ?>">
+							<select class="form-control" id="ass_co" name="ass_con" placeholder="" value="<?php echo $row['ass_con']; ?>">
 								<option value="">---select conductor---</option>
 								<?php 
 								include('conn.php');
@@ -100,7 +100,7 @@
 						</div>
                         
 						<div class="col-lg-8">
-							<select class="form-control" id="bus_type_id" name="bus_type_id" placeholder="" >
+							<select class="form-control" id="bus_type" name="bus_type_id" placeholder="" >
 								<option  value="">---select bus type---</option>
 								<?php 
 								include('conn.php');
@@ -119,7 +119,7 @@
                             </select>
 						</div>
 						<div class="col-lg-4">
-                            <input type="number" class="form-control" id="seat_cap" name="seat_cap" required />
+                            <input type="number" class="form-control" id="seat_ca" name="seat_cap" required />
 						</div>
 					</div>
                     <div style="height:5px;"></div>
@@ -154,7 +154,6 @@
                             </select>
 						</div>
 					</div>
-                   
                     <div style="height:5px;"></div>
 					<div class="row">
 						<div class="col-lg-6">
@@ -177,7 +176,7 @@
 				
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" style="padding:6px 8px 6px 8px"><span ></span> Cancel</button>
-					<button type="submit" class="btn btn-success" style="padding:6px 8px 6px 8px"><span ></span>TORNO</a>
+					<button type="submit" id="torno" class="btn btn-success" style="padding:6px 8px 6px 8px"><span ></span>TORNO</a>
 				</div>
 			
 				</form>
@@ -187,7 +186,29 @@
         </div>
 	</div>
 
+
+
 <script>
+$("#bus_n").on( 'change', function () {
+	var al = $("#bus_n").val();
+		var form_data = {
+			bus_no : al
+		};
+                $.ajax({
+                    url: "modal/sample_get.php",
+                    type: "post",
+                    data: form_data, // serializes the form's elements.
+					dataType: "json",
+                    success: function(data) {
+						$('#ass_dr').val(data['ass_dri']);
+						$('#ass_co').val(data['ass_con']);
+						$('#bus_type').val(data['abbr']);
+						$('#seat_ca').val(data['seat_cap']);
+                    }
+                });
+				
+});
+
 var date = new Date();
 
 var day = date.getDate(),

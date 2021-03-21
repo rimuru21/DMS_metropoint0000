@@ -113,7 +113,7 @@
 							<h4><b>Torno Time:</b></h4>
 						</div>
 						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['que_time']; ?></h4>
+							<h4 style="text-align:left"><?php echo $row['qued_time']; ?></h4>
 						</div>
 					</div>
 					<div class="row">
@@ -121,7 +121,7 @@
 							<h4><b>Torno Date:</b></h4>
 						</div>
 						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['que_date']; ?></h4>
+							<h4 style="text-align:left"><?php echo $row['qued_date']; ?></h4>
 						</div>
 					</div>
 				</div>

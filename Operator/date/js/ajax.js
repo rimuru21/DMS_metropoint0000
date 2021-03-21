@@ -67,3 +67,29 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+$("#bus_n").on( 'change', function () {
+	var al = $("#bus_n").val();
+            if(al !== ""){
+				
+				$('#aa').val(al);
+				var form_data = {
+					al : al
+				}
+                $.ajax({
+                    url: "sample_get.php",
+                    type: "post",
+                    data: form_data, // serializes the form's elements.
+					dataType: "json",
+                    success: function(data) {
+                        $('#ass_dri').val(data['ass_dri']);
+                        $('#ass_con').val(data['ass_con']);
+                        $('#seat_cap').val(data['seat_cap']);
+                    }
+                });
+			}else{
+				alert("Error")
+			}
+});
+});
+
