@@ -100,8 +100,8 @@
 						</div>
                         
 						<div class="col-lg-8">
-							<select class="form-control" id="bus_type" name="bus_type_id" placeholder="" >
-								<option  value="">---select bus type---</option>
+							<select class="form-control" id="bus_type" name="bus_type_id" placeholder="" readonly>
+								<option  value=""></option>
 								<?php 
 								include('conn.php');
 								$sql=mysqli_query($conn,"SELECT * FROM bus_type");
@@ -119,7 +119,7 @@
                             </select>
 						</div>
 						<div class="col-lg-4">
-                            <input type="number" class="form-control" id="seat_ca" name="seat_cap" required />
+                            <input type="number" class="form-control" id="seat_ca" name="seat_cap" readonly />
 						</div>
 					</div>
                     <div style="height:5px;"></div>
