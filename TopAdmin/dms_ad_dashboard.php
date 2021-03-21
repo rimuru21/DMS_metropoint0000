@@ -12,18 +12,20 @@ include('auth.php');
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="images/icons/dashboard.ico"/>
 	<script src="js/jquery.crud.min.js"></script>
-	<link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.crud.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link href="css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 	<script src="js/bootstrap.crud.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 </head>
 <body  onload="updateClock(); setInterval('updateClock()', 1000 )">
 <div class="row" >
     <div class="col-lg-12" style="position:fixed; background-color:rgba(255,255,255,0.3);left:.8em;margin-top:.5em;width:98.5%;"> 
     <h1 class="col-lg-3 ion-calendar" style="font-size:2vw;text-align:left;margin-top:15px"></h1>
-    <h1 class="col-lg-6" style="font-size:2vw;text-align:center;padding:0px;margin-top:15px">DAVAO METRO SHUTTLE - <i><b>MetroPoint</b></i></h1>
-    <h1 class="col-lg-3" style="font-size:2.2vw;text-align:right;padding-right: 20px;margin-top:15px"><span id="clock">&nbsp;</span></h1>
+    <h1 class="col-lg-6" style="font-size:2vw;text-align:center;padding:0px;margin-top:15px"">DAVAO METRO SHUTTLE - <i><b>MetroPoint</b></i></h1>
+    <h1 class="col-lg-3" style="font-size:2.2vw;text-align:right;padding-right: 20px;margin-top:15px""><span id="clock">&nbsp;</span></h1>
     </div>
         <script>
                 var objToday = new Date(),
@@ -72,15 +74,16 @@ include('auth.php');
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>DEPARTURE</th>
 						</thead>
 						<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.3)">
-                                <th style="width:11%">TRIP #</th>
-                                <th style="width:9%">BUS #</th>
+                                <th style="width:10%">TRIP #</th>
+                                <th style="width:10%">BUS #</th>
                                 <th style="width:10%">TYPE</th>
+                                <th style="width:8%">SEAT CAP</th>
                                 <th style="width:10%">TO</th>
                                 <th style="width:10%">TIME</th>
                                 <th style="width:10%">DATE</th>
-								<th style="width:11%;padding-left:1.5em">STATUS</th>
+								<th style="width:13.5%;padding-left:1.5em">STATUS</th>
 						</thead>
-						<tbody style="display: block;overflow:auto; width: 100%;height: 257px; word-break: break-word; scrollbar-width: none; ">
+						<tbody style="display: block;overflow:auto; width: 100%;height: 235px; word-break: break-word; scrollbar-width: none; ">
                         <?php
 								include('conn.php');
 								
@@ -88,9 +91,10 @@ include('auth.php');
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white">
-                                        <td style="width:12%"><?php echo $row['trip_no']; ?></td>
+                                        <td style="width:10%"><?php echo $row['trip_no']; ?></td>
                                         <td style="width:10%"><?php echo $row['bus_no']; ?></td>
                                         <td style="width:10%;"><?php echo $row['type_descrip']; ?></td>
+                                        <td style="width:8%;"><?php echo $row['seat_cap']; ?></td>
                                         <td style="width:10%"><?php echo $row['to_ter']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
@@ -114,19 +118,18 @@ include('auth.php');
         <div class="col-md-6" style="">
         <div class="container" style="padding-top:0em;left:4em">
             <div style="height:90%;"></div>
-            <div class=""  style=" width:49%; position: fixed;margin-left:-1em" >
+            <div class="" style=" width:49%; position: fixed;margin-left:-1em">
                 <div style="height:10px;"></div>
-				        <table class="table table-striped table-bordered table-hover"  style="" >
-                        <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
-                                <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>MAP</th>
-						</thead>
-						<tbody   style="display: block; width: 100%;height: 286px; ">
-							<div id="mapid">
-                            </div>
-						</tbody>
-				</table>
-		</div>
-</div>
+				        <table class="table table-striped table-bordered table-hover"  style="">
+                            <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
+                                    <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>MAP</th>
+                            </thead>
+                            <tbody style="display: block;overflow:auto; width: 100%;height: 286px; word-break: break-word; scrollbar-width: none; overflow: hidden; " id="mapid">
+                                
+                            </tbody>
+				        </table>
+		    </div>
+        </div>
 </div>
 
 </div>
@@ -147,15 +150,16 @@ include('auth.php');
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>ARRIVAL</th>
 						</thead>
 						<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.3)">
-                                <th style="width:12%">TRIP #</th>
-                                <th style="width:9%">BUS #</th>
-                                <th style="width:9%">TYPE</th>
+                                <th style="width:10%">TRIP #</th>
+                                <th style="width:10%">BUS #</th>
+                                <th style="width:10%">TYPE</th>
+                                <th style="width:8%">SEAT CAP</th>
                                 <th style="width:10%">FROM</th>
                                 <th style="width:10%">TIME</th>
                                 <th style="width:10%">DATE</th>
-								<th style="width:11%;padding-left:1.5em">STATUS</th>
+								<th style="width:13.5%;padding-left:1.5em">STATUS</th>
 						</thead>
-						<tbody style="display: block;overflow:auto; height: 257px; word-break: break-word; scrollbar-width: none; ;">
+						<tbody style="display: block;overflow:auto; height: 235px; word-break: break-word; scrollbar-width: none; ;">
                         <?php
 								include('conn.php');
 								
@@ -163,9 +167,10 @@ include('auth.php');
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white">
-                                        <td style="width:13%"><?php echo $row['trip_no']; ?></td>
+                                        <td style="width:10%"><?php echo $row['trip_no']; ?></td>
                                         <td style="width:10%"><?php echo $row['bus_no']; ?></td>
-                                        <td style="width:9%;"><?php echo $row['type_descrip']; ?></td>
+                                        <td style="width:10%;"><?php echo $row['type_descrip']; ?></td>
+                                        <td style="width:8%;"><?php echo $row['seat_cap']; ?></td>
                                         <td style="width:10%"><?php echo $row['from_ter']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
@@ -198,7 +203,7 @@ include('auth.php');
                         <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
                                 <th style="width:5%;border-bottom:none; font-size:1.5vw;text-align:center"><span class="ion-android-bus" style="padding-right:.5em"></span>RECENT DETAILS</th>
                         </thead>
-				</table>
+				        </table>
             </div>
             </div>
             </div>
@@ -428,37 +433,38 @@ include('auth.php');
     </div>
 </div>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
 
-        var mymap = L.map('mapid').setView([7.3575577, 125.7035372], 8);
+
+<script>
+
+    var mymap = L.map('mapid').setView([7.461092, 125.798725], 15);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JoaXN1bGEiLCJhIjoiY2tqdjAzNjhwMnF1czJxcXVheG5zM2Z0dyJ9.ADUJmb8cso0RObOix5SzOQ', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
+            maxZoom: 15,
             id: 'mapbox/streets-v11',
             tileSize: 512,
             zoomOffset: -1,
             accessToken: 'your.mapbox.access.token'
         }).addTo(mymap);
 
-        //var marker = L.marker([7.353216, 125.702407]).addTo(mymap);
 
-        var count=0;
-        <?php foreach ($arrivals as $coordinate) : ?>
-            var name = 'marker'+count;
-            name = L.marker([<?= $coordinate->que_lat ?>, <?= $coordinate->que_long ?>]).addTo(mymap);
-            name.bindPopup("<?= '<b>'.$coordinate->bus_number.'</b>' ?>").openPopup();
-            count++;
-        <?php endforeach; ?>
-    });
-</script>
+	L.marker([7.461092, 125.798725]).addTo(mymap)
+		.bindPopup("TAGUM TERMINAL").openPopup();
+
+
+	var popup = L.popup();
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("You clicked the map at " + e.latlng.toString())
+			.openOn(mymap);
+	}
+
+	mymap.on('click', onMapClick);
+    
+    </script>
+   
 </body>
 </html>

@@ -32,15 +32,15 @@
 			if (mysqli_num_rows($result) == 1) {
 				$_SESSION['u_name'] = $u_name;
 				$_SESSION['success'] = "You are now logged in";
-				header('location: dms_ad_dashboard.php');
+				header('location: topadmin/dms_ad_dashboard.php');
             }elseif(mysqli_num_rows($result1) == 1) {
 				$_SESSION['u_name'] = $u_name;
 				$_SESSION['success'] = "You are now logged in";
-                header('location: dms_ad_dashboard.php'); 
+                header('location: admin/dms_ad_dashboard.php'); 
             }elseif(mysqli_num_rows($result2) == 1) {
 				$_SESSION['u_name'] = $u_name;
 				$_SESSION['success'] = "You are now logged in";
-                header('location: dms_op_dashboard.php'); 
+                header('location: operator/dms_op_dashboard.php'); 
             }else { 
 				array_push($errors, "Wrong username/password combination");
 			}
