@@ -14,7 +14,7 @@
 							<label class="control-label" style="position:relative; top:7px;">TRIP #</label>
 						</div>
 						<div class="col-lg-8">
-							<input type="text" class="form-control" id="trip_no" name="trip_no" required />
+							<input type="text" class="form-control" id="trip_n" name="trip_no" readonly />
 						</div>
 					</div>
 					<div style="height:10px;"></div>
@@ -132,10 +132,10 @@
 						</div>
                         <div style="height:10px;"></div>
 						<div class="col-lg-6">
-						  	<input type="text" class="form-control" id="from_ter" name="from_ter" value="Tagum" placehoder="Tagum" disabled />	
+						  	<input type="text" class="form-control" id="from_te" name="from_ter" value="Tagum" placehoder="Tagum" disabled />	
 						</div>
 						<div class="col-lg-6">
-							<select class="form-control" id="to_ter" name="to_ter" placeholder="" >
+							<select class="form-control" id="to_te" name="to_ter" placeholder="" >
 								<option  value="">---select terminal---</option>
 								<?php 
 								include('conn.php');
@@ -191,6 +191,12 @@
 <script>
 $("#bus_n").on( 'change', function () {
 	var al = $("#bus_n").val();
+	let currentDate = new Date();
+	let cDay = currentDate.getDate();
+	let cMonth = currentDate.getMonth() + 1;
+	let cYear = currentDate.getFullYear();
+	let time = currentDate.getHours() + "" +currentDate.getMinutes() + "" +currentDate.getSeconds();
+	console.log();
 		var form_data = {
 			bus_no : al
 		};
@@ -200,6 +206,7 @@ $("#bus_n").on( 'change', function () {
                     data: form_data, // serializes the form's elements.
 					dataType: "json",
                     success: function(data) {
+						$('#trip_n').val(data['descrip'] + '-' + cDay + cMonth + cYear + time );
 						$('#ass_dr').val(data['ass_dri']);
 						$('#ass_co').val(data['ass_con']);
 						$('#bus_type').val(data['bus_type_id']);
@@ -207,6 +214,35 @@ $("#bus_n").on( 'change', function () {
                     }
                 });
 				
+});
+
+$("#to_te").on( 'change', function () {
+	var al = $("#bus_n").val();
+	var to_ter = $("#to_te").val();
+	let currentDate = new Date();
+	let cDay = currentDate.getDate();
+	let cMonth = currentDate.getMonth() + 1;
+	let cYear = currentDate.getFullYear();
+	let time = currentDate.getHours() + "" +currentDate.getMinutes() + "" +currentDate.getSeconds();
+	console.log();
+		var form_data = {
+			bus_no : al
+		};
+                $.ajax({
+                    url: "modal/sample_get.php",
+                    type: "post",
+                    data: form_data, // serializes the form's elements.
+					dataType: "json",
+                    success: function(data) {
+						$('#trip_n').val(data['descrip'] + '-' + cDay + cMonth + cYear + time + "-" + to_ter);
+						$('#ass_dr').val(data['ass_dri']);
+						$('#ass_co').val(data['ass_con']);
+						$('#bus_type').val(data['bus_type_id']);
+						$('#seat_ca').val(data['seat_cap']);
+                    }
+                });
+	
+	
 });
 
 var date = new Date();
