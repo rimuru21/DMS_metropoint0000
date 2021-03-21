@@ -38,7 +38,7 @@
 						<tbody style="display: block;overflow:auto; width: 100%;height: 280px; word-break: break-word; scrollbar-width: none; ">
 							<?php
 								include('conn.php');  
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.bus_type_id as bus_type_id, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_date as qued_date, a.que_time as qued_time
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.bus_type_id as bus_type_id, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_date as qued_date, time_format(a.que_time, '%h:%i %p')  as qued_time
 								FROM que_details a, bus_type b
 								WHERE a.bus_type_id = b.bus_type_id AND que_stat_id = 4 AND from_ter = 'Tagum'
 								ORDER BY que_id desc ");

@@ -83,19 +83,19 @@ include('auth.php');
                                 <th style="width:7%">TYPE</th>
                                 <th style="width:7%">SEAT CAP</th>
                                 <th style="width:10%;text-align: center">TO</th>
-                                <th style="width:10%;text-align: center">TIME</th>
-                                <th style="width:10%;text-align: center">DATE</th>
+                                <th style="width:10%; text-align: center">TIME</th>
+                                <th style="width:10%; text-align: center">DATE</th>
 								                <th style="width:13%; text-align: center">STATUS</th>
 						</thead>
 						<tbody style="display: block;overflow:auto; width: 100%;height: 435px; word-break: break-word; scrollbar-width: none; ">
 							<?php
 								include('conn.php');
 								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_time as que_time, a.que_date as que_date FROM que_details a, bus_type b, ter_details c WHERE a.bus_type_id = b.bus_type_id AND from_ter = 'Tagum' AND que_stat_id = 4 GROUP BY que_id ORDER BY que_id desc  ");
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date FROM que_details a, bus_type b, ter_details c WHERE a.bus_type_id = b.bus_type_id AND from_ter = 'Tagum' AND que_stat_id = 4 GROUP BY que_id ORDER BY que_id desc  ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 								      	<tr mouseclick="href='#view_que<?php echo $row['que_id']; ?>'"  class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white;">
-                                        <td style="width:10%"><?php echo $row['trip_no']; ?></td>
+                                        <td style="width:12.5%"><?php echo $row['trip_no']; ?></td>
                                         <td style="width:10%"><?php echo $row['bus_no']; ?></td>
                                         <td style="width:7%;"><?php echo $row['type_descrip']; ?></td>
                                         <td style="width:7%"><?php echo $row['seat_cap']; ?></td>
@@ -132,24 +132,24 @@ include('auth.php');
                                 <th style="width:10%;border-bottom:none;"></th>
 						</thead>
 						<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.3)">
-            <th style="width:10%">TRIP #</th>
+                                <th style="width:10%">TRIP #</th>
                                 <th style="width:10%;text-align: center">BUS #</th>
                                 <th style="width:7%">TYPE</th>
                                 <th style="width:7%">SEAT CAP</th>
                                 <th style="width:10%;text-align: center">FROM</th>
-                                <th style="width:10%;text-align: center">TIME</th>
-                                <th style="width:10%;text-align: center">DATE</th>
+                                <th style="width:10%; text-align: center">TIME</th>
+                                <th style="width:10%; text-align: center">DATE</th>
 								                <th style="width:13%; text-align: center">STATUS</th>
 						</thead>
 						<tbody style="display: block;overflow:auto; width: 100%;height: 435px; word-break: break-word; scrollbar-width: none; " >
 							<?php
 								include('conn.php');
 								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_time as que_time, a.que_date as que_date  FROM que_details a, bus_type b, ter_details c WHERE a.bus_type_id = b.bus_type_id AND to_ter = 'Tagum' AND que_stat_id = 3 GROUP BY que_id ORDER BY que_id desc  ");
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date  FROM que_details a, bus_type b, ter_details c WHERE a.bus_type_id = b.bus_type_id AND to_ter = 'Tagum' AND que_stat_id = 3 GROUP BY que_id ORDER BY que_id desc  ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 								      	<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white;">
-                                        <td style="width:10%"><?php echo $row['trip_no']; ?></td>
+                                        <td style="width:12.5%"><?php echo $row['trip_no']; ?></td>
                                         <td style="width:10%"><?php echo $row['bus_no']; ?></td>
                                         <td style="width:7%;"><?php echo $row['type_descrip']; ?></td>
                                         <td style="width:7%"><?php echo $row['seat_cap']; ?></td>
