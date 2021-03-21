@@ -24,7 +24,7 @@ include('auth.php');
 <div class="row" >
     <div class="col-lg-12" style="position:fixed; background-color:rgba(255,255,255,0.3);left:.8em;margin-top:.5em;width:98.5%;"> 
     <h1 class="col-lg-3 ion-calendar" style="font-size:2vw;text-align:left;margin-top:15px"></h1>
-    <h1 class="col-lg-6" style="font-size:2vw;text-align:center;padding:0px;margin-top:15px">MetroPoint - <i><b><?php echo "" .$_SESSION['u_name']; ?></b></i></h1>
+    <h1 class="col-lg-6" style="font-size:2vw;text-align:center;padding:0px;margin-top:15px"><b>MetroPoint</b> - <i><?php echo "" .$_SESSION['u_name']; ?></i></h1>
     <h1 class="col-lg-3" style="font-size:2.2vw;text-align:right;padding-right: 20px;margin-top:15px"><span id="clock">&nbsp;</span></h1>
     </div>
         <script>
