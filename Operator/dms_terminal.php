@@ -39,8 +39,7 @@
                 <div style="height:10px;"></div>
 				    <table class="table table-striped table-bordered table-hover" >
 						<thead style="display: block; overflow: hidden; word-break: break-word;border-bottom:1px solid white;padding-bottom:10px; padding-top:10px">
-								<th style="width:30%">TERMINAL NAME</th>
-								<th style="width:10%">ACTION</th>
+								<th style="">TERMINAL NAME</th>
 						</thead>
 						<tbody style="display: block;overflow:auto; width: 100%;height: 405px; word-break: break-word; scrollbar-width: none;border-bottom:1px solid white ">
 							<?php
@@ -49,13 +48,8 @@
 								$query=mysqli_query($conn,"select * from `ter_details` ORDER BY ter_id desc");
 								while($row=mysqli_fetch_array($query)){
 									?>
-									<tr class="<?php echo $row['ter_id']; ?>"style="border-bottom:1px solid white;margin-bottom:5px">
-										<td style="width:30%"><?php echo $row['descrip']; ?></td>
-										<td style="width:10%">
-											<a style="font-size:1.5vw" href="#edit_ter<?php echo $row['ter_id']; ?>" data-toggle="modal" class="btn "><span class="ion-edit"></span> </a> |
-											<a style="font-size:1.5vw" href="#del_ter<?php echo $row['ter_id']; ?>" data-toggle="modal" class="btn "><span class="ion-trash-b"></span></a>
-											<?php include('action/action_ter_route.php'); ?>
-										</td>
+									<tr class="<?php echo $row['ter_id']; ?>"style="border-bottom:1px solid white;margin-bottom:5px;height:50px">
+										<td style="width:10%;font-size:1.2vw"><?php echo $row['descrip']; ?></td>
 									</tr>
 									<?php
 								}
@@ -76,7 +70,6 @@
 				    <table class="table table-striped table-bordered table-hover" >
 						<thead style="display: block; overflow: hidden; word-break: break-word;border-bottom:1px solid white;padding-bottom:10px; padding-top:10px">
 								<th style="width:30%">ROUTE NAME</th>
-								<th style="width:10%">ACTION</th>
 						</thead>
 						<tbody style="display: block;overflow:auto; width: 100%;height: 405px; word-break: break-word; scrollbar-width: none;border-bottom:1px solid white ">
 							<?php
@@ -85,13 +78,8 @@
 								$query=mysqli_query($conn,"SELECT route_id, f_descrip, l_descrip, CONCAT(f_descrip,' - ', l_descrip) as descrip FROM `route_details` ORDER BY route_id desc");
 								while($row=mysqli_fetch_array($query)){
 									?>
-									<tr class="<?php echo $row['route_id']; ?>" style="border-bottom:1px solid white;margin-bottom:5px">
-										<td style="width:30%"><?php echo $row['f_descrip']; ?> - <?php echo $row['l_descrip']; ?></td>
-										<td style="width:10%">
-											<a style="font-size:1.5vw" href="#edit_route<?php echo $row['route_id']; ?>" data-toggle="modal" class="btn "><span class="ion-edit"></span> </a> |
-											<a style="font-size:1.5vw" href="#del_route<?php echo $row['route_id']; ?>" data-toggle="modal" class="btn "><span class="ion-trash-b"></span></a>
-											<?php include('action/action_ter_route.php'); ?>
-										</td>
+									<tr class="<?php echo $row['route_id']; ?>" style="border-bottom:1px solid white;margin-bottom:5px;height:50px">
+										<td style="width:10%;font-size:1.2vw"><?php echo $row['f_descrip']; ?> - <?php echo $row['l_descrip']; ?></td>
 									</tr>
 									<?php
 								}

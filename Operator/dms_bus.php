@@ -39,10 +39,6 @@
 	<div class="container" style="padding-top:7em;">
     <div classc="col-md-12" >
 	<div classc="col-md-8" style=" width:60%;">
-		<span class="pull-left"><a style="padding:8px; border-radius:4px ;margin-bottom:.5em; "href="#addnew_bus" data-toggle="modal" class="btn btn-primary"><span class="ion-plus-round" style="padding-left:.5em"></span> Add Bus</a></span>
-		<span class="pull-left"><a style="padding:8px; border-radius:4px ;margin-bottom:.5em; margin-left:.5em; "href="#addnew_eng_type" data-toggle="modal" class="btn btn-primary"><span class="ion-plus-round" style="padding-left:.5em"></span> Add Bus Eng. Type</a></span>
-		<span class="pull-left"><a style="padding:8px; border-radius:4px ;margin-bottom:.5em; margin-left:.5em; "href="#addnew_bus_type" data-toggle="modal" class="btn btn-primary" ><span class="ion-plus-round" style="padding-left:.5em"></span> Add Bus Type</a></span>
-		
 		<div style="height:10px;"></div>
 				<table class="table table-striped table-bordered table-hover" id="myTable">
 						<thead style="display: block; overflow: hidden; word-break: break-word;border-bottom:1px solid white;padding-bottom:10px; padding-top:10px">
@@ -53,7 +49,7 @@
 								<th style="width:10%">BUS STATUS</th>
 								<th style="width:9%; text-align:center">ACTION</th>
 						</thead>
-						<tbody style="display: block;overflow:auto; width: 100%;height: 380px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
+						<tbody style="display: block;overflow:auto; width: 100%;height: 415px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
 							<?php
 								include('conn.php');
 								
@@ -64,7 +60,7 @@
 										<td style="width:10%"><?php echo $row['bus_no']; ?></td>
 										<td style="width:10%"><?php echo $row['plate_no']; ?></td>
 										<td style="width:10%"><?php echo $row['bus_type_id']; ?></td>
-										<td style="width:10%; padding-left:4.5em"><?php echo $row['seat_cap']; ?></td>
+										<td style="width:10%; padding-left:2em"><?php echo $row['seat_cap']; ?></td>
 										<td style="width:10%"><?php echo $row['bus_stat_id']; ?></td>
 										<td style="width:7%; text-align:center">
 											<a style="font-size:1.5vw" href="#view_bus<?php echo $row['bus_id']; ?>" data-toggle="modal" class="btn "><span class="ion-eye"></span> </a> 
@@ -83,14 +79,13 @@
 
 <div class="col-md-4">
 <div>
-	<div style="width:100%;margin-left:50em;margin-top:-34.6em; margin-bottom:0em">
+	<div style="width:100%;margin-left:50em;margin-top:-37em; margin-bottom:0em">
 		<div style="height:10px;"></div>
 				<table class="table table-striped table-bordered table-hover" id="myTable">
 						<thead style="display: block; overflow: hidden; word-break: break-word;border-bottom:1px solid white;padding-bottom:10px; padding-top:10px">
 								<th style="width:10.5%">Engine Type</th>
-								<th style="width:9%; text-align:center">ACTION</th>
 						</thead>
-						<tbody style="display: block;overflow:auto; width: 100%;height: 160px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
+						<tbody style="display: block;overflow:auto; width: 100%;height: 180px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
 							<?php
 								include('conn.php');
 								
@@ -99,12 +94,6 @@
 									?>
 									<tr  style="border-bottom:1px solid white;margin-bottom:5px;height:50px">
 										<td style="width:10%"><?php echo $row['descrip']; ?></td>
-										
-										<td style="width:7%; text-align:center">
-											<a style="font-size:1.5vw" href="#view_bus<?php echo $row['bus_id']; ?>" data-toggle="modal" class="btn "><span class="ion-eye"></span> </a> 
-											
-											<?php include('action/action_bus.php'); ?>
-										</td>
 									</tr>
 									<?php
 								}
@@ -121,9 +110,8 @@
 				<table class="table table-striped table-bordered table-hover" id="myTable">
 						<thead style="display: block; overflow: hidden; word-break: break-word;border-bottom:1px solid white;padding-bottom:10px; padding-top:10px">
 								<th style="width:10.5%">Bus Type</th>
-								<th style="width:9%; text-align:center">ACTION</th>
 						</thead>
-						<tbody style="display: block;overflow:auto; width: 100%;height: 160px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
+						<tbody style="display: block;overflow:auto; width: 100%;height: 180px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
 							<?php
 								include('conn.php');
 								
@@ -132,11 +120,6 @@
 									?>
 									<tr style="border-bottom:1px solid white;margin-bottom:5px;height:50px">
 										<td style="width:10%"><?php echo $row['abbr']; ?></td>
-										
-										<td style="width:7%; text-align:center">
-											<a style="font-size:1.5vw" href="#view_bus<?php echo $row['bus_id']; ?>" data-toggle="modal" class="btn "><span class="ion-eye"></span> </a> 
-											<?php include('action/action_bus.php'); ?>
-										</td>
 									</tr>
 									<?php
 								}

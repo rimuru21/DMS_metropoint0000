@@ -219,26 +219,6 @@
 							</select>
 						</div>
 						</div>
-						<div style="height:10px;"></div>
-							<div class="row">
-								<div class="col-lg-4">
-									<label class="control-label" style="position:relative; top:7px;">Ip Address:</label>
-								</div>
-								<div>
-								<div class="col-lg-2">
-									<input size="3" type="text" maxlength="3" class="form-control" id="ip_add" name="ip_add" value="<?php echo $row['ip_add']; ?>"/>
-								</div>
-								<div class="col-lg-2">
-									<input size="3" type="text" maxlength="3" class="form-control" id="ip_add1" name="ip_add1" value="<?php echo $row['ip_add1']; ?>"/>
-								</div>
-								<div class="col-lg-2">
-									<input size="3" type="text" maxlength="3" class="form-control" id="ip_add2" name="ip_add2" value="<?php echo $row['ip_add2']; ?>"/>
-								</div>
-								<div class="col-lg-2">
-									<input size="3" type="text" maxlength="3" class="form-control" id="ip_add3" name="ip_add3" value="<?php echo $row['ip_add3']; ?>"/>
-								</div>
-							</div>
-                		</div> 
 
                 </div> 
 				</div>
@@ -351,14 +331,7 @@
 							<h4 style="text-align:left"><?php echo $row['route_id']; ?></h4>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-lg-6" style="text-align:right">
-							<h4><b>Ip Address:</b></h4>
-						</div>
-						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['ip_add']; ?>.<?php echo $row['ip_add1']; ?>.<?php echo $row['ip_add2']; ?>.<?php echo $row['ip_add3']; ?></h4>
-						</div>
-					</div>
+					
 				</div>
 			
 						

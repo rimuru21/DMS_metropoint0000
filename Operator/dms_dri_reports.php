@@ -22,56 +22,50 @@
 	</div>
 	<div class="col-md-10">
 	<div>
-	<ul class="menu-bar">
+		<ul class="menu-bar">
 			<li  style="font-family: 'Source Sans Pro';"><a href="dms_reports.php">BUS</a></li>
-            <li style="left:1em;font-family: 'Source Sans Pro';"><a href="dms_trip_reports.php">TRIP</a></li>
-            <li style="left:.5em;font-family: 'Source Sans Pro';"><a href="dms_dri_reports.php">DRIVER</a></li>
-            <li style="left:.4em;font-family: 'Source Sans Pro';"><a href="dms_con_reports.php">CONDUCTOR</a></li>
-            <li style="left:.4em;font-family: 'Source Sans Pro';"><a href="dms_ter_reports.php">TERMINAL</a></li>
-				<input style="width:160px;margin-left:7em" type = "date" class = "form-control"   id = "date1"/>
-				<input style="width:160px;margin-left:.5em" type = "date" class = "form-control"  id = "date2"/>
-				<button type = "button" class = "btn btn-primary" id = "btn_search1" style="margin-left:.5em; padding:2px;  padding-left:10px; padding-right:10px; font-size:1.5vw"><span class="ion-ios-search"></span></button>
-				<button type = "button" class = "btn btn-warning" id = "reset1" style="margin-left:.5em; padding:2px;  padding-left:10px; padding-right:10px; font-size:1.5vw"><span class="ion-android-refresh"></span></button>
-            <h3 style="margin-left:4em;font-family: 'Source Sans Pro';">DRIVER REPORT</h3>
+            <li style="left:1em;font-family: 'Source Sans Pro';"><a href="dms_dri_reports.php">DRIVER</a></li>
+            <li style="left:.6em;font-family: 'Source Sans Pro';"><a href="dms_con_reports.php">CONDUCTOR</a></li>
+            <li style="left:.1em;font-family: 'Source Sans Pro';"><a href="dms_trip_reports.php">TRIP</a></li>
+				<input style="width:200px;margin-left:10em" type = "text" class = "form-control" id="myInput" onkeyup="myFunction()" placeholder="Type lastname...">
+            <h3 style="margin-left:12em;font-family: 'Source Sans Pro';">DRIVER AVAILABILITY REPORT</h3>
         </ul>
     </div>
-    <div  style=" width:100%; margin-left:-6.5em">
+    <div  style=" width:100%; margin-left:0em">
 	<div class="container" style="padding-top:7em;">
 	<div style="height:90%;"></div>
-	<div class=""  style=" width:107%;">
+	<div class=""  style=" width:90%;">
 		<div style="height:10px" ></div>
-				<table class="table table-striped table-bordered table-hover"  >
-						<thead style="display: block; overflow: hidden; word-break: break-word;border-bottom:1px solid white; padding-bottom:8px; padding-top:8px">
-                                <th style="width:10%">NAME</th>
-                                <th style="width:9%">TRIP #</th>
-                                <th style="width:9%">BUS #</th>
-                                <th style="width:10.5%;text-align:center">ROUTE</th>
-								<th style="width:9%">TORNO TIME</th>
-								<th style="width:9%">DEPARTURE TIME</th>
-								<th style="width:9%">DEPARTURE DATE</th>
-								<th style="width:9%">ARRIVAL TIME</th>
-								<th style="width:9.5%">ARRIVAL DATE</th>
+		<table class="table table-striped table-bordered table-hover" id="myTable" >
+						<thead style="display: block; overflow: hidden; word-break: break-word;border-bottom:1px solid white; padding-bottom:10px; padding-top:10px">
+                                <th style="width:6%;">LASTNAME</th>
+								<th style="width:6%">FIRSTNAME</th>
+								<th style="width:8%;">TERMINAL</th>
+								<th style="width:8%;  text-align:center;">STATUS</th>
+                                <th style="width:9%; text-align:center;padding-left:4em">Action</th>
 						</thead>
-						<tbody style="display: block;overflow:auto; width: 100%;height: 550px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
+						<tbody style="display: block;overflow:auto; width: 100%;height: 440px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
 							<?php
-								include('conn.php');  
-								$query=mysqli_query($conn,"SELECT a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.stat_id as stat_id, b.descrip as stat, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_time as que_time, a.que_date as que_date, a.dep_time as dep_time, a.dep_date as dep_date, a.arr_time as arr_time, a.arr_date as arr_date,  a.ip_add as ip_add,  a.ip_add1 as ip_add1, a.ip_add2 as ip_add2, a.ip_add3 as ip_add3, curdate() as que_date, curtime() as que_time
-								FROM que_details a, user_stat b
-								GROUP BY ass_dri
-								ORDER BY que_id desc  ");
+								include('conn.php');
+							
+                                $query=mysqli_query($conn,"SELECT   d.user_id as user_id, a.dri_id as dri_id, a.l_name as l_name, a.f_name as f_name, a.sufx as sufx, a.m_intl as m_intl,  a.u_name as u_name, b.ter_id as ter_id, b.descrip as ter_descrip, c.stat_id as stat_id, c.descrip as stat_descrip, a.sex as sex, a.cont_no as cont_no, a.emp_date as emp_date, a.licen_no as licen_no, a.licen_exp as licen_exp 
+								FROM user_dri a, ter_details b, user_stat c, user d 
+								WHERE a.ter_id = b.ter_id AND a.stat_id = c.stat_id AND a.user_id = d.user_id
+								ORDER BY dri_id desc ");
+								 
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr style="border-bottom:1px solid white;margin-bottom:5px;height:50px">
-										<td style="width:10%"><?php echo $row['ass_dri']; ?></td>
-                                        <td style="width:9%"><?php echo $row['trip_no']; ?></td>
-										<td style="width:9%"><?php echo $row['bus_no']; ?></td>
-                                        <td style="width:11%"><?php echo $row['from_ter']; ?> - <?php echo $row['to_ter']; ?></td>
-                                        <td style="width:9%"><?php echo $row['que_time']; ?></td>
-										<td style="width:9%"><?php echo $row['dep_time']; ?></td>
-										<td style="width:9%"><?php echo $row['dep_date']; ?></td>
-										<td style="width:9%"><?php echo $row['arr_time']; ?></td>
-										<td style="width:8%"><?php echo $row['arr_date']; ?></td>
-										
+										<td style="width:9%;"><?php echo $row['l_name']; ?></td>
+										<td style="width:9%"><?php echo $row['f_name']; ?></td>
+										<td style="width:9%;"><?php echo $row['ter_descrip']; ?></td>
+										<td style="width:9% ; text-align:center"><?php echo $row['stat_descrip']; ?></td>
+										<td style="width:9%; text-align:center"><?php echo $row['stat_descrip']; ?></td>
+										<td style="width:9%; text-align:center">
+                                            <a style="font-size:1.5vw" href="#view_user<?php echo $row['dri_id']; ?>" data-toggle="modal" class="btn "><span class="ion-eye"></span> </a> |
+											<a style="font-size:1.5vw" href="#edit_user<?php echo $row['dri_id']; ?>" data-toggle="modal" class="btn "><span class="ion-edit"></span> </a> 
+											<?php include('action/action_user.php'); ?>
+										</td>
 									</tr>
 									<?php
 								}
@@ -90,5 +84,27 @@
 <script src = "date/js/jquery-3.1.1.js"></script>
 <script src = "date/js/jquery-ui.js"></script>
 <script src = "date/js/ajax.js"></script>
+
+		
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
 </body>
 </html>

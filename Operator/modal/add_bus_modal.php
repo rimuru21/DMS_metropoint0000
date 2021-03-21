@@ -184,27 +184,6 @@
 						</select>
 						</div>
 						</div>
-						<div style="height:10px;"></div>
-							<div class="row">
-							<div class="col-lg-4">
-								<label class="control-label" style="position:relative; top:7px;">IP ADDRESS:</label>
-							</div>
-							<div>
-							<div class="col-lg-2">
-								<input size="3" type="text" maxlength="3" max=255 class="form-control" id="ip_add" name="ip_add" required />
-							</div>
-							<div class="col-lg-2">
-								<input size="3" type="text" maxlength="3" max=255 class="form-control" id="ip_add1" name="ip_add1" required />
-							</div>
-							<div class="col-lg-2">
-								<input size="3" type="number" maxlength="3" max=255 class="form-control" id="ip_add2" name="ip_add2" required />
-							</div>
-							<div class="col-lg-2">
-								<input size="3" type="text" maxlength="3" max=255 class="form-control" id="ip_add3" name="ip_add3" required />
-							</div>
-							</div>
-						</div>
-					
 					
                 </div> 
 				</div>

@@ -40,11 +40,10 @@
 		<div style="height:10px" ></div>
 				<table class="table table-striped table-bordered table-hover" id="myTable"  >
 						<thead style="display: block; overflow: hidden; word-break: break-word;border-bottom:1px solid white; padding-bottom:10px; padding-top:10px">
-                        <th style="width:10%">NAME</th>
+                        		<th style="width:8%">NAME</th>
 								<th style="width:8%">Username</th>
 								<th style="width:8%">Status</th>
-								<th style="width:8%">Terminal</th>
-                                <th style="width:9%; text-align:center">Action</th>
+								<th style="width:9%">Terminal</th>
 						</thead>
 						<tbody style="display: block;overflow:auto; width: 100%;height: 440px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
                         <?php
@@ -57,16 +56,11 @@
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr style="border-bottom:1px solid white;margin-bottom:5px;height:50px">
-                                        <td style="width:11%"><?php echo $row['name']; ?></td>
+                                        <td style="width:9%"><?php echo $row['name']; ?></td>
 										<td style="width:9%"><?php echo $row['u_name']; ?></td>
 										<td style="width:9%"><?php echo $row['stat_descrip']; ?></td>
 										<td style="width:9%"><?php echo $row['ter_descrip']; ?></td>
-										<td style="width:9%; text-align:center">
-                                            <a style="font-size:1.5vw" href="#view_user<?php echo $row['opt_id']; ?>" data-toggle="modal" class="btn "><span class="ion-eye"></span> </a> |
-											<a style="font-size:1.5vw" href="#edit_user<?php echo $row['opt_id']; ?>" data-toggle="modal" class="btn "><span class="ion-edit"></span> </a> |
-											<a style="font-size:1.5vw" href="#del_user<?php echo $row['opt_id']; ?>" data-toggle="modal" class="btn "><span class="ion-trash-b"></span></a>
-											<?php include('action/action_user.php'); ?>
-										</td>
+										
 									</tr>
 									<?php
 								}
