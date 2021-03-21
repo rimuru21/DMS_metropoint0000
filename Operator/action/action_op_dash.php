@@ -113,7 +113,6 @@
 						
 <!-- /.modal -->
 
-
 <!-- view map modal-->
 <div class="modal fade" id="view_map<?php echo $row['que_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:90%;">
