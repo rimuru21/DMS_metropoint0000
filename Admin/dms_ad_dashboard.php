@@ -75,11 +75,11 @@ include('auth.php');
 						</thead>
 						<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.3)">
                                 <th style="width:12%">TRIP #</th>
-                                <th style="width:11%">BUS #</th>
-                                <th style="width:8%">TYPE</th>
+                                <th style="width:10%">BUS #</th>
+                                <th style="width:6%">TYPE</th>
                                 <th style="width:6%">SEAT CAP</th>
                                 <th style="width:10%">TO</th>
-                                <th style="width:10%">TIME</th>
+                                <th style="width:8%">TIME</th>
                                 <th style="width:10%">DATE</th>
 								<th style="width:13.5%;padding-left:1.5em">STATUS</th>
 						</thead>
@@ -92,11 +92,11 @@ include('auth.php');
 									?>
 									<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white">
                                         <td style="width:12%"><?php echo $row['trip_no']; ?></td>
-                                        <td style="width:11%"><?php echo $row['bus_no']; ?></td>
-                                        <td style="width:8%;"><?php echo $row['type_descrip']; ?></td>
+                                        <td style="width:10%"><?php echo $row['bus_no']; ?></td>
+                                        <td style="width:6%;"><?php echo $row['type_descrip']; ?></td>
                                         <td style="width:6%;"><?php echo $row['seat_cap']; ?></td>
                                         <td style="width:10%"><?php echo $row['to_ter']; ?></td>
-                                        <td style="width:10%"><?php echo $row['que_time']; ?></td>
+                                        <td style="width:8%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
                                         <td style="width:12%;text-align:center;padding-bottom:10px;padding-top:10px" >
                                             <a style="font-size:1.2vw;padding:5px;padding-left:8px;padding-right:8px" class="label-success">Waiting</a>
@@ -151,11 +151,11 @@ include('auth.php');
 						</thead>
 						<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.3)">
                                 <th style="width:12%">TRIP #</th>
-                                <th style="width:11%">BUS #</th>
-                                <th style="width:8%">TYPE</th>
+                                <th style="width:10%">BUS #</th>
+                                <th style="width:6%">TYPE</th>
                                 <th style="width:6%">SEAT CAP</th>
                                 <th style="width:10%">FROM</th>
-                                <th style="width:10%">TIME</th>
+                                <th style="width:8%">TIME</th>
                                 <th style="width:10%">DATE</th>
 								<th style="width:13.5%;padding-left:1.5em">STATUS</th>
 						</thead>
@@ -168,11 +168,11 @@ include('auth.php');
 									?>
 									<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white">
                                         <td style="width:12%"><?php echo $row['trip_no']; ?></td>
-                                        <td style="width:11%"><?php echo $row['bus_no']; ?></td>
-                                        <td style="width:8%;"><?php echo $row['type_descrip']; ?></td>
+                                        <td style="width:10%"><?php echo $row['bus_no']; ?></td>
+                                        <td style="width:6%;"><?php echo $row['type_descrip']; ?></td>
                                         <td style="width:6%;"><?php echo $row['seat_cap']; ?></td>
                                         <td style="width:10%"><?php echo $row['from_ter']; ?></td>
-                                        <td style="width:10%"><?php echo $row['que_time']; ?></td>
+                                        <td style="width:8%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
                                         <td style="width:12%;text-align:center;padding-bottom:10px;padding-top:10px" >
                                             <a style="font-size:1.2vw;padding:5px;padding-left:8px;padding-right:8px" class="label-primary">OnRoad</a>
