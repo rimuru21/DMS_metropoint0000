@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 10:35 AM
+-- Generation Time: Mar 22, 2021 at 02:21 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -40,49 +40,46 @@ CREATE TABLE `bus_details` (
   `route_id` int(50) NOT NULL,
   `seat_cap` int(50) NOT NULL,
   `bus_stat_id` int(50) NOT NULL,
-  `ip_add` varchar(250) NOT NULL,
-  `ip_add1` int(50) NOT NULL,
-  `ip_add2` int(50) NOT NULL,
-  `ip_add3` int(50) NOT NULL,
-  `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `trip_stat_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bus_details`
 --
 
-INSERT INTO `bus_details` (`bus_id`, `bus_no`, `bus_type_id`, `ass_dri`, `ass_con`, `eng_id`, `plate_no`, `sap_code`, `route_id`, `seat_cap`, `bus_stat_id`, `ip_add`, `ip_add1`, `ip_add2`, `ip_add3`, `time_stamp`) VALUES
-(14, 4234, '4', 'Tovar Danielle ', 'Froville Sander', 2, ' UJWE612B2', 131231, 2, 50, 3, '123', 12, 12, 45, '2021-02-07 08:00:27'),
-(15, 123123313, '8', 'Demonteverde Donatello', 'Froville Sander', 2, ' sdf24eqweq', 2147483647, 2, 502, 1, '452', 452, 452, 452, '2021-02-07 10:55:24'),
-(18, 6363, '13', 'Belan Margarito', 'Crawford Mathew', 2, ' SFSD24324', 1434, 1, 34, 1, '42', 24, 23, 23, '2021-02-07 21:44:33'),
-(19, 7867, '2', 'Belan Margarito', 'Napala Winslet', 1, ' QE343', 143434, 3, 14, 2, '123', 12, 12, 12, '2021-02-07 21:54:30'),
-(20, 14134, '9', 'Demonteverde Donatello', 'Crawford Mathew', 2, ' DFG434', 234234, 1, 43, 2, '45', 45, 45, 34, '2021-02-07 21:54:45'),
-(21, 685, '5', 'Tovar Danielle ', 'Crawford Mathew', 2, ' ada112', 14134, 2, 143, 1, '131', 23, 23, 123, '2021-02-07 21:52:32'),
-(22, 234234, '6', 'Belan Margarito', 'Napala Winslet', 2, ' SGE234', 2342, 2, 34, 3, '34', 54, 45, 23, '2021-02-07 21:54:08'),
-(23, 1312, '5', 'Belan Margarito', 'Jay Jay', 2, ' DSD213', 1231, 3, 50, 2, '1', 1, 1, 1, '2021-02-07 21:55:34'),
-(24, 10001, '2', 'Vincent Dave Vincent Dave', 'Jay Jay', 1, ' DD1-123-00001', 1, 1, 13, 1, '123', 12, 145, 1, '2021-02-08 08:15:19'),
-(25, 10002, '2', 'none', 'Crawford Mathew', 2, ' DD1-123-00002', -2, 2, 15, 1, '123', 12, 145, 2, '2021-02-08 08:15:00'),
-(26, 10003, '3', 'Belan Margarito', 'Crawford Mathew', 1, ' DD1-123-00003', -6, 3, 12, 1, '123', 12, 145, 3, '2021-02-08 08:15:31'),
-(27, 10004, '3', 'Belan Margarito', 'Froville Sander', 2, ' DD1-123-00004', 3, 4, 13, 2, '123', 12, 145, 4, '2021-02-08 08:15:42'),
-(28, 10005, '4', 'Tovar Danielle ', 'Rolous Raven', 1, ' DD1-123-00005', -6, 3, 14, 2, '123', 12, 145, 5, '2021-02-08 08:16:35'),
-(29, 10006, '4', 'Demonteverde Donatello', 'Napala Winslet', 2, ' DD1-123-00006', 9, 3, 17, 3, '123', 12, 145, 6, '2021-02-08 08:17:41'),
-(30, 10007, '5', 'Bantawil Alexander', 'none', 1, ' DD1-123-00007', 5, 1, 10, 4, '123', 12, 145, 7, '2021-02-08 08:18:35'),
-(31, 10008, '6', 'Vincent Dave Vincent Dave', 'Rolous Raven', 1, ' DD1-123-00008', 12, 4, 13, 1, '123', 12, 145, 7, '2021-02-08 08:19:24'),
-(32, 10009, '6', 'none', 'none', 1, ' DD1-123-00009', 6, 3, 14, 1, '123', 12, 145, 9, '2021-02-08 08:20:28'),
-(33, 10010, '6', 'Tovar Danielle ', 'Crawford Mathew', 2, ' DD1-123-00010', 8, 3, 10, 3, '123', 12, 145, 10, '2021-02-08 08:21:15'),
-(34, 10011, '8', 'Belan Margarito', 'Jay Jay', 1, ' DD1-123-00011', 8, 3, 9, 3, '123', 12, 134, 11, '2021-02-08 08:23:20'),
-(35, 10012, '8', 'none', 'Crawford Mathew', 2, ' DD1-123-00012', 2, 2, 12, 4, '12', 131, 123, 12, '2021-02-08 08:29:47'),
-(36, 10013, '10', 'Bantawil Alexander', 'Napala Winslet', 2, ' DD1-123-00013', 5, 2, 12, 3, '123', 12, 145, 13, '2021-02-08 08:31:01'),
-(37, 10014, '10', 'Belan Margarito', 'Crawford Mathew', 2, ' DD1-123-00014', 11, 2, 13, 3, '123', 13, 145, 14, '2021-02-08 08:35:46'),
-(38, 10015, '9', 'Tovar Danielle ', 'Crawford Mathew', 1, ' DD1-123-00015', 5, 1, 14, 4, '21', 311, 13, 15, '2021-02-08 08:42:10'),
-(39, 10016, '11', 'Demonteverde Donatello', 'Froville Sander', 1, ' DD1-123-00016', 8, 4, 14, 2, '12', 145, 12, 16, '2021-02-08 08:43:19'),
-(40, 10017, '12', 'Demonteverde Donatello', 'Rolous Raven', 1, ' DD1-123-00017', 5, 2, 13, 3, '12', 123, 145, 17, '2021-02-08 08:44:45'),
-(41, 10018, '13', 'Vincent Dave Vincent Dave', 'Crawford Mathew', 1, ' DD1-123-00018', 9, 2, 12, 1, '12', 123, 145, 18, '2021-02-08 08:46:50'),
-(42, 10019, '13', 'Vincent Dave Vincent Dave', 'Jay Jay', 2, ' DD1-123-00019', 5, 3, 10, 2, '12', 123, 145, 19, '2021-02-08 08:48:05'),
-(43, 10020, '12', 'none', 'Crawford Mathew', 2, ' DD1-123-00020', 7, 2, 14, 2, '12', 123, 145, 20, '2021-02-08 08:49:23'),
-(44, 10021, '10', 'Belan Margarito', 'none', 1, ' DD1-123-00021', 5, 4, 11, 1, '12', 123, 145, 21, '2021-02-08 08:50:06'),
-(45, 10022, '2', 'Demonteverde Donatello', 'Crawford Mathew', 1, ' DD1-123-00022', 6, 2, 12, 3, '12', 123, 145, 22, '2021-02-08 08:53:48'),
-(46, 10023, '11', 'Demonteverde Donatello', 'Crawford Mathew', 1, ' DD1-123-00023', 5, 2, 11, 2, '123', 12, 145, 30, '2021-02-08 09:13:12');
+INSERT INTO `bus_details` (`bus_id`, `bus_no`, `bus_type_id`, `ass_dri`, `ass_con`, `eng_id`, `plate_no`, `sap_code`, `route_id`, `seat_cap`, `bus_stat_id`, `time_stamp`, `trip_stat_id`) VALUES
+(14, 4234, '4', 'Tovar Danielle ', 'Froville Sander', 2, ' UJWE612B2', 131231, 2, 50, 3, '2021-02-07 08:00:27', 0),
+(15, 123123313, '8', 'Demonteverde Donatello', 'Froville Sander', 2, ' sdf24eqweq', 2147483647, 2, 502, 1, '2021-02-07 10:55:24', 0),
+(18, 6363, '13', 'Belan Margarito', 'Crawford Mathew', 2, ' SFSD24324', 1434, 1, 34, 1, '2021-02-07 21:44:33', 0),
+(19, 7867, '2', 'Belan Margarito', 'Napala Winslet', 1, ' QE343', 143434, 3, 14, 2, '2021-02-07 21:54:30', 0),
+(20, 14134, '9', 'Demonteverde Donatello', 'Crawford Mathew', 2, ' DFG434', 234234, 1, 43, 2, '2021-02-07 21:54:45', 0),
+(21, 685, '5', 'Tovar Danielle ', 'Crawford Mathew', 2, ' ada112', 14134, 2, 143, 1, '2021-02-07 21:52:32', 0),
+(22, 234234, '6', 'Belan Margarito', 'Napala Winslet', 2, ' SGE234', 2342, 2, 34, 3, '2021-02-07 21:54:08', 0),
+(23, 1312, '5', 'Belan Margarito', 'Jay Jay', 2, ' DSD213', 1231, 3, 50, 2, '2021-02-07 21:55:34', 0),
+(24, 10001, '2', 'Vincent Dave Vincent Dave', 'Jay Jay', 1, ' DD1-123-00001', 1, 1, 13, 1, '2021-02-08 08:15:19', 0),
+(25, 10002, '2', 'none', 'Crawford Mathew', 2, ' DD1-123-00002', -2, 2, 15, 1, '2021-02-08 08:15:00', 0),
+(26, 10003, '3', 'Belan Margarito', 'Crawford Mathew', 1, ' DD1-123-00003', -6, 3, 12, 1, '2021-02-08 08:15:31', 0),
+(27, 10004, '3', 'Belan Margarito', 'Froville Sander', 2, ' DD1-123-00004', 3, 4, 13, 2, '2021-02-08 08:15:42', 0),
+(28, 10005, '4', 'Tovar Danielle ', 'Rolous Raven', 1, ' DD1-123-00005', -6, 3, 14, 2, '2021-02-08 08:16:35', 0),
+(29, 10006, '4', 'Demonteverde Donatello', 'Napala Winslet', 2, ' DD1-123-00006', 9, 3, 17, 3, '2021-02-08 08:17:41', 0),
+(30, 10007, '5', 'Bantawil Alexander', 'none', 1, ' DD1-123-00007', 5, 1, 10, 4, '2021-02-08 08:18:35', 0),
+(31, 10008, '6', 'Vincent Dave Vincent Dave', 'Rolous Raven', 1, ' DD1-123-00008', 12, 4, 13, 1, '2021-02-08 08:19:24', 0),
+(32, 10009, '6', 'none', 'none', 1, ' DD1-123-00009', 6, 3, 14, 1, '2021-02-08 08:20:28', 0),
+(33, 10010, '6', 'Tovar Danielle ', 'Crawford Mathew', 2, ' DD1-123-00010', 8, 3, 10, 3, '2021-02-08 08:21:15', 0),
+(34, 10011, '8', 'Belan Margarito', 'Jay Jay', 1, ' DD1-123-00011', 8, 3, 9, 3, '2021-02-08 08:23:20', 0),
+(35, 10012, '8', 'none', 'Crawford Mathew', 2, ' DD1-123-00012', 2, 2, 12, 4, '2021-02-08 08:29:47', 0),
+(36, 10013, '10', 'Bantawil Alexander', 'Napala Winslet', 2, ' DD1-123-00013', 5, 2, 12, 3, '2021-02-08 08:31:01', 0),
+(37, 10014, '10', 'Belan Margarito', 'Crawford Mathew', 2, ' DD1-123-00014', 11, 2, 13, 3, '2021-02-08 08:35:46', 0),
+(38, 10015, '9', 'Tovar Danielle ', 'Crawford Mathew', 1, ' DD1-123-00015', 5, 1, 14, 4, '2021-02-08 08:42:10', 0),
+(39, 10016, '11', 'Demonteverde Donatello', 'Froville Sander', 1, ' DD1-123-00016', 8, 4, 14, 2, '2021-02-08 08:43:19', 0),
+(40, 10017, '12', 'Demonteverde Donatello', 'Rolous Raven', 1, ' DD1-123-00017', 5, 2, 13, 3, '2021-02-08 08:44:45', 0),
+(41, 10018, '13', 'Vincent Dave Vincent Dave', 'Crawford Mathew', 1, ' DD1-123-00018', 9, 2, 12, 1, '2021-02-08 08:46:50', 0),
+(42, 10019, '13', 'Vincent Dave Vincent Dave', 'Jay Jay', 2, ' DD1-123-00019', 5, 3, 10, 2, '2021-02-08 08:48:05', 0),
+(43, 10020, '12', 'none', 'Crawford Mathew', 2, ' DD1-123-00020', 7, 2, 14, 2, '2021-02-08 08:49:23', 0),
+(44, 10021, '10', 'Belan Margarito', 'none', 1, ' DD1-123-00021', 5, 4, 11, 1, '2021-02-08 08:50:06', 0),
+(45, 10022, '2', 'Demonteverde Donatello', 'Crawford Mathew', 1, ' DD1-123-00022', 6, 2, 12, 3, '2021-02-08 08:53:48', 0),
+(46, 10023, '11', 'Demonteverde Donatello', 'Crawford Mathew', 1, ' DD1-123-00023', 5, 2, 11, 2, '2021-02-08 09:13:12', 0);
 
 -- --------------------------------------------------------
 
@@ -152,7 +149,8 @@ INSERT INTO `bus_type` (`bus_type_id`, `descrip`, `abbr`) VALUES
 (10, 'SC', 'SPIDER COACH'),
 (11, 'VAC', 'VOLVO AIRCON'),
 (12, 'YAC', 'YUTONG AIRCON'),
-(13, 'YD', 'YUTONG DELUXE');
+(13, 'YD', 'YUTONG DELUXE'),
+(15, 'NAC', 'NEW AIRCON');
 
 -- --------------------------------------------------------
 
@@ -162,7 +160,7 @@ INSERT INTO `bus_type` (`bus_type_id`, `descrip`, `abbr`) VALUES
 
 CREATE TABLE `que_details` (
   `que_id` int(50) NOT NULL,
-  `trip_no` int(50) NOT NULL,
+  `trip_no` varchar(250) NOT NULL,
   `bus_no` int(50) NOT NULL,
   `ass_dri` varchar(250) NOT NULL,
   `ass_con` varchar(250) NOT NULL,
@@ -170,44 +168,46 @@ CREATE TABLE `que_details` (
   `seat_cap` int(50) NOT NULL,
   `from_ter` varchar(250) NOT NULL,
   `to_ter` varchar(250) NOT NULL,
-  `ip_add` int(50) NOT NULL,
-  `ip_add1` int(50) NOT NULL,
-  `ip_add2` int(50) NOT NULL,
-  `ip_add3` int(50) NOT NULL,
   `que_time` time NOT NULL,
   `que_date` date NOT NULL,
   `dep_time` time NOT NULL,
   `dep_date` date NOT NULL,
   `arr_time` time NOT NULL,
   `arr_date` date NOT NULL,
-  `que_stat_id` int(50) NOT NULL
+  `que_stat_id` int(50) NOT NULL,
+  `que_long` point NOT NULL,
+  `que_lat` point NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `que_details`
 --
 
-INSERT INTO `que_details` (`que_id`, `trip_no`, `bus_no`, `ass_dri`, `ass_con`, `bus_type_id`, `seat_cap`, `from_ter`, `to_ter`, `ip_add`, `ip_add1`, `ip_add2`, `ip_add3`, `que_time`, `que_date`, `dep_time`, `dep_date`, `arr_time`, `arr_date`, `que_stat_id`) VALUES
-(2, 1212, 123123313, 'Tovar Danielle ', 'Crawford Mathew', 5, 21, 'Tagum', 'Davao', 12, 12, 12, 12, '18:16:00', '2021-02-07', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(3, 13123, 123123313, 'Demonteverde Donatello', 'Froville Sander', 9, 43, 'New Bataan', 'Maragusan', 12, 12, 434, 43, '18:43:00', '2021-02-07', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(4, 1313, 123123313, 'Demonteverde Donatello', 'Froville Sander', 8, 123, 'Tagum', 'New Bataan', 0, 0, 0, 0, '05:30:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(5, 14314, 123123313, 'Belan Margarito', 'Jay Jay', 8, 12, 'Tagum', 'Davao', 1, 1, 1, 1, '05:57:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(7, 123, 234234, 'Vincent Dave Vincent Dave', 'Jay Jay', 4, 32, 'New Bataan', 'Tagum', 2, 2, 2, 2, '05:58:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 3),
-(8, 76474, 14134, 'Belan Margarito', 'Froville Sander', 3, 80, 'Nabunturan', 'Tagum', 112, 123, 123, 13, '05:58:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 3),
-(9, 3636, 6363, 'Belan Margarito', 'Rolous Raven', 9, 234, 'Maragusan', 'Tagum', 32, 23, 23, 2, '05:59:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 3),
-(10, 1, 10012, 'Tovar Danielle ', 'Jay Jay', 3, 11, 'New Bataan', 'Laak', 123, 145, 12, 13, '19:33:00', '2021-02-01', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(11, 2, 10020, 'Belan Margarito', 'Crawford Mathew', 4, 12, 'Maragusan', 'New Bataan', 0, 0, 0, 0, '05:04:00', '2020-08-04', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(12, 1004, 10004, 'Tovar Danielle ', 'Rolous Raven', 6, 13, 'Monkayo', 'Davao', 12, 123, 145, 22, '06:00:00', '2020-06-10', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(13, 1005, 10001, 'Bantawil Alexander', 'Jay Jay', 6, 15, 'Davao', 'Nabunturan', 123, 12, 145, 22, '08:11:00', '2019-11-12', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(15, 1006, 234234, 'Demonteverde Donatello', 'Crawford Mathew', 3, 9, 'Maragusan', 'Nabunturan', 12, 145, 12, 26, '09:08:00', '2020-04-16', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(16, 1007, 10017, 'Demonteverde Donatello', 'Froville Sander', 10, 13, 'Monkayo', 'Davao', 123, 12, 145, 27, '10:07:00', '2019-03-05', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(17, 1008, 10007, 'Bantawil Alexander', 'Jay Jay', 9, 12, 'Davao', 'Maragusan', 123, 12, 145, 28, '10:09:00', '2020-05-06', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(18, 1009, 10008, 'Belan Margarito', 'Froville Sander', 12, 12, 'Monkayo', 'Nabunturan', 123, 12, 145, 29, '20:11:00', '2019-08-13', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(19, 123123, 123123313, 'Tovar Danielle ', 'Froville Sander', 1, 32, 'Davao', 'Davao', 232, 232, 23, 23, '20:50:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 2),
-(20, 9678567, 4234, 'Tovar Danielle ', 'Napala Winslet', 8, 34, '', 'Davao', 23, 23, 23, 23, '01:24:00', '2021-02-09', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(21, 15452, 234234, 'Tovar Danielle ', 'Froville Sander', 8, 21, 'Tagum', 'New Bataan', 12, 323, 43, 12, '05:33:00', '2021-02-09', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(22, 39838, 123123313, 'Belan Margarito', 'Rolous Raven', 8, 50, 'Tagum', 'Maragusan', 34, 43, 34, 65, '08:42:00', '2021-02-09', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4),
-(23, 76455, 4234, 'Tovar Danielle ', 'Crawford Mathew', 2, 50, 'Tagum', 'Davao', 12, 33, 23, 23, '08:49:00', '2021-02-09', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4);
+INSERT INTO `que_details` (`que_id`, `trip_no`, `bus_no`, `ass_dri`, `ass_con`, `bus_type_id`, `seat_cap`, `from_ter`, `to_ter`, `que_time`, `que_date`, `dep_time`, `dep_date`, `arr_time`, `arr_date`, `que_stat_id`, `que_long`, `que_lat`) VALUES
+(2, '1212', 123123313, 'Tovar Danielle ', 'Crawford Mathew', 5, 21, 'Tagum', 'Davao', '18:16:00', '2021-02-07', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(3, '13123', 123123313, 'Demonteverde Donatello', 'Froville Sander', 9, 43, 'New Bataan', 'Maragusan', '18:43:00', '2021-02-07', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(4, '1313', 123123313, 'Demonteverde Donatello', 'Froville Sander', 8, 123, 'Tagum', 'New Bataan', '05:30:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(5, '14314', 123123313, 'Belan Margarito', 'Jay Jay', 8, 12, 'Tagum', 'Davao', '05:57:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(7, '123', 234234, 'Vincent Dave Vincent Dave', 'Jay Jay', 4, 32, 'New Bataan', 'Tagum', '05:58:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 3, '', ''),
+(8, '76474', 14134, 'Belan Margarito', 'Froville Sander', 3, 80, 'Nabunturan', 'Tagum', '05:58:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 3, '', ''),
+(9, '3636', 6363, 'Belan Margarito', 'Rolous Raven', 9, 234, 'Maragusan', 'Tagum', '05:59:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 3, '', ''),
+(10, '1', 10012, 'Tovar Danielle ', 'Jay Jay', 3, 11, 'New Bataan', 'Laak', '19:33:00', '2021-02-01', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(11, '2', 10020, 'Belan Margarito', 'Crawford Mathew', 4, 12, 'Maragusan', 'New Bataan', '05:04:00', '2020-08-04', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(12, '1004', 10004, 'Tovar Danielle ', 'Rolous Raven', 6, 13, 'Monkayo', 'Davao', '06:00:00', '2020-06-10', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(13, '1005', 10001, 'Bantawil Alexander', 'Jay Jay', 6, 15, 'Davao', 'Nabunturan', '08:11:00', '2019-11-12', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(15, '1006', 234234, 'Demonteverde Donatello', 'Crawford Mathew', 3, 9, 'Maragusan', 'Nabunturan', '09:08:00', '2020-04-16', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(16, '1007', 10017, 'Demonteverde Donatello', 'Froville Sander', 10, 13, 'Monkayo', 'Davao', '10:07:00', '2019-03-05', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(17, '1008', 10007, 'Bantawil Alexander', 'Jay Jay', 9, 12, 'Davao', 'Maragusan', '10:09:00', '2020-05-06', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(18, '1009', 10008, 'Belan Margarito', 'Froville Sander', 12, 12, 'Monkayo', 'Nabunturan', '20:11:00', '2019-08-13', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(19, '123123', 123123313, 'Tovar Danielle ', 'Froville Sander', 1, 32, 'Davao', 'Davao', '20:50:00', '2021-02-08', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 2, '', ''),
+(20, '9678567', 4234, 'Tovar Danielle ', 'Napala Winslet', 8, 34, '', 'Davao', '01:24:00', '2021-02-09', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(21, '15452', 234234, 'Tovar Danielle ', 'Froville Sander', 8, 21, 'Tagum', 'New Bataan', '05:33:00', '2021-02-09', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(22, '39838', 123123313, 'Belan Margarito', 'Rolous Raven', 8, 50, 'Tagum', 'Maragusan', '08:42:00', '2021-02-09', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(23, '76455', 4234, 'Tovar Danielle ', 'Crawford Mathew', 2, 50, 'Tagum', 'Davao', '08:49:00', '2021-02-09', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(24, 'AC-030921215103-TGMDVO', 123123313, 'Vincent Dave Vincent Dave', 'Froville Sander', 3, 40, 'Tagum', 'New Bataan', '21:54:00', '2021-03-19', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(25, 'eqeqweqwe13123', 685, 'Tovar Danielle ', 'Rolous Raven', 6, 13, 'Tagum', 'Maragusan', '22:58:00', '2021-03-20', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(26, '34134134', 685, 'Demonteverde Donatello', 'Rolous Raven', 5, 12, 'Tagum', 'New Bataan', '23:05:00', '2021-03-20', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', ''),
+(27, 'YD-213202119725-Laak', 6363, 'Belan Margarito', 'Crawford Mathew', 13, 34, 'Tagum', 'Laak', '19:07:00', '2021-03-21', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '', '');
 
 -- --------------------------------------------------------
 
@@ -240,6 +240,7 @@ CREATE TABLE `route_details` (
   `route_id` int(50) NOT NULL,
   `f_descrip` varchar(250) NOT NULL,
   `l_descrip` varchar(250) NOT NULL,
+  `abbr` varchar(50) NOT NULL,
   `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -247,11 +248,11 @@ CREATE TABLE `route_details` (
 -- Dumping data for table `route_details`
 --
 
-INSERT INTO `route_details` (`route_id`, `f_descrip`, `l_descrip`, `time_stamp`) VALUES
-(1, 'Tagum', 'Davao', '2021-02-07 11:01:44'),
-(2, 'Tagum ', 'New Bataan', '2021-02-07 11:01:44'),
-(3, 'Tagum', 'Laak', '2021-02-07 11:31:28'),
-(4, 'Tagum', 'Maragusan', '2021-02-07 11:01:45');
+INSERT INTO `route_details` (`route_id`, `f_descrip`, `l_descrip`, `abbr`, `time_stamp`) VALUES
+(1, 'Tagum', 'Davao', 'TGMDVO', '2021-03-21 10:18:19'),
+(2, 'Tagum ', 'New Bataan', 'TGMNB', '2021-03-21 10:18:19'),
+(3, 'Tagum', 'Laak', 'TGMLK', '2021-03-21 10:18:19'),
+(4, 'Tagum', 'Maragusan', 'TGMMAR', '2021-03-21 10:18:19');
 
 -- --------------------------------------------------------
 
@@ -262,6 +263,7 @@ INSERT INTO `route_details` (`route_id`, `f_descrip`, `l_descrip`, `time_stamp`)
 CREATE TABLE `ter_details` (
   `ter_id` int(50) NOT NULL,
   `descrip` varchar(250) NOT NULL,
+  `ter_abbr` varchar(50) NOT NULL,
   `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -269,15 +271,36 @@ CREATE TABLE `ter_details` (
 -- Dumping data for table `ter_details`
 --
 
-INSERT INTO `ter_details` (`ter_id`, `descrip`, `time_stamp`) VALUES
-(1, 'Tagum', '2021-02-07 11:33:49'),
-(2, 'Davao', '2021-01-31 15:52:55'),
-(3, 'New Bataan', '2021-01-31 15:53:02'),
-(4, 'Maragusan', '2021-02-03 02:28:57'),
-(5, 'Nabunturan', '2021-02-03 02:29:28'),
-(6, 'Laak', '2021-02-03 02:29:41'),
-(8, 'Monkayo', '2021-02-17 10:32:07'),
-(9, 'Monkayo', '2021-02-17 10:32:09');
+INSERT INTO `ter_details` (`ter_id`, `descrip`, `ter_abbr`, `time_stamp`) VALUES
+(1, 'Tagum', 'TGM', '2021-03-21 10:27:39'),
+(2, 'Davao', 'DVO', '2021-03-21 10:27:40'),
+(3, 'New Bataan', 'NB', '2021-03-21 10:27:41'),
+(4, 'Maragusan', 'MAR', '2021-03-21 10:27:41'),
+(5, 'Nabunturan', 'NAB', '2021-03-21 10:27:41'),
+(6, 'Laak', 'LK', '2021-03-21 10:27:41'),
+(8, 'Monkayo', 'MONK', '2021-03-21 10:27:41'),
+(9, 'Montivista', 'MONT', '2021-03-21 10:27:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trip_stat`
+--
+
+CREATE TABLE `trip_stat` (
+  `trip_stat_id` int(10) NOT NULL,
+  `descrip` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `trip_stat`
+--
+
+INSERT INTO `trip_stat` (`trip_stat_id`, `descrip`) VALUES
+(0, 'Available'),
+(1, 'Travelling'),
+(2, 'Absent'),
+(3, 'Unavailable');
 
 -- --------------------------------------------------------
 
@@ -321,22 +344,6 @@ INSERT INTO `user` (`user_id`, `type_id`, `u_name`, `l_name`, `f_name`, `m_intl`
 (47, 2, 'lucy876', 'Bittinger', 'Lucy', 'R', '', 'Female', 3, 'ecfb2ca9428299f31f0bbb9b5ea28dc3', 2147483647, 1, '2021-02-02 19:22:12'),
 (48, 2, 'jamika', 'Errico', 'Jamika', 'J', '', 'Female', 1, '304be235474a099c09c4bdfd10f84173', 2147483647, 1, '2021-02-02 19:23:33'),
 (49, 2, 'ommar_shannon123', 'Shannon', 'Omar', 'C', '', 'Male', 3, '92453097b261f830da92dd403a75eb9d', 2147483647, 2, '2021-02-17 18:44:32'),
-(50, 3, 'logan5609', 'Goldsby', 'Logan', 'O', '', 'Male', 3, '3447adfd742cdfb9048a3b29baf1ae7d', 2147483647, 2, '2021-02-02 19:27:08'),
-(52, 3, 'tory232', 'Killion', 'Tory', 'F', '', 'Male', 3, 'cbb992661c4430d1f3419aff73326f17', 2147483647, 3, '2021-02-02 19:29:50'),
-(53, 3, 'jean39939', 'Antone', 'jean', 'H', '', 'Male', 1, '229e8192a023bd6da58603b49f313594', 2147483647, 1, '2021-02-02 19:31:15'),
-(56, 3, 'jacob_davids', 'Davids', 'Jacob', 'G', '', 'Male', 3, '736b19f69aaca691fecd8400294cc383', 2147483647, 4, '2021-02-02 19:37:55'),
-(57, 3, 'kraig232', 'Mabe', 'Kraig', 'I', '', 'Male', 2, '81dc9bdb52d04dc20036dbd8313ed055', 2147483647, 3, '2021-02-02 19:38:45'),
-(58, 3, 'benny_bertsch', 'Bertsch', 'Benny', 'P', '', 'Male', 1, '42f4b247702c99bda0fc7bcc41c70d19', 2147483647, 2, '2021-02-17 18:56:18'),
-(59, 3, 'donny_winzer', 'Winzer', 'Donny ', 'D', '', 'Male', 2, 'befcc07a5d7b46c63c6087f08bc601d4', 2147483647, 1, '2021-02-02 19:51:23'),
-(60, 4, 'armando239', 'Fairbank', 'Armando ', 'N', 'Jr.', 'Male', 1, '7b64d09060db17ca6b96c0af99575903', 2147483647, 1, '2021-02-17 19:03:44'),
-(61, 4, 'rufus_mahi23', 'Mahi', 'Rufus', 'S', '', 'Male', 1, '3a2967f3d7e135a55d8bb158e61d95d4', 2147483647, 1, '2021-02-02 19:58:24'),
-(62, 4, 'keven_peper', 'Pepper', 'Keven', 'P', '', 'Male', 2, '34d206d21923a92cdc92758a8b9c9905', 2147483647, 2, '2021-02-02 20:00:59'),
-(63, 4, 'louis1432', 'Hodapp', 'Loius', 'G', '', 'Male', 3, '21232f297a57a5a743894a0e4a801fc3', 2147483647, 1, '2021-02-02 20:02:07'),
-(65, 4, 'jordan_ollison', 'Ollison', 'Jordan', 'V', '', 'Male', 2, 'd16d377af76c99d27093abc22244b342', 2147483647, 3, '2021-02-02 20:04:18'),
-(66, 4, 'nathanael_berthold12', 'Berthold', 'Nathanael', 'A', 'Sr.', 'Male', 1, 'd27ba11620b07630f8d301a2af03d956', 2147483647, 2, '2021-02-02 20:11:57'),
-(67, 4, 'vaughn_charleston', 'Charleston', 'Vaughn', 'Y', '', 'Male', 3, '57d413bca681029a844e59a46adcbd5d', 2147483647, 2, '2021-02-02 20:13:47'),
-(68, 4, 'nathaniel_michalik', 'Michalik', 'Nathaniel', 'O', '', 'Male', 2, '525ef3e7827f41beb11e2e1ac84e0269', 2147483647, 3, '2021-02-02 20:15:24'),
-(69, 4, 'dennis_soper', 'Soper', 'Dennis ', 'B', '', 'Male', 1, '7daacea5f373b4c1c054158b126d317f', 2147483647, 4, '2021-02-02 20:16:09'),
 (70, 5, 'josh3456789', 'Grenz', 'Josh ', 'H', '', 'Male', 3, 'f94adcc3ddda04a8f34928d862f404b4', 2147483647, 1, '2021-02-02 20:18:12'),
 (71, 5, 'ocatavio_23', 'Benbow', 'Octavio', 'A', '', 'Male', 1, '997100cd64f9032692288cc33e512c56', 2147483647, 1, '2021-02-02 20:19:46'),
 (72, 5, 'duane_mcgiviney', 'Mcgivney', 'Duane', 'Z', '', 'Male', 3, '357ddb585594fe6400d3114fc94239c2', 948573596, 4, '2021-02-02 20:22:13'),
@@ -378,7 +385,9 @@ INSERT INTO `user` (`user_id`, `type_id`, `u_name`, `l_name`, `f_name`, `m_intl`
 (132, 7, 'lovider', 'Devilla', 'Lovimer', 'P', 'Sr.', 'Male', 3, '2e9c985f4025a79e24a7bbdbb163e35e', 2147483647, 2, '2021-02-08 17:52:26'),
 (133, 8, 'dortaman', 'Dorta', 'Norman', 'P', 'Jr.', 'Male', 6, '6f136730567879f1357b19b1a17f14b6', 2147483647, 3, '2021-02-17 19:49:58'),
 (134, 7, 'marvye', 'Ye', 'Marven', 'A', 'I', 'Male', 2, '6f9acffab2d7c8ae2176c8509514954a', 926729532, 1, '2021-02-08 17:55:21'),
-(135, 7, 'Maxwealth', 'Moon', 'Maxwell', 'M', 'IV', 'Male', 2, 'eaef071efe2f6452d4ef1755add80dfb', 2147483647, 1, '2021-02-08 17:57:44');
+(135, 7, 'Maxwealth', 'Moon', 'Maxwell', 'M', 'IV', 'Male', 2, 'eaef071efe2f6452d4ef1755add80dfb', 2147483647, 1, '2021-02-08 17:57:44'),
+(136, 2, 'admin', 'soratos', 'dave', 'D', 'III', 'Male', 2, '827ccb0eea8a706c4c34a16891f84e7b', 1114134134, 1, '2021-03-21 12:17:53'),
+(137, 1, 'topadmin', 'soratos', 'dave', 'c', 'III', 'Female', 5, '827ccb0eea8a706c4c34a16891f84e7b', 1313, 1, '2021-03-21 12:19:03');
 
 -- --------------------------------------------------------
 
@@ -416,7 +425,8 @@ INSERT INTO `user_admin` (`ad_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_i
 (7, 46, 'leda_cueto', 'Cueto', 'Leda', 'K', '', 'Female', 1, '68e3d3ca71bae332832b42bb38df7503', 2147483647, 1, '2021-02-02 19:21:08'),
 (8, 47, 'lucy876', 'Bittinger', 'Lucy', 'R', '', 'Female', 3, 'ecfb2ca9428299f31f0bbb9b5ea28dc3', 2147483647, 1, '2021-02-02 19:22:13'),
 (9, 48, 'jamika', 'Errico', 'Jamika', 'J', '', 'Female', 1, '304be235474a099c09c4bdfd10f84173', 2147483647, 1, '2021-02-02 19:23:33'),
-(10, 49, 'ommar_shannon123', 'Shannon', 'Omar', 'C', '', 'Male', 3, '92453097b261f830da92dd403a75eb9d', 2147483647, 2, '2021-02-17 18:44:32');
+(10, 49, 'ommar_shannon123', 'Shannon', 'Omar', 'C', '', 'Male', 3, '92453097b261f830da92dd403a75eb9d', 2147483647, 2, '2021-02-17 18:44:32'),
+(11, 136, 'admin', 'soratos', 'dave', 'D', 'III', 'Male', 2, '827ccb0eea8a706c4c34a16891f84e7b', 1114134134, 1, '2021-03-21 12:17:53');
 
 -- --------------------------------------------------------
 
@@ -438,24 +448,25 @@ CREATE TABLE `user_con` (
   `cont_no` int(50) NOT NULL,
   `stat_id` int(50) NOT NULL,
   `emp_date` date NOT NULL,
-  `time_stamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `time_stamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `trip_stat_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_con`
 --
 
-INSERT INTO `user_con` (`con_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_intl`, `sufx`, `sex`, `ter_id`, `pass`, `cont_no`, `stat_id`, `emp_date`, `time_stamp`) VALUES
-(11, 104, 'admin_dave', 'Jay', 'Jay', 'A', 'Jr.', 'Male', 2, '3c5bb4887627a4ec06c9a7cc483dd10c', 414134, 2, '2021-01-31', '2021-02-03 05:03:46.270368'),
-(16, 115, 'marlan2021po', 'Crawford', 'Mathew', 'R', '', 'Male', 5, 'cdf31ac7f55c5fc887e06dc82c34efae', 926737342, 1, '2021-03-05', '2021-02-03 16:03:16.397964'),
-(17, 116, 'mao nani', 'Froville', 'Sander', 'T', '', 'Male', 6, 'c4db835db844412ea9633db357d0cee0', 2147483647, 2, '2020-12-14', '2021-02-03 16:05:19.816084'),
-(18, 117, 'POttehhh', 'Rolous', 'Raven', 'W', '', 'Male', 7, 'e8e7819db2bcdba5de39af4ba9d5e847', 935763678, 1, '2021-02-11', '2021-02-03 16:07:19.126783'),
-(19, 118, 'naolaghwan', 'Napala', 'Winslet', 'Q', '', 'Male', 1, '16b1807e9792eae2786687c88ca52d15', 2147483647, 2, '2020-05-07', '2021-02-03 16:09:14.506201'),
-(20, 125, 'luffypist', 'Pist', 'Luffy', 'C', 'Sr.', 'Male', 1, '256384f6b309e501768bf7e04769a8fe', 2147483647, 1, '2017-06-28', '2021-02-08 17:34:52.601559'),
-(21, 127, 'HenOlive', 'Guillimo', 'Henry Oliver', 'A', 'III', 'Male', 3, '57f2b58889831eaa3b506b6bfabd409e', 2147483647, 1, '2017-05-11', '2021-02-08 17:40:49.432340'),
-(22, 128, 'Ypilrico', 'Ypil', 'Rico', 'A', 'Jr.', 'Male', 1, '18982f72ff35b9431651929148c76cdd', 2147483647, 1, '2018-10-09', '2021-02-08 17:43:35.756624'),
-(23, 130, 'jilmicivc', 'Jilmico', 'Vincent', 'P', 'I', 'Male', 5, '3cc98d0d2d1cbd6bbb2f33fb15deb3b0', 2147483647, 4, '2017-02-09', '2021-02-08 17:47:31.821992'),
-(25, 133, 'dortaman', 'Dorta', 'Norman', 'P', 'Jr.', 'Male', 6, '6f136730567879f1357b19b1a17f14b6', 2147483647, 3, '2015-06-02', '2021-02-17 19:50:26.235371');
+INSERT INTO `user_con` (`con_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_intl`, `sufx`, `sex`, `ter_id`, `pass`, `cont_no`, `stat_id`, `emp_date`, `time_stamp`, `trip_stat_id`) VALUES
+(11, 104, 'admin_dave', 'Jay', 'Jay', 'A', 'Jr.', 'Male', 2, '3c5bb4887627a4ec06c9a7cc483dd10c', 414134, 2, '2021-01-31', '2021-02-03 05:03:46.270368', 0),
+(16, 115, 'marlan2021po', 'Crawford', 'Mathew', 'R', '', 'Male', 5, 'cdf31ac7f55c5fc887e06dc82c34efae', 926737342, 1, '2021-03-05', '2021-02-03 16:03:16.397964', 0),
+(17, 116, 'mao nani', 'Froville', 'Sander', 'T', '', 'Male', 6, 'c4db835db844412ea9633db357d0cee0', 2147483647, 2, '2020-12-14', '2021-02-03 16:05:19.816084', 0),
+(18, 117, 'POttehhh', 'Rolous', 'Raven', 'W', '', 'Male', 7, 'e8e7819db2bcdba5de39af4ba9d5e847', 935763678, 1, '2021-02-11', '2021-02-03 16:07:19.126783', 0),
+(19, 118, 'naolaghwan', 'Napala', 'Winslet', 'Q', '', 'Male', 1, '16b1807e9792eae2786687c88ca52d15', 2147483647, 2, '2020-05-07', '2021-02-03 16:09:14.506201', 0),
+(20, 125, 'luffypist', 'Pist', 'Luffy', 'C', 'Sr.', 'Male', 1, '256384f6b309e501768bf7e04769a8fe', 2147483647, 1, '2017-06-28', '2021-02-08 17:34:52.601559', 0),
+(21, 127, 'HenOlive', 'Guillimo', 'Henry Oliver', 'A', 'III', 'Male', 3, '57f2b58889831eaa3b506b6bfabd409e', 2147483647, 1, '2017-05-11', '2021-02-08 17:40:49.432340', 0),
+(22, 128, 'Ypilrico', 'Ypil', 'Rico', 'A', 'Jr.', 'Male', 1, '18982f72ff35b9431651929148c76cdd', 2147483647, 1, '2018-10-09', '2021-02-08 17:43:35.756624', 0),
+(23, 130, 'jilmicivc', 'Jilmico', 'Vincent', 'P', 'I', 'Male', 5, '3cc98d0d2d1cbd6bbb2f33fb15deb3b0', 2147483647, 4, '2017-02-09', '2021-02-08 17:47:31.821992', 0),
+(25, 133, 'dortaman', 'Dorta', 'Norman', 'P', 'Jr.', 'Male', 6, '6f136730567879f1357b19b1a17f14b6', 2147483647, 3, '2015-06-02', '2021-02-17 19:50:26.235371', 0);
 
 -- --------------------------------------------------------
 
@@ -518,61 +529,25 @@ CREATE TABLE `user_dri` (
   `emp_date` date NOT NULL,
   `licen_no` varchar(250) NOT NULL,
   `licen_exp` date NOT NULL,
-  `time_stamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `time_stamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `trip_stat_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_dri`
 --
 
-INSERT INTO `user_dri` (`dri_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_intl`, `sufx`, `sex`, `ter_id`, `pass`, `cont_no`, `stat_id`, `emp_date`, `licen_no`, `licen_exp`, `time_stamp`) VALUES
-(5, 103, 'erqrqrqe', 'Vincent Dave', 'Vincent Dave', 'D', 'Jr.', 'Male', 2, 'c7ee9e57dfecf81cadb484abde705f48', 12413431, 2, '2021-01-31', 'c2x2zwE1X314', '2021-01-31', '2021-02-03 05:03:11.240390'),
-(6, 109, 'marlan2021po', 'Belan', 'Margarito', 'C', '', 'Male', 5, 'b0b724fd55342b87c635a67bb8bb93f3', 2147483647, 2, '2021-02-14', 'D12-1234-325', '2023-02-03', '2021-02-03 15:50:04.429290'),
-(9, 112, 'Dantov23o02', 'Tovar', 'Danielle ', 'Z', 'I', 'Male', 1, '345770c9dff54e94d3a92217a4762502', 2147483647, 1, '2021-01-18', 'DO2-2459-794', '2025-06-25', '2021-02-03 15:53:36.394332'),
-(10, 113, 'dEMONdon231', 'Demonteverde', 'Donatello', 'K.', '', 'Male', 2, '4903e0be5f3a8e7246bd99480684d2f9', 2147483647, 1, '2019-10-28', 'D04-4532-568', '2024-02-28', '2021-02-03 15:56:43.364538'),
-(11, 114, 'alexbantaw9009', 'Bantawil', 'Alexander', 'M.', '', 'Male', 4, 'dcc104e20978c4b2a361f0c88a8a9975', 2147483647, 3, '2019-05-06', 'D01-12-12357', '2023-04-03', '2021-02-03 16:00:32.584525'),
-(13, 124, 'ddenit', 'Denit', 'Doneto', 'P', 'Jr.', 'Male', 1, 'ba542c5ebc9ed3060201181cb9e1dd6b', 936984621, 2, '2018-02-13', 'D01-12-123458', '2022-09-08', '2021-02-08 17:33:13.275969'),
-(14, 126, 'Fdela', 'Dela Cerna', 'Francis', 'D', 'I', 'Male', 2, 'ed03ad98d56c9b291259c5e64a38651d', 2147483647, 4, '2017-09-05', 'D01-12-123459', '2022-01-04', '2021-02-17 19:50:46.444521'),
-(15, 132, 'lovider', 'Devilla', 'Lovimer', 'P', 'Sr.', 'Male', 3, '2e9c985f4025a79e24a7bbdbb163e35e', 2147483647, 2, '2017-09-13', 'D01-12-123410', '2024-05-07', '2021-02-08 17:52:29.388417'),
-(16, 134, 'marvye', 'Ye', 'Marven', 'A', 'I', 'Male', 2, '6f9acffab2d7c8ae2176c8509514954a', 926729532, 1, '2019-05-06', 'D01-12-123411', '2023-09-24', '2021-02-08 17:55:21.554397'),
-(17, 135, 'Maxwealth', 'Moon', 'Maxwell', 'M', 'IV', 'Male', 2, 'eaef071efe2f6452d4ef1755add80dfb', 2147483647, 1, '2020-01-01', 'D01-12-123412', '2025-01-01', '2021-02-08 17:57:44.567392');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_man`
---
-
-CREATE TABLE `user_man` (
-  `man_id` int(50) NOT NULL,
-  `user_id` int(50) NOT NULL,
-  `u_name` varchar(250) NOT NULL,
-  `l_name` varchar(250) NOT NULL,
-  `f_name` varchar(250) NOT NULL,
-  `m_intl` varchar(250) NOT NULL,
-  `sufx` varchar(250) NOT NULL,
-  `sex` varchar(250) NOT NULL,
-  `ter_id` int(50) NOT NULL,
-  `pass` varchar(250) NOT NULL,
-  `cont_no` int(50) NOT NULL,
-  `stat_id` int(50) NOT NULL,
-  `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user_man`
---
-
-INSERT INTO `user_man` (`man_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_intl`, `sufx`, `sex`, `ter_id`, `pass`, `cont_no`, `stat_id`, `time_stamp`) VALUES
-(1, 60, 'armando239', 'Fairbank', 'Armando ', 'N', 'Jr.', 'Male', 1, '7b64d09060db17ca6b96c0af99575903', 2147483647, 1, '2021-02-17 19:05:00'),
-(2, 61, 'rufus_mahi23', 'Mahi', 'Rufus', 'S', '', 'Male', 1, '3a2967f3d7e135a55d8bb158e61d95d4', 2147483647, 1, '2021-02-02 19:58:25'),
-(3, 62, 'keven_peper', 'Pepper', 'Keven', 'P', '', 'Male', 2, '34d206d21923a92cdc92758a8b9c9905', 2147483647, 2, '2021-02-02 20:01:00'),
-(4, 63, 'louis1432', 'Hodapp', 'Loius', 'G', '', 'Male', 3, '21232f297a57a5a743894a0e4a801fc3', 2147483647, 1, '2021-02-02 20:02:08'),
-(6, 65, 'jordan_ollison', 'Ollison', 'Jordan', 'V', '', 'Male', 2, 'd16d377af76c99d27093abc22244b342', 2147483647, 3, '2021-02-02 20:04:18'),
-(7, 66, 'nathanael_berthold12', 'Berthold', 'Nathanael', 'A', 'Sr.', 'Male', 1, 'd27ba11620b07630f8d301a2af03d956', 2147483647, 2, '2021-02-02 20:11:57'),
-(8, 67, 'vaughn_charleston', 'Charleston', 'Vaughn', 'Y', '', 'Male', 3, '57d413bca681029a844e59a46adcbd5d', 2147483647, 2, '2021-02-02 20:13:47'),
-(9, 68, 'nathaniel_michalik', 'Michalik', 'Nathaniel', 'O', '', 'Male', 2, '525ef3e7827f41beb11e2e1ac84e0269', 2147483647, 3, '2021-02-02 20:15:25'),
-(10, 69, 'dennis_soper', 'Soper', 'Dennis ', 'B', '', 'Male', 1, '7daacea5f373b4c1c054158b126d317f', 2147483647, 4, '2021-02-02 20:16:09');
+INSERT INTO `user_dri` (`dri_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_intl`, `sufx`, `sex`, `ter_id`, `pass`, `cont_no`, `stat_id`, `emp_date`, `licen_no`, `licen_exp`, `time_stamp`, `trip_stat_id`) VALUES
+(5, 103, 'erqrqrqe', 'Vincent Dave', 'Vincent Dave', 'D', 'Jr.', 'Male', 2, 'c7ee9e57dfecf81cadb484abde705f48', 12413431, 2, '2021-01-31', 'c2x2zwE1X314', '2021-01-31', '2021-03-21 11:58:38.219054', 1),
+(6, 109, 'marlan2021po', 'Belan', 'Margarito', 'C', '', 'Male', 5, 'b0b724fd55342b87c635a67bb8bb93f3', 2147483647, 2, '2021-02-14', 'D12-1234-325', '2023-02-03', '2021-03-21 11:58:38.476882', 2),
+(9, 112, 'Dantov23o02', 'Tovar', 'Danielle ', 'Z', 'I', 'Male', 1, '345770c9dff54e94d3a92217a4762502', 2147483647, 1, '2021-01-18', 'DO2-2459-794', '2025-06-25', '2021-03-21 11:58:38.640491', 3),
+(10, 113, 'dEMONdon231', 'Demonteverde', 'Donatello', 'K.', '', 'Male', 2, '4903e0be5f3a8e7246bd99480684d2f9', 2147483647, 1, '2019-10-28', 'D04-4532-568', '2024-02-28', '2021-02-03 15:56:43.364538', 0),
+(11, 114, 'alexbantaw9009', 'Bantawil', 'Alexander', 'M.', '', 'Male', 4, 'dcc104e20978c4b2a361f0c88a8a9975', 2147483647, 3, '2019-05-06', 'D01-12-12357', '2023-04-03', '2021-02-03 16:00:32.584525', 0),
+(13, 124, 'ddenit', 'Denit', 'Doneto', 'P', 'Jr.', 'Male', 1, 'ba542c5ebc9ed3060201181cb9e1dd6b', 936984621, 2, '2018-02-13', 'D01-12-123458', '2022-09-08', '2021-02-08 17:33:13.275969', 0),
+(14, 126, 'Fdela', 'Dela Cerna', 'Francis', 'D', 'I', 'Male', 2, 'ed03ad98d56c9b291259c5e64a38651d', 2147483647, 4, '2017-09-05', 'D01-12-123459', '2022-01-04', '2021-02-17 19:50:46.444521', 0),
+(15, 132, 'lovider', 'Devilla', 'Lovimer', 'P', 'Sr.', 'Male', 3, '2e9c985f4025a79e24a7bbdbb163e35e', 2147483647, 2, '2017-09-13', 'D01-12-123410', '2024-05-07', '2021-02-08 17:52:29.388417', 0),
+(16, 134, 'marvye', 'Ye', 'Marven', 'A', 'I', 'Male', 2, '6f9acffab2d7c8ae2176c8509514954a', 926729532, 1, '2019-05-06', 'D01-12-123411', '2023-09-24', '2021-02-08 17:55:21.554397', 0),
+(17, 135, 'Maxwealth', 'Moon', 'Maxwell', 'M', 'IV', 'Male', 2, 'eaef071efe2f6452d4ef1755add80dfb', 2147483647, 1, '2020-01-01', 'D01-12-123412', '2025-01-01', '2021-02-08 17:57:44.567392', 0);
 
 -- --------------------------------------------------------
 
@@ -638,41 +613,6 @@ INSERT INTO `user_stat` (`stat_id`, `descrip`, `time_stamp`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_sup`
---
-
-CREATE TABLE `user_sup` (
-  `sup_id` int(50) NOT NULL,
-  `user_id` int(50) NOT NULL,
-  `u_name` varchar(250) NOT NULL,
-  `l_name` varchar(250) NOT NULL,
-  `f_name` varchar(250) NOT NULL,
-  `m_intl` varchar(250) NOT NULL,
-  `sufx` varchar(250) NOT NULL,
-  `sex` varchar(250) NOT NULL,
-  `ter_id` int(50) NOT NULL,
-  `pass` varchar(250) NOT NULL,
-  `cont_no` int(50) NOT NULL,
-  `stat_id` int(50) NOT NULL,
-  `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user_sup`
---
-
-INSERT INTO `user_sup` (`sup_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_intl`, `sufx`, `sex`, `ter_id`, `pass`, `cont_no`, `stat_id`, `time_stamp`) VALUES
-(1, 50, 'logan5609', 'Goldsby', 'Logan', 'O', '', 'Male', 3, '3447adfd742cdfb9048a3b29baf1ae7d', 2147483647, 2, '2021-02-02 19:27:08'),
-(3, 52, 'tory232', 'Killion', 'Tory', 'F', '', 'Male', 3, 'cbb992661c4430d1f3419aff73326f17', 2147483647, 3, '2021-02-02 19:29:51'),
-(4, 53, 'jean39939', 'Antone', 'jean', 'H', '', 'Male', 1, '229e8192a023bd6da58603b49f313594', 2147483647, 1, '2021-02-02 19:31:17'),
-(7, 56, 'jacob_davids', 'Davids', 'Jacob', 'G', '', 'Male', 3, '736b19f69aaca691fecd8400294cc383', 2147483647, 4, '2021-02-02 19:37:57'),
-(8, 57, 'kraig232', 'Mabe', 'Kraig', 'I', '', 'Male', 2, '81dc9bdb52d04dc20036dbd8313ed055', 2147483647, 3, '2021-02-02 19:38:48'),
-(9, 58, 'benny_bertsch', 'Bertsch', 'Benny', 'P', '', 'Male', 1, '42f4b247702c99bda0fc7bcc41c70d19', 2147483647, 2, '2021-02-17 18:56:18'),
-(10, 59, 'donny_winzer', 'Winzer', 'Donny ', 'D', '', 'Male', 2, 'befcc07a5d7b46c63c6087f08bc601d4', 2147483647, 1, '2021-02-02 19:51:24');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user_type`
 --
 
@@ -689,8 +629,6 @@ CREATE TABLE `user_type` (
 INSERT INTO `user_type` (`type_id`, `descrip`, `time_stamp`) VALUES
 (1, 'Top Admin', '2021-01-31 15:44:19'),
 (2, 'Admin', '2021-01-31 15:44:19'),
-(3, 'Supervisor', '0000-00-00 00:00:00'),
-(4, 'Manager', '0000-00-00 00:00:00'),
 (5, 'Operator', '0000-00-00 00:00:00'),
 (6, 'Dispatcher', '0000-00-00 00:00:00'),
 (7, 'Driver', '0000-00-00 00:00:00'),
@@ -727,7 +665,8 @@ INSERT INTO `user_t_ad` (`t_ad_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_
 (37, 37, 'sal_trabue', 'Trabue', 'Sal', 'S', '', 'Female', 5, '7794fc517590053809f758b7e16d87ed', 978653452, 1, '2021-02-17 17:11:53'),
 (38, 38, 'joseph007', 'Dufresne', 'Joseph', 'Z', 'Jr.', 'Male', 1, 'cb07901c53218323c4ceacdea4b23c98', 2147483647, 1, '2021-02-17 17:11:53'),
 (40, 40, 'garth_shedd87', 'Shedd', 'Garth', 'Q', '', 'Male', 1, '83a8282903ee8043fad50f2a070b4208', 2147483647, 1, '2021-02-17 17:11:53'),
-(41, 41, 'pat_massenburg', 'Massenburg', 'Pat', 'L', '', 'Male', 4, '7852341745c93238222a65a910d1dcc5', 2147483647, 1, '2021-02-17 17:14:17');
+(41, 41, 'pat_massenburg', 'Massenburg', 'Pat', 'L', '', 'Male', 4, '7852341745c93238222a65a910d1dcc5', 2147483647, 1, '2021-02-17 17:14:17'),
+(42, 137, 'topadmin', 'soratos', 'dave', 'c', 'III', 'Female', 5, '827ccb0eea8a706c4c34a16891f84e7b', 1313, 1, '2021-03-21 12:19:03');
 
 --
 -- Indexes for dumped tables
@@ -824,13 +763,6 @@ ALTER TABLE `user_dri`
   ADD KEY `user_id` (`user_id`,`stat_id`,`ter_id`);
 
 --
--- Indexes for table `user_man`
---
-ALTER TABLE `user_man`
-  ADD PRIMARY KEY (`man_id`),
-  ADD KEY `user_id` (`user_id`,`ter_id`,`stat_id`);
-
---
 -- Indexes for table `user_opt`
 --
 ALTER TABLE `user_opt`
@@ -842,13 +774,6 @@ ALTER TABLE `user_opt`
 --
 ALTER TABLE `user_stat`
   ADD PRIMARY KEY (`stat_id`);
-
---
--- Indexes for table `user_sup`
---
-ALTER TABLE `user_sup`
-  ADD PRIMARY KEY (`sup_id`),
-  ADD KEY `user_id` (`user_id`,`ter_id`,`stat_id`);
 
 --
 -- Indexes for table `user_type`
@@ -891,13 +816,13 @@ ALTER TABLE `bus_stat`
 -- AUTO_INCREMENT for table `bus_type`
 --
 ALTER TABLE `bus_type`
-  MODIFY `bus_type_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `bus_type_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `que_details`
 --
 ALTER TABLE `que_details`
-  MODIFY `que_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `que_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `que_stat`
@@ -921,13 +846,13 @@ ALTER TABLE `ter_details`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `user_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `user_admin`
 --
 ALTER TABLE `user_admin`
-  MODIFY `ad_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ad_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_con`
@@ -948,12 +873,6 @@ ALTER TABLE `user_dri`
   MODIFY `dri_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `user_man`
---
-ALTER TABLE `user_man`
-  MODIFY `man_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `user_opt`
 --
 ALTER TABLE `user_opt`
@@ -966,12 +885,6 @@ ALTER TABLE `user_stat`
   MODIFY `stat_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user_sup`
---
-ALTER TABLE `user_sup`
-  MODIFY `sup_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `user_type`
 --
 ALTER TABLE `user_type`
@@ -981,7 +894,7 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `user_t_ad`
 --
 ALTER TABLE `user_t_ad`
-  MODIFY `t_ad_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `t_ad_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
