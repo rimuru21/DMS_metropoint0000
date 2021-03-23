@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('#date2');
 	$('#btn_search').on('click', function(){	
 		if($('#date1').val() == "" || $('#date2').val() == ""){
-			alert("Please enter something on the text field");
+			alert("Please enter from and to date...");
 		}else{
 			$date1 = $('#date1').val();
 			$date2 = $('#date2').val();

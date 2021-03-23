@@ -26,8 +26,11 @@
             <li style="left:1em;font-family: 'Source Sans Pro';"><a href="dms_dri_reports.php">DRIVER</a></li>
             <li style="left:.6em;font-family: 'Source Sans Pro';"><a href="dms_con_reports.php">CONDUCTOR</a></li>
             <li style="left:.1em;font-family: 'Source Sans Pro';"><a href="dms_trip_reports.php">TRIP</a></li>
-				<input style="width:200px;margin-left:10em" type = "number" class = "form-control" id="myInput" onkeyup="myFunction()" placeholder="Type bus number...">
-            <h3 style="margin-left:12em;font-family: 'Source Sans Pro';">TRIP REPORT</h3>
+				<input style="width:160px;margin-left:2em" type = "date" class = "form-control"   id = "date1"/>
+				<input style="width:160px;margin-left:.5em;margin-right:.5em" type = "date" class = "form-control"  id = "date2"/>
+				<button type = "button" class = "btn btn-primary" id = "btn_search" style="padding:6px; "><span class="ion-ios-search" style="padding-left:8px;padding-right:8px"></span></button>
+				<input style="width:200px;margin-left:2em" type = "number" class = "form-control" id="myInput" onkeyup="myFunction()" placeholder="Type bus number...">
+            <h3 style="margin-left:2em;font-family: 'Source Sans Pro';">TRIP REPORT</h3>
         </ul>
     </div>
     <div style=" width:100%; margin-left:-6.5em">
