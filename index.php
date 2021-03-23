@@ -66,33 +66,37 @@
 					</span>
 
 					<div class="wrap-input100" data-validate = "Enter username">
-						<input class="input100" type="text" name="u_name" placeholder="Username">
+						<input class="input100" type="text" id= "uname" name="u_name" placeholder="Username">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
-
-					<div class="wrap-input100" data-validate = "Terminal">
-						<input class="input100" type="text" name="ter_id" placeholder="Terminal" >
-					</div>
-
 					<div class="wrap-input100" data-validate="Enter password">
 						<input class="input100" type="password" name="pass" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 					<br><br><br>
-
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit" class="btn" name="login_user">
 							Login
 						</button>
-					</div>
-					<br>
-
-				</form>
-			</div>
-		</div>
-	</div>
-	
-
+					</div><br></form></div></div></div>
+	<script>
+$("#uname").on( 'change', function () {
+	var al = $("#uname").val();
+		var form_data = {
+			u_name : al
+		};
+                $.ajax({
+                    url: "get_user.php",
+                    type: "post",
+                    data: form_data, // serializes the form's elements.
+					dataType: "json",
+                    success: function(data) {
+						$('#ter_name').val(data['ter_n']);
+                    }
+                });
+				
+});
+</script>
 	<div id="dropDownSelect1"></div>
 	
 <!--===============================================================================================-->

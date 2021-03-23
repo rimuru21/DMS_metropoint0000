@@ -69,7 +69,7 @@ include('auth.php');
             <div style="height:90%;"></div>
             <div class="" style=" width:49%; position: fixed;margin-left:1.4em">
                 <div style="height:10px;"></div>
-				        <table class="table table-striped table-bordered table-hover"  style="">
+				        <table class="table table-striped table-bordered table-hover"  style="" id="myTable">
                         <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>DEPARTURE</th>
 						</thead>
@@ -142,7 +142,7 @@ include('auth.php');
             <div style="height:90%;"></div>
             <div class="" style=" width:49%; position: fixed;margin-left:1.4em">
                 <div style="height:10px;"></div>
-				        <table class="table table-striped table-bordered table-hover"  style="">
+				        <table class="table table-striped table-bordered table-hover"  style="" id="myTable">
                         <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>ARRIVAL</th>
 						</thead>
@@ -318,7 +318,7 @@ include('auth.php');
                         <div class="inner">
                         <?php
                             include('conn.php');                
-                            $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE ass_dri = 'none';");
+                            $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE dri_id = 0;");
                                 while($row=mysqli_fetch_array($query)){
                         ?>
                         <h3><?php echo $row['TotalBus']; ?></h3>
@@ -339,7 +339,7 @@ include('auth.php');
                         <div class="inner">
                         <?php
                             include('conn.php');                
-                            $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE ass_con = 'none';");
+                            $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE con_id = 0;");
                                 while($row=mysqli_fetch_array($query)){
                         ?>
                         <h3><?php echo $row['TotalBus']; ?></h3>
@@ -466,6 +466,27 @@ include('auth.php');
 	mymap.on('click', onMapClick);
     
     </script>
-   
+   <script type="text/javascript">
+$(function() {
+  $("#myTable td a").each(function() {
+    if ($(this).text() == "Waiting") {
+      $(this).css('color', 'white');
+      $(this).css('background-color', 'red');
+    }
+	else if ($(this).text() == "Departed") {
+      $(this).css('color', 'white');
+      $(this).css('background-color', 'green');
+    }
+	else if ($(this).text() == "OnRoad") {
+      $(this).css('color', 'black' );
+      $(this).css('background-color', 'yellow');
+    }
+	else if ($(this).text() == "Arrived") {
+      $(this).css('color', 'black');
+      $(this).css('background-color', 'orange');
+    }
+  });
+});
+</script>
 </body>
 </html>

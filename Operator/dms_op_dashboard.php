@@ -328,10 +328,12 @@ $(function() {
       $(this).css('background-color', 'green');
     }
 	else if ($(this).text() == "OnRoad") {
-      $(this).css('color', 'yellow' );
+      $(this).css('color', 'black' );
+      $(this).css('background-color', 'yellow');
     }
 	else if ($(this).text() == "Arrived") {
-      $(this).css('color', 'orange');
+      $(this).css('color', 'black');
+      $(this).css('background-color', 'orange');
     }
   });
 });
