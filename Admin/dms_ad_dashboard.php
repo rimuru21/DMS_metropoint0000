@@ -78,7 +78,7 @@ include('auth.php');
                                 <th style="width:10%">BUS #</th>
                                 <th style="width:6%">TYPE</th>
                                 <th style="width:6%">SEAT CAP</th>
-                                <th style="width:10%">TO</th>
+                                <th style="width:10%; text-align:center">TO</th>
                                 <th style="width:8%">TIME</th>
                                 <th style="width:10%">DATE</th>
 								<th style="width:13.5%;padding-left:1.5em">STATUS</th>
@@ -87,7 +87,7 @@ include('auth.php');
                         <?php
 								include('conn.php');
 								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, b.descrip as type_descrip, a.seat_cap, a.to_ter as to_ter,  time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date FROM que_details a, bus_type b, ter_details c WHERE a.bus_type_id = b.bus_type_id AND from_ter = 'Tagum' AND a.que_stat_id = 4 GROUP BY que_id ORDER BY que_id desc  ");
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, b.descrip as type_descrip, a.seat_cap, a.to_ter as to_ter,  time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, d.descrip as stat FROM que_details a, bus_type b, ter_details c, que_stat d WHERE a.que_stat_id = d.que_stat_id AND  a.bus_type_id = b.bus_type_id AND from_ter = 'Tagum'  GROUP BY que_id ORDER BY que_id desc  ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white">
@@ -98,10 +98,7 @@ include('auth.php');
                                         <td style="width:10%"><?php echo $row['to_ter']; ?></td>
                                         <td style="width:8%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
-                                        <td style="width:12%;text-align:center;padding-bottom:10px;padding-top:10px" >
-                                            <a style="font-size:1.2vw;padding:5px;padding-left:8px;padding-right:8px" class="label-success">Waiting</a>
-                                            <br>
-										</td>
+                                        <td style="width:12%;text-align:center;padding-bottom:10px;padding-top:10px" ><?php echo $row['stat']; ?></td>
 									</tr>
 									<?php
 								}
@@ -163,7 +160,7 @@ include('auth.php');
                         <?php
 								include('conn.php');
 								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, b.descrip as type_descrip, a.seat_cap, a.to_ter as to_ter, a.from_ter as from_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date FROM que_details a, bus_type b, ter_details c WHERE a.bus_type_id = b.bus_type_id AND to_ter = 'Tagum' AND a.que_stat_id = 3 GROUP BY que_id ORDER BY que_id desc  ");
+								$query=mysqli_query($conn," SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, b.descrip as type_descrip, a.seat_cap, a.to_ter as to_ter, a.from_ter as from_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, d.descrip as stat FROM que_details a, bus_type b, ter_details c, que_stat d WHERE a.que_stat_id = d.que_stat_id AND a.bus_type_id = b.bus_type_id AND to_ter = 'Tagum'  GROUP BY que_id ORDER BY que_id desc ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white">
@@ -174,10 +171,7 @@ include('auth.php');
                                         <td style="width:10%"><?php echo $row['from_ter']; ?></td>
                                         <td style="width:8%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
-                                        <td style="width:12%;text-align:center;padding-bottom:10px;padding-top:10px" >
-                                            <a style="font-size:1.2vw;padding:5px;padding-left:8px;padding-right:8px" class="label-primary">OnRoad</a>
-                                            <br>
-										</td>
+                                        <td style="width:12%;text-align:center;padding-bottom:10px;padding-top:10px" ><?php echo $row['stat']; ?></td>
 									</tr>
 									<?php
 								}
@@ -437,7 +431,6 @@ include('auth.php');
 
 
 <script>
-
     var mymap = L.map('mapid').setView([7.461092, 125.798725], 15);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JoaXN1bGEiLCJhIjoiY2tqdjAzNjhwMnF1czJxcXVheG5zM2Z0dyJ9.ADUJmb8cso0RObOix5SzOQ', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -448,11 +441,19 @@ include('auth.php');
             accessToken: 'your.mapbox.access.token'
         }).addTo(mymap);
 
+    $.ajax({
+        url: "sample_get_longlat.php",
+        type: "post",
+		dataType: "json",
+            success: function(data) {
+				L.marker(data['que_lat'], data['que_long']).addTo(mymap)
+					.bindPopup("new").openPopup();
+            }
+    });
 
 	L.marker([7.461092, 125.798725]).addTo(mymap)
 		.bindPopup("TAGUM TERMINAL").openPopup();
-
-
+    
 	var popup = L.popup();
 
 	function onMapClick(e) {

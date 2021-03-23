@@ -216,6 +216,7 @@ $("#bus_n").on( 'change', function () {
 				
 });
 
+
 $("#to_te").on( 'change', function () {
 	var al = $("#bus_n").val();
 	var to_ter = $("#to_te").val();
