@@ -1,6 +1,6 @@
 
 <div class="modal fade" id="addnew_torno" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="width:40%">
+        <div class="modal-dialog" style="width:40%; margin-top:5em">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -52,7 +52,7 @@
 							<label class="control-label" style="position:relative; top:7px;">ASSIGNED CONDOCTOR:</label>
 						</div>
 						<div class="col-lg-6">
-							<select class="form-control" id="ass_dri" name="dri_id" placeholder="" value="<?php echo $row['dri_id']; ?>">
+							<select class="form-control" id="dri_" name="dri_id" placeholder="" value="<?php echo $row['dri_id']; ?>">
 								<option  value="" disable>Select Driver</option>
 								<?php 
 								include('conn.php');
@@ -71,7 +71,7 @@
                             </select>
 						</div>
 						<div class="col-lg-6">
-							<select class="form-control" id="ass_con" name="con_id" placeholder="" value="<?php echo $row['con_id']; ?>">
+							<select class="form-control" id="con_" name="con_id" placeholder="" value="<?php echo $row['con_id']; ?>">
 								<option value="">Select Conductor</option>
 								<?php 
 								include('conn.php');
@@ -208,8 +208,8 @@ $("#bus_n").on( 'change', function () {
 					dataType: "json",
                     success: function(data) {
 						$('#trip_n').val(data['descrip'] + '-' + cDay + cMonth + cYear + time );
-						$('#ass_dri').val(data['tdri']);
-						$('#ass_con').val(data['tcon']);
+						$('#dri_').val(data['dri_id']);
+						$('#con_').val(data['con_id']);
 						$('#bus_type').val(data['bus_type_id']);
 						$('#seat_ca').val(data['seat_cap']);
 						
@@ -238,8 +238,8 @@ $("#to_te").on( 'change', function () {
 					dataType: "json",
                     success: function(data) {
 						$('#trip_n').val(data['descrip'] + '-' + cDay + cMonth + cYear + time + "-" + to_ter);
-						$('#ass_dri').val(data['tdri']);
-						$('#ass_con').val(data['tcon']);
+						$('#dri_').val(data['dri_id']);
+						$('#con_').val(data['con_id']);
 						$('#bus_type').val(data['bus_type_id']);
 						$('#seat_ca').val(data['seat_cap']);
 						

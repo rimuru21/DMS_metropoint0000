@@ -74,7 +74,7 @@
 						<tbody style="display: block;overflow:auto; width: 100%;height: 240px; word-break: break-word; scrollbar-width: none; ">
 							<?php
 								include('conn.php');  
-								$query=mysqli_query($conn,"SELECT a.trip_no as trip_no, a.bus_no as bus_no, b.bus_type_id as bus_type_id, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_date as qued_date, a.que_time as qued_time, a.dep_time as dep_time,  CONCAT(c.l_name,' ',c.f_name) as dri,CONCAT(d.l_name,' ',d.f_name) as con, c.dri_id as dri_id, d.con_id as con_id
+								$query=mysqli_query($conn,"SELECT a.trip_no as trip_no, a.bus_no as bus_no, b.bus_type_id as bus_type_id, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_date as qued_date, time_format(a.que_time, '%h:%i %p') as qued_time, a.dep_time as dep_time,  CONCAT(c.l_name,' ',c.f_name) as dri, CONCAT(d.l_name,' ',d.f_name) as con, c.dri_id as dri_id, d.con_id as con_id
 								FROM que_details a, bus_type b, user_dri c, user_con d
 								WHERE a.dri_id = c.dri_id AND a.con_id = d.con_id AND a.bus_type_id = b.bus_type_id AND que_stat_id = 2 AND from_ter = 'Tagum'
 								ORDER BY que_id desc ");
@@ -82,14 +82,14 @@
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr>
-										<td style="width:10%"><?php echo $row['trip_no']; ?></td>
+									<td style="width:10%"><?php echo $row['trip_no']; ?></td>
 										<td style="width:9%"><?php echo $row['bus_no']; ?></td>
 										<td style="width:10%"><?php echo $row['dri']; ?></td>
 										<td style="width:10%"><?php echo $row['con']; ?></td>
-                                        <td style="width:10%"><?php echo $row['from_ter']; ?></td>
-										<td style="width:10%"><?php echo $row['to_ter']; ?></td>
-                                        <td style="width:10%"><?php echo $row['qued_time']; ?></td>
-                                        <td style="width:10%"><?php echo $row['qued_date']; ?></td>
+                                        <td style="width:9%"><?php echo $row['from_ter']; ?></td>
+										<td style="width:9%"><?php echo $row['to_ter']; ?></td>
+                                        <td style="width:5%;"><?php echo $row['qued_time']; ?></td>
+                                        <td style="width:7%;"><?php echo $row['qued_date']; ?></td>
 										<td style="width:10%;text-align:center"><?php echo $row['dep_time']; ?></td>
 									</tr>
 									<?php
