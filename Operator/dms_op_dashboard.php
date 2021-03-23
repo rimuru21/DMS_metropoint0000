@@ -91,7 +91,7 @@ include('auth.php');
 							<?php
 								include('conn.php');
 								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date FROM que_details a, bus_type b, ter_details c WHERE a.bus_type_id = b.bus_type_id AND from_ter = 'Tagum' AND que_stat_id = 4 GROUP BY que_id ORDER BY que_id desc  ");
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date  FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e WHERE a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND from_ter = 'Tagum' AND que_stat_id = 4 GROUP BY que_id ORDER BY que_id desc  ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 								      	<tr mouseclick="href='#view_que<?php echo $row['que_id']; ?>'"  class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white;">
@@ -145,7 +145,7 @@ include('auth.php');
 							<?php
 								include('conn.php');
 								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date  FROM que_details a, bus_type b, ter_details c WHERE a.bus_type_id = b.bus_type_id AND to_ter = 'Tagum' AND que_stat_id = 3 GROUP BY que_id ORDER BY que_id desc  ");
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date  FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e WHERE a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND to_ter = 'Tagum' AND que_stat_id = 3 GROUP BY que_id ORDER BY que_id desc  ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 								      	<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white;">
@@ -266,7 +266,7 @@ include('auth.php');
                 <div class="inner">
                   <?php
                     include('conn.php');                
-                    $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE ass_con = 'none';");
+                    $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE con_id = 0;");
                         while($row=mysqli_fetch_array($query)){
                   ?>
                   <h3><?php echo $row['TotalBus']; ?></h3>
@@ -286,7 +286,7 @@ include('auth.php');
                 <div class="inner">
                 <?php
                     include('conn.php');                
-                    $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE ass_dri = 'none';");
+                    $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE dri_id = 0;");
                         while($row=mysqli_fetch_array($query)){
                   ?>
                   <h3><?php echo $row['TotalBus']; ?></h3>

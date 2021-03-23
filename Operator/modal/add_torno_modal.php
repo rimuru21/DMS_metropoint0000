@@ -24,7 +24,7 @@
 						</div>
 						<div class="col-lg-8">
 							<select class="form-control" id="bus_n" name="bus_no" palceholder="" required>
-								<option value="">---select bus #---</option> 
+								<option value="">Select Bus Number</option> 
 								<?php 
 								include('conn.php');
 								$sql =  mysqli_query($conn, "SELECT * FROM bus_details");
@@ -52,18 +52,18 @@
 							<label class="control-label" style="position:relative; top:7px;">ASSIGNED CONDOCTOR:</label>
 						</div>
 						<div class="col-lg-6">
-						<select class="form-control" id="ass_dr" name="ass_dri" placeholder="" value="<?php echo $row['ass_dri']; ?>">
-								<option value=""></option>
+							<select class="form-control" id="ass_dri" name="dri_id" placeholder="" value="<?php echo $row['dri_id']; ?>">
+								<option  value="" disable>Select Driver</option>
 								<?php 
 								include('conn.php');
-								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as name FROM user_dri");
+								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as dname, dri_id FROM user_dri");
                                 $rows = mysqli_num_rows($sql);
                                     if($rows>0)
                                     {
                                         while($data = mysqli_fetch_array($sql))
                                         {
                                 ?>
-                                <option value="<?php echo $data['name']; ?>"> <?php echo $data['name']; ?> </option>
+                                <option value="<?php echo $data['dri_id']; ?>"> <?php echo $data['dname']; ?> </option>
                                 <?php
                                         }
                                     } /*if condition*/
@@ -71,18 +71,19 @@
                             </select>
 						</div>
 						<div class="col-lg-6">
-							<select class="form-control" id="ass_co" name="ass_con" placeholder="" value="<?php echo $row['ass_con']; ?>">
-								<option value="">---select conductor---</option>
+							<select class="form-control" id="ass_con" name="con_id" placeholder="" value="<?php echo $row['con_id']; ?>">
+								<option value="">Select Conductor</option>
 								<?php 
 								include('conn.php');
-								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as name FROM user_con");
+								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as cname, con_id  FROM user_con");
                                 $rows = mysqli_num_rows($sql);
                                     if($rows>0)
                                     {
                                         while($data = mysqli_fetch_array($sql))
                                         {
                                 ?>
-                                <option value="<?php echo $data['name']; ?>"> <?php echo $data['name']; ?> </option>
+								
+                                <option value="<?php echo $data['con_id']; ?>"> <?php echo $data['cname']; ?> </option>
                                 <?php
                                         }
                                     } /*if condition*/
@@ -100,7 +101,7 @@
 						</div>
                         
 						<div class="col-lg-8">
-							<select class="form-control" id="bus_type" name="bus_type_id" placeholder="" readonly>
+							<select class="form-control" id="bus_type" name="bus_type_id" placeholder="" value="<?php echo $data['bus_type_id']; ?>" readonly>
 								<option  value=""></option>
 								<?php 
 								include('conn.php');
@@ -176,7 +177,7 @@
 				
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" style="padding:6px 8px 6px 8px"><span ></span> Cancel</button>
-					<button type="submit" id="torno" class="btn btn-success" style="padding:6px 8px 6px 8px"><span ></span>TORNO</a>
+					<button type="submit"  class="btn btn-success" style="padding:6px 8px 6px 8px"><span ></span>TORNO</a>
 				</div>
 			
 				</form>
@@ -207,10 +208,11 @@ $("#bus_n").on( 'change', function () {
 					dataType: "json",
                     success: function(data) {
 						$('#trip_n').val(data['descrip'] + '-' + cDay + cMonth + cYear + time );
-						$('#ass_dr').val(data['ass_dri']);
-						$('#ass_co').val(data['ass_con']);
+						$('#ass_dri').val(data['tdri']);
+						$('#ass_con').val(data['tcon']);
 						$('#bus_type').val(data['bus_type_id']);
 						$('#seat_ca').val(data['seat_cap']);
+						
                     }
                 });
 				
@@ -236,10 +238,11 @@ $("#to_te").on( 'change', function () {
 					dataType: "json",
                     success: function(data) {
 						$('#trip_n').val(data['descrip'] + '-' + cDay + cMonth + cYear + time + "-" + to_ter);
-						$('#ass_dr').val(data['ass_dri']);
-						$('#ass_co').val(data['ass_con']);
+						$('#ass_dri').val(data['tdri']);
+						$('#ass_con').val(data['tcon']);
 						$('#bus_type').val(data['bus_type_id']);
 						$('#seat_ca').val(data['seat_cap']);
+						
                     }
                 });
 	

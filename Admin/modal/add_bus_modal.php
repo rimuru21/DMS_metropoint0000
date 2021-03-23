@@ -97,8 +97,8 @@
 							<label class="control-label" style="position:relative; top:7px;">ASSIGNED CONDUCTOR:</label>
 						</div>
 						<div class="col-lg-6">
-						<select class="form-control" id="dri_id" name="dri_id" palceholder="" required>
-							<option value="none">---select driver---</option>
+						<select class="form-control" id="dri_id" name="dri_id" palceholder="" >
+							<option value="0">---select driver---</option>
 							<?php 
 							$sql = "SELECT CONCAT(l_name,' ',f_name) as full_name, dri_id as dri_id FROM user_dri";
 							$query =  mysqli_query($conn, $sql);
@@ -116,8 +116,8 @@
 						</select>
 						</div>
 						<div class="col-lg-6">
-						<select class="form-control" id="con_id" name="con_id" palceholder="" required>
-							<option value="none">---select conductor---</option> 
+						<select class="form-control" id="con_id" name="con_id" palceholder="">
+							<option value="">---select conductor---</option> 
 							<?php 
 							$sql = "SELECT CONCAT(l_name,' ',f_name) as name, con_id as con_id FROM user_con";
 							$query =  mysqli_query($conn, $sql);

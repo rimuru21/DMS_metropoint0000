@@ -48,7 +48,7 @@
 						<tbody  id = "load_data" style="display: block;overflow:auto; width: 100%;height: 550px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
 							<?php
 								include('conn.php');  
-								$query=mysqli_query($conn,"SELECT a.bus_id as bus_id, a.bus_no as bus_no, b.abbr as abbr, b.bus_type_id as aaa, a.ass_dri as ass_dri, a.ass_con as ass_con, e.descrip as eng_id,e.eng_id as aab , a.plate_no as plate_no, a.sap_code as sap_code,  a.seat_cap as seat_cap, d.descrip as descrip, d.bus_stat_id as aad FROM bus_details a, bus_type b, route_details c, bus_stat d, bus_eng_type e WHERE b.bus_type_id = a.bus_type_id AND c.route_id = a.route_id AND d.bus_stat_id = a.bus_stat_id AND a.eng_id = e.eng_id  GROUP BY bus_id ");
+								$query=mysqli_query($conn,"SELECT CONCAT(f.l_name,' ',f.f_name) as dri, CONCAT(g.l_name,' ',g.f_name) as con, a.bus_id as bus_id, a.bus_no as bus_no, b.abbr as abbr, b.bus_type_id as aaa, e.descrip as eng_id,e.eng_id as aab , a.plate_no as plate_no, a.sap_code as sap_code,  a.seat_cap as seat_cap, d.descrip as descrip, d.bus_stat_id as aad, h.descrip as trip FROM bus_details a, bus_type b, route_details c, bus_stat d, bus_eng_type e, user_dri f, user_con g, trip_stat h WHERE a.trip_stat_id = h.trip_stat_id AND a.dri_id = f.dri_id AND a.con_id = g.con_id AND b.bus_type_id = a.bus_type_id AND c.route_id = a.route_id AND d.bus_stat_id = a.bus_stat_id AND a.eng_id = e.eng_id  GROUP BY bus_id ");
 								 
 								while($row=mysqli_fetch_array($query)){
 									?>
@@ -56,11 +56,11 @@
                                         <td style="width:9%;"><?php echo $row['bus_no']; ?></td>
                                         <td style="width:9%"><?php echo $row['plate_no']; ?></td>
 										<td style="width:9%;"><?php echo $row['abbr']; ?></td>
-										<td style="width:10%;"><?php echo $row['ass_dri']; ?></td>
-										<td style="width:10%;"><?php echo $row['ass_con']; ?></td>
+										<td style="width:10%;"><?php echo $row['dri']; ?></td>
+										<td style="width:10%;"><?php echo $row['con']; ?></td>
                                         <td style="width:6%;text-align:center"><?php echo $row['seat_cap']; ?></td>
 										<td style="width:6%;"><?php echo $row['descrip']; ?></td>
-										<td style="width:6%"><?php echo $row['descrip']; ?></td>
+										<td style="width:6%"><?php echo $row['trip']; ?></td>
 										
 										
 									</tr>

@@ -65,7 +65,7 @@
 							<h4><b>Driver:</b></h4>
 						</div>
 						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['ass_dri']; ?></h4>
+							<h4 style="text-align:left"><?php echo $row['dri']; ?></h4>
 						</div>
 					</div>
 					<div class="row">
@@ -73,7 +73,7 @@
 							<h4><b>Conductor:</b></h4>
 						</div>
 						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['ass_con']; ?></h4>
+							<h4 style="text-align:left"><?php echo $row['con']; ?></h4>
 						</div>
 					</div>
 					<div class="row">
@@ -196,8 +196,8 @@
 							<label class="control-label" style="position:relative; top:7px;">Assigned Conductor:</label>
 						</div>
 						<div class="col-lg-6">
-						<select class="form-control" id="ass_dri" name="ass_dri" placeholder="">
-                            <option value="<?php echo $row['ass_dri']; ?>"><?php echo $row['ass_dri']; ?></option> 
+						<select class="form-control" id="dri_id" name="dri_id" placeholder="">
+                            <option value="<?php echo $row['dri_id']; ?>"><?php echo $row['dri']; ?></option> 
 								<?php 
 								include('conn.php');
 								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as name FROM user_dri");
@@ -215,8 +215,8 @@
                             </select>
 						</div>
 						<div class="col-lg-6">
-							<select class="form-control" id="ass_con" name="ass_con" placeholder="">
-                            <option value="<?php echo $row['ass_con']; ?>"><?php echo $row['ass_con']; ?></option>
+							<select class="form-control" id="con_id" name="con_id" placeholder="">
+                            <option value="<?php echo $row['con_id']; ?>"><?php echo $row['con']; ?></option>
 								<?php 
 								include('conn.php');
 								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as name FROM user_con");

@@ -56,7 +56,6 @@
 						<tbody style="display: block;overflow:auto; width: 100%;height: 380px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
 							<?php
 								include('conn.php');
-								
 								$query=mysqli_query($conn,"SELECT a.bus_id as bus_id, a.bus_no as bus_no, b.abbr as bus_type_id, b.bus_type_id as aaa, e.descrip as eng_id,e.eng_id as aab , a.plate_no as plate_no, a.sap_code as sap_code, CONCAT(f_descrip,' - ',l_descrip) as route_id,  CONCAT(f.l_name,' ',f.f_name) as dri,CONCAT(g.l_name,' ',g.f_name) as con, c.route_id as aac, a.seat_cap as seat_cap, d.descrip as bus_stat_id, d.bus_stat_id as aad FROM bus_details a, bus_type b, route_details c, bus_stat d, bus_eng_type e, user_dri f, user_con g WHERE a.dri_id = f.dri_id AND a.con_id = g.con_id AND b.bus_type_id = a.bus_type_id AND c.route_id = a.route_id AND d.bus_stat_id = a.bus_stat_id AND a.eng_id = e.eng_id  GROUP BY bus_id");
 								while($row=mysqli_fetch_array($query)){
 									?>
