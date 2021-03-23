@@ -56,7 +56,7 @@
 								<option  value="" disable>Select Driver</option>
 								<?php 
 								include('conn.php');
-								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as dname, dri_id FROM user_dri WHERE trip_stat_id = 0 ");
+								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as dname, dri_id FROM user_dri WHERE trip_stat_id = 0 AND stat_id IN (1,2) ");
                                 $rows = mysqli_num_rows($sql);
                                     if($rows>0)
                                     {
@@ -75,7 +75,7 @@
 								<option value="">Select Conductor</option>
 								<?php 
 								include('conn.php');
-								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as cname, con_id  FROM user_con WHERE trip_stat_id = 0 ");
+								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as cname, con_id  FROM user_con WHERE trip_stat_id = 0 AND stat_id IN (1,2)");
                                 $rows = mysqli_num_rows($sql);
                                     if($rows>0)
                                     {

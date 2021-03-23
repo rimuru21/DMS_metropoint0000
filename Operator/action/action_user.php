@@ -2285,3 +2285,100 @@
         </div>
     </div>
 <!-- /.modal -->
+
+
+
+<!-- Edit conductor daily stat-->
+<div class="modal fade" id="edit_con_daily<?php echo $row['con_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="top:10em;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <center><h2 class="modal-title" id="myModalLabel">Conductors' Todays Status</h2></center>
+                </div>
+                <div class="modal-body">
+				
+				<div class="container-fluid" style="text-align:left">
+				<form method="POST" action="update_con_daily.php?con_id=<?php echo $row['con_id']; ?>">
+					<div class="row">
+					<div class="col-lg-4">
+						</div>
+						<div class="col-lg-8">
+							<input type="hidden"id="con_id" name="con_id" class="form-control" value="<?php echo $row['con_id']; ?>">
+							<input type="hidden"id="user_id" name="user_id" class="form-control" value="<?php echo $row['user_id']; ?>">
+						</div>
+					</div>
+					<div style="height:10px;"></div>
+					<div class="row">
+					<div class="col-lg-4">
+							<label class="control-label" style="position:relative; top:7px;">Status:</label>
+						</div>
+						<div class="col-lg-8">
+							<select  style="font-weight: bold;" class="form-control" id="trip_stat_id" name="trip_stat_id" value="<?php echo $row['trip_descrip']; ?>">
+								<option  style="font-weight: bold;"value="<?php echo $row['trip_stat_id']; ?>"><?php echo $row['trip_descrip']; ?></option> 
+								<option  value="2"> ABSENT</option>
+								<option  value="3"> UNAVAILABLE </option>
+						</select>
+						</div>
+					</div>
+                </div> 
+				</div>
+                <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" style="padding:6px 8px 6px 8px"><span ></span> Cancel</button>
+					<button type="submit" class="btn btn-success" style="padding:6px 8px 6px 8px"><span ></span>Save</a>
+                </div>
+				</form>
+            </div>
+        </div>
+    </div>
+<!-- /.modal -->
+
+
+<!-- Edit driver daily stat-->
+<div class="modal fade" id="edit_dri_daily<?php echo $row['dri_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="top:10em;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <center><h2 class="modal-title" id="myModalLabel">Drivers' Todays Status</h2></center>
+                </div>
+                <div class="modal-body">
+				
+				<div class="container-fluid" style="text-align:left">
+				<form method="POST" action="update_dri_daily.php?dri_id=<?php echo $row['dri_id']; ?>">
+					<div class="row">
+					<div class="col-lg-4">
+						</div>
+						<div class="col-lg-8">
+							<input type="hidden"id="dri_id" name="dri_id" class="form-control" value="<?php echo $row['dri_id']; ?>">
+							<input type="hidden"id="user_id" name="user_id" class="form-control" value="<?php echo $row['user_id']; ?>">
+						</div>
+					</div>
+					<div style="height:10px;"></div>
+					<div class="row">
+					<div class="col-lg-4">
+							<label class="control-label" style="position:relative; top:7px;">Status:</label>
+						</div>
+						<div class="col-lg-8">
+							<select  style="font-weight: bold;" class="form-control" id="trip_stat_id" name="trip_stat_id" value="<?php echo $row['trip_descrip']; ?>">
+								<option  style="font-weight: bold;"value="<?php echo $row['trip_stat_id']; ?>"><?php echo $row['trip_descrip']; ?></option> 
+								<option  value="2"> ABSENT</option>
+								<option  value="3"> UNAVAILABLE </option>
+						</select>
+						</div>
+					</div>
+                </div> 
+				</div>
+                <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" style="padding:6px 8px 6px 8px"><span ></span> Cancel</button>
+					<button type="submit" class="btn btn-success" style="padding:6px 8px 6px 8px"><span ></span>Save</a>
+                </div>
+				</form>
+            </div>
+        </div>
+    </div>
+<!-- /.modal -->
+
+
+
+

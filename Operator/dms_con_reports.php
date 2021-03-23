@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Driver Report</title>
+	<title>Conductor Report</title>
     <link href="" rel="stylesheet">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />    
@@ -41,17 +41,17 @@
                                 <th style="width:6%;">LASTNAME</th>
 								<th style="width:6%">FIRSTNAME</th>
 								<th style="width:8%;">TERMINAL</th>
-								<th style="width:8%;  text-align:center;">STATUS</th>
+								<th style="width:8%; text-align:center;">STATUS</th>
                                 <th style="width:9%; text-align:center;padding-left:4em">Action</th>
 						</thead>
 						<tbody style="display: block;overflow:auto; width: 100%;height: 440px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
 							<?php
 								include('conn.php');
 							
-                                $query=mysqli_query($conn,"SELECT   d.user_id as user_id, a.con_id as con_id, a.l_name as l_name, a.f_name as f_name, a.sufx as sufx, a.m_intl as m_intl,  a.u_name as u_name, b.ter_id as ter_id, b.descrip as ter_descrip, c.stat_id as stat_id, c.descrip as stat_descrip, a.sex as sex, a.cont_no as cont_no, a.emp_date as emp_date, e.descrip as trip_descrip  
+                                $query=mysqli_query($conn,"SELECT d.user_id as user_id, a.con_id as con_id, a.l_name as l_name, a.f_name as f_name, a.sufx as sufx, a.m_intl as m_intl,  a.u_name as u_name, b.ter_id as ter_id, b.descrip as ter_descrip, c.stat_id as stat_id, c.descrip as stat_descrip, a.sex as sex, a.cont_no as cont_no, a.emp_date as emp_date,  e.descrip as trip_descrip, e.trip_stat_id as trip_stat_ 
 								FROM user_con a, ter_details b, user_stat c, user d, trip_stat e 
 								WHERE a.ter_id = b.ter_id AND a.stat_id = c.stat_id AND a.user_id = d.user_id AND a.trip_stat_id = e.trip_stat_id
-								ORDER BY con_id desc ");
+								ORDER BY trip_stat_ asc");
 								 
 								while($row=mysqli_fetch_array($query)){
 									?>
@@ -63,7 +63,7 @@
 										<td style="width:7%; text-align:center"><?php echo $row['trip_descrip']; ?></td>
 										<td style="width:7%; text-align:center">
                                             <a style="font-size:1.5vw" href="#view_user<?php echo $row['con_id']; ?>" data-toggle="modal" class="btn "><span class="ion-eye"></span> </a> |
-											<a style="font-size:1.5vw" href="#edit_user<?php echo $row['con_id']; ?>" data-toggle="modal" class="btn "><span class="ion-edit"></span> </a> 
+											<a style="font-size:1.5vw" href="#edit_con_daily<?php echo $row['con_id']; ?>" data-toggle="modal" class="btn "><span class="ion-edit"></span> </a> 
 											<?php include('action/action_user.php'); ?>
 										</td>
 									</tr>
@@ -105,6 +105,24 @@ function myFunction() {
     }       
   }
 }
+</script>
+<script type="text/javascript">
+$(function() {
+  $("#myTable td").each(function() {
+    if ($(this).text() == "Absent") {
+      $(this).css('color', 'red');
+    }
+	else if ($(this).text() == "Available") {
+      $(this).css('color', 'green');
+    }
+	else if ($(this).text() == "Travelling") {
+      $(this).css('color', 'yellow');
+    }
+	else if ($(this).text() == "Unavailable") {
+      $(this).css('color', 'orange');
+    }
+  });
+});
 </script>
 </body>
 </html>
