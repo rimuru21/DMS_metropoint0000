@@ -11,7 +11,7 @@
 					$del=mysqli_query($conn,"select * from que_details where que_id='".$row['que_id']."'");
 					$drow=mysqli_fetch_array($del);
 				?>
-				<div class="container-fluid">
+				<div class="container-fluid"> 
                     <h4><center>Torno ID: <strong><?php echo $drow['que_id']; ?></strong></center></h4> 
                     <h4><center>Trip No.: <strong><?php echo $drow['trip_no']; ?></strong></center></h4> 
 					<h5 style="color:red"><center><strong>Do you wish to DELETE this record?</strong></center></h5> 
@@ -19,7 +19,7 @@
 				</div>
                 <div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" style="padding:6px 8px 6px 8px"><span ></span> Cancel</button>
-                    <a href="delete_bus.php?bus_id=<?php echo $row['bus_id']; ?>" class="btn btn-danger" style="padding:6px 8px 6px 8px"><span></span> Delete</a>
+                    <a href="delete_torno.php?que_id=<?php echo $row['que_id']; ?>" class="btn btn-danger" style="padding:6px 8px 6px 8px"><span></span> Delete</a>
                 </div>
 				
             </div>

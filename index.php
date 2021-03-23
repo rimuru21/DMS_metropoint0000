@@ -70,6 +70,10 @@
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
+					<div class="wrap-input100" data-validate = "Terminal">
+						<input class="input100" type="text" name="ter_id" placeholder="Terminal" >
+					</div>
+
 					<div class="wrap-input100" data-validate="Enter password">
 						<input class="input100" type="password" name="pass" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>

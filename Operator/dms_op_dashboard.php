@@ -72,7 +72,7 @@ include('auth.php');
             <div style="height:90%;"></div>
             <div class="" style=" width:58.5%;margin-left:1.4em">
                 <div style="height:10px;"></div>
-				        <table class="table table-striped table-bordered table-hover"  style="">
+				        <table class="table table-striped table-bordered table-hover"  style="" id="myTable">
                         <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>DEPARTURE</th>
                                 <th style="width:10%;border-bottom:none;"></th>
@@ -91,7 +91,7 @@ include('auth.php');
 							<?php
 								include('conn.php');
 								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date  FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e WHERE a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND from_ter = 'Tagum' AND que_stat_id = 4 GROUP BY que_id ORDER BY que_id desc  ");
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, f.descrip as stat_descrip, f.que_stat_id as que_stat_ FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND from_ter = 'Tagum'  GROUP BY que_id ORDER BY que_stat_ desc  ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 								      	<tr mouseclick="href='#view_que<?php echo $row['que_id']; ?>'"  class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white;">
@@ -103,7 +103,7 @@ include('auth.php');
                                         <td style="width:10%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
                                         <td style="width:6%;text-align:center" >
-                                             <a style="font-size:1vw;padding:2px;padding-left:8px;padding-right:8px" class="label-success">Waiting</a>
+                                             <a style="font-size:1vw;padding:2px;padding-left:8px;padding-right:8px" ><?php echo $row['stat_descrip']; ?></a>
                                             <br>
 										                      	<a style="font-size:1vw;padding:2px;" href="#view_que<?php echo $row['que_id']; ?>" data-toggle="modal" class="btn "><ion-icon name="eye"></ion-icon> DETAILS</a>
 										                      	<?php include('action/action_op_dash.php'); ?>
@@ -126,7 +126,7 @@ include('auth.php');
             <div style="height:90%;"></div>
             <div class="" style=" width:58.5%; margin-left:-1em">
                 <div style="height:10px;"></div>
-				        <table class="table table-striped table-bordered table-hover"  style="">
+				        <table class="table table-striped table-bordered table-hover"  style="" id="myTable">
                         <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>ARRIVAL</th>
                                 <th style="width:10%;border-bottom:none;"></th>
@@ -144,8 +144,8 @@ include('auth.php');
 						<tbody style="display: block;overflow:auto; width: 100%;height: 435px; word-break: break-word; scrollbar-width: none; " >
 							<?php
 								include('conn.php');
-								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date  FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e WHERE a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND to_ter = 'Tagum' AND que_stat_id = 3 GROUP BY que_id ORDER BY que_id desc  ");
+                echo "" .$_SESSION['ter_id'];
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, f.descrip as stat_descrip, f.que_stat_id as que_stat_   FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND  a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND to_ter = 'tagum' GROUP BY que_id ORDER BY que_stat_ desc   ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 								      	<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white;">
@@ -314,6 +314,29 @@ include('auth.php');
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+$(function() {
+  $("#myTable td a").each(function() {
+    if ($(this).text() == "Waiting") {
+      $(this).css('color', 'white');
+      $(this).css('background-color', 'red');
+    }
+	else if ($(this).text() == "Departed") {
+      $(this).css('color', 'white');
+      $(this).css('background-color', 'green');
+    }
+	else if ($(this).text() == "OnRoad") {
+      $(this).css('color', 'yellow' );
+    }
+	else if ($(this).text() == "Arrived") {
+      $(this).css('color', 'orange');
+    }
+  });
+});
+</script>
+
 
 </body>
 </html>

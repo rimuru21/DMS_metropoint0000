@@ -7,7 +7,7 @@
     $pass ="";
 	$errors = array(); 
 	$_SESSION['success'] = "";
-
+	$query123 = "SELECT * from user";
 	// LOGIN USER
 	if (isset($_POST['login_user'])) {
 		$u_name = mysqli_real_escape_string($conn, $_POST['u_name']);
