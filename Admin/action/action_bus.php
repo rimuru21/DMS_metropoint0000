@@ -134,8 +134,8 @@
 							<label class="control-label" style="position:relative; top:7px;">Assigned Conductor:</label>
 						</div>
 						<div class="col-lg-6">
-							<select style="font-weight: bold;" class="form-control" id="ass_dri" name="ass_dri" placeholder="" value="<?php echo $row['ass_dri']; ?>">
-								<option style="font-weight: bold;" value="<?php echo $row['ass_dri']; ?>"><?php echo $row['ass_dri']; ?></option>
+							<select style="font-weight: bold;" class="form-control" id="dri_id" name="dri_id" placeholder="" value="<?php echo $row['dri']; ?>">
+								<option style="font-weight: bold;" value="<?php echo $row['dri_id']; ?>"><?php echo $row['dri']; ?></option>
 								<?php 
 								include('conn.php');
 								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as name FROM user_dri");
@@ -145,7 +145,7 @@
                                         while($data = mysqli_fetch_array($sql))
                                         {
                                 ?>
-                                <option value="<?php echo $data['name']; ?>"> <?php echo $data['name']; ?> </option>
+                                <option value="<?php echo $data['dri_id']; ?>"> <?php echo $data['name']; ?> </option>
                                 <?php
                                         }
                                     } /*if condition*/
@@ -153,8 +153,8 @@
                             </select>
 						</div>
 						<div class="col-lg-6">
-							<select style="font-weight: bold;" class="form-control" id="ass_con" name="ass_con" placeholder="" value="<?php echo $row['ass_con']; ?>">
-								<option style="font-weight: bold;" value="<?php echo $row['ass_con']; ?>"><?php echo $row['ass_con']; ?></option>
+							<select style="font-weight: bold;" class="form-control" id="con_id" name="con_id" placeholder="" value="<?php echo $row['con']; ?>">
+								<option style="font-weight: bold;" value="<?php echo $row['con_id']; ?>"><?php echo $row['con']; ?></option>
 								<?php 
 								include('conn.php');
 								$sql=mysqli_query($conn,"SELECT CONCAT(l_name,' ',f_name) as name FROM user_con");
@@ -164,7 +164,7 @@
                                         while($data = mysqli_fetch_array($sql))
                                         {
                                 ?>
-                                <option value="<?php echo $data['name']; ?>"> <?php echo $data['name']; ?> </option>
+                                <option value="<?php echo $data['con_id']; ?>"> <?php echo $data['name']; ?> </option>
                                 <?php
                                         }
                                     } /*if condition*/
@@ -219,27 +219,7 @@
 							</select>
 						</div>
 						</div>
-						<div style="height:10px;"></div>
-							<div class="row">
-								<div class="col-lg-4">
-									<label class="control-label" style="position:relative; top:7px;">Ip Address:</label>
-								</div>
-								<div>
-								<div class="col-lg-2">
-									<input size="3" type="text" maxlength="3" class="form-control" id="ip_add" name="ip_add" value="<?php echo $row['ip_add']; ?>"/>
-								</div>
-								<div class="col-lg-2">
-									<input size="3" type="text" maxlength="3" class="form-control" id="ip_add1" name="ip_add1" value="<?php echo $row['ip_add1']; ?>"/>
-								</div>
-								<div class="col-lg-2">
-									<input size="3" type="text" maxlength="3" class="form-control" id="ip_add2" name="ip_add2" value="<?php echo $row['ip_add2']; ?>"/>
-								</div>
-								<div class="col-lg-2">
-									<input size="3" type="text" maxlength="3" class="form-control" id="ip_add3" name="ip_add3" value="<?php echo $row['ip_add3']; ?>"/>
-								</div>
-							</div>
-                		</div> 
-
+						
                 </div> 
 				</div>
                 <div class="modal-footer">
@@ -324,7 +304,7 @@
 							<h4><b>Assigned Driver:</b></h4>
 						</div>
 						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['ass_dri']; ?></h4>
+							<h4 style="text-align:left"><?php echo $row['dri']; ?></h4>
 						</div>
 					</div>
 					<div class="row">
@@ -332,7 +312,7 @@
 							<h4><b>Assigned Conductor:</b></h4>
 						</div>
 						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['ass_con']; ?></h4>
+							<h4 style="text-align:left"><?php echo $row['con']; ?></h4>
 						</div>
 					</div>
 					<div class="row">
@@ -349,14 +329,6 @@
 						</div>
 						<div class="col-lg-6">
 							<h4 style="text-align:left"><?php echo $row['route_id']; ?></h4>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-6" style="text-align:right">
-							<h4><b>Ip Address:</b></h4>
-						</div>
-						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['ip_add']; ?>.<?php echo $row['ip_add1']; ?>.<?php echo $row['ip_add2']; ?>.<?php echo $row['ip_add3']; ?></h4>
 						</div>
 					</div>
 				</div>

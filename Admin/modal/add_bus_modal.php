@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <center><h4 class="modal-title" id="myModalLabel">Add Bus Details</h4></center>
+                    <center><h4 class="modal-title" id="myModalLabel"> <b> Add Bus Details</b></h4></center>
                 </div>
                 <div class="modal-body">
 				<div class="container-fluid">
@@ -97,11 +97,10 @@
 							<label class="control-label" style="position:relative; top:7px;">ASSIGNED CONDUCTOR:</label>
 						</div>
 						<div class="col-lg-6">
-						<select class="form-control" id="ass_dri" name="ass_dri" palceholder="" required>
-							<option value="">---select driver---</option> 
-							<option value="none">None</option> 
+						<select class="form-control" id="dri_id" name="dri_id" palceholder="" required>
+							<option value="none">---select driver---</option>
 							<?php 
-							$sql = "SELECT CONCAT(l_name,' ',f_name) as full_name FROM user_dri";
+							$sql = "SELECT CONCAT(l_name,' ',f_name) as full_name, dri_id as dri_id FROM user_dri";
 							$query =  mysqli_query($conn, $sql);
 							$rows = mysqli_num_rows($query);
 								if($rows>0)
@@ -109,7 +108,7 @@
 									while($data = mysqli_fetch_array($query))
 									{
 							?>
-							<option value="<?php echo $data['full_name']; ?>"> <?php echo $data['full_name']; ?> </option>
+							<option value="<?php echo $data['dri_id']; ?>"> <?php echo $data['full_name']; ?> </option>
 							<?php
 									}
 								} /*if condition*/
@@ -117,11 +116,10 @@
 						</select>
 						</div>
 						<div class="col-lg-6">
-						<select class="form-control" id="ass_con" name="ass_con" palceholder="" required>
-							<option value="">---select conductor---</option> 
-							<option value="none">None</option> 
+						<select class="form-control" id="con_id" name="con_id" palceholder="" required>
+							<option value="none">---select conductor---</option> 
 							<?php 
-							$sql = "SELECT CONCAT(l_name,' ',f_name) as name FROM user_con";
+							$sql = "SELECT CONCAT(l_name,' ',f_name) as name, con_id as con_id FROM user_con";
 							$query =  mysqli_query($conn, $sql);
 							$rows = mysqli_num_rows($query);
 								if($rows>0)
@@ -129,7 +127,7 @@
 									while($data = mysqli_fetch_array($query))
 									{
 							?>
-							<option value="<?php echo $data['name']; ?>"> <?php echo $data['name']; ?> </option>
+							<option value="<?php echo $data['con_id']; ?>"> <?php echo $data['name']; ?> </option>
 							<?php
 									}
 								} /*if condition*/
@@ -184,27 +182,6 @@
 						</select>
 						</div>
 						</div>
-						<div style="height:10px;"></div>
-							<div class="row">
-							<div class="col-lg-4">
-								<label class="control-label" style="position:relative; top:7px;">IP ADDRESS:</label>
-							</div>
-							<div>
-							<div class="col-lg-2">
-								<input size="3" type="text" maxlength="3" max=255 class="form-control" id="ip_add" name="ip_add" required />
-							</div>
-							<div class="col-lg-2">
-								<input size="3" type="text" maxlength="3" max=255 class="form-control" id="ip_add1" name="ip_add1" required />
-							</div>
-							<div class="col-lg-2">
-								<input size="3" type="number" maxlength="3" max=255 class="form-control" id="ip_add2" name="ip_add2" required />
-							</div>
-							<div class="col-lg-2">
-								<input size="3" type="text" maxlength="3" max=255 class="form-control" id="ip_add3" name="ip_add3" required />
-							</div>
-							</div>
-						</div>
-					
 					
                 </div> 
 				</div>
