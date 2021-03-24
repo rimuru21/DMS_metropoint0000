@@ -28,17 +28,19 @@
             $result = mysqli_query($conn, $query);
             $result1 = mysqli_query($conn, $query1);
             $result2 = mysqli_query($conn, $query2);
-
+			$users = mysqli_fetch_array($result1);
+			$users1 = mysqli_fetch_array($result);
+			$users2 = mysqli_fetch_array($result2);
 			if (mysqli_num_rows($result) == 1) {
-				$_SESSION['u_name'] = $u_name;
+				$_SESSION['user'] = $users1;
 				$_SESSION['success'] = "You are now logged in";
 				header('location: topadmin/dms_ad_dashboard.php');
             }elseif(mysqli_num_rows($result1) == 1) {
-				$_SESSION['u_name'] = $u_name;
+				$_SESSION['user'] = $users;
 				$_SESSION['success'] = "You are now logged in";
                 header('location: admin/dms_ad_dashboard.php'); 
             }elseif(mysqli_num_rows($result2) == 1) {
-				$_SESSION['u_name'] = $u_name;
+				$_SESSION['user'] = $users2;
 				$_SESSION['success'] = "You are now logged in";
                 header('location: operator/dms_op_dashboard.php'); 
             }else { 

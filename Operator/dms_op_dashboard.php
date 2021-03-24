@@ -26,7 +26,7 @@ include('auth.php');
 <div class="row" >
     <div class="col-lg-12" style="position:fixed; background-color:rgba(255,255,255,0.3);left:.8em;margin-top:.5em;width:98.5%;"> 
     <h1 class="col-lg-3 ion-calendar" style="font-size:2vw;text-align:left;margin-top:15px"></h1>
-    <h1 class="col-lg-6" style="font-size:2vw;text-align:center;padding:0px;margin-top:15px"><b>MetroPoint</b> - <i><?php echo "" .$_SESSION['u_name']; ?></i></h1>
+    <h1 class="col-lg-6" style="font-size:2vw;text-align:center;padding:0px;margin-top:15px"><b>MetroPoint</b> - <i><?= print_r($_SESSION['user']['u_name']); ?></i></h1>
     <h1 class="col-lg-3" style="font-size:2.2vw;text-align:right;padding-right: 20px;margin-top:15px"><span id="clock">&nbsp;</span></h1>
     </div>
         <script>
@@ -90,8 +90,11 @@ include('auth.php');
 						<tbody style="display: block;overflow:auto; width: 100%;height: 435px; word-break: break-word; scrollbar-width: none; ">
 							<?php
 								include('conn.php');
-								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, f.descrip as stat_descrip, f.que_stat_id as que_stat_ FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND from_ter = 'Tagum'  GROUP BY que_id ORDER BY que_stat_ desc  ");
+                $user_ad = $_SESSION['user']['ter_id'];
+								$query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                                $ter_ =  mysqli_fetch_array($query_ter);
+                                $ter_ad = ($ter_['descrip']);
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, f.descrip as stat_descrip, f.que_stat_id as que_stat_ FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND from_ter = '$ter_ad'  GROUP BY que_id ORDER BY que_stat_ desc  ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 								      	<tr mouseclick="href='#view_que<?php echo $row['que_id']; ?>'"  class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white;">
@@ -144,7 +147,11 @@ include('auth.php');
 						<tbody style="display: block;overflow:auto; width: 100%;height: 435px; word-break: break-word; scrollbar-width: none; " >
 							<?php
 								include('conn.php');
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, f.descrip as stat_descrip, f.que_stat_id as que_stat_   FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND  a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND to_ter = 'tagum' GROUP BY que_id ORDER BY que_stat_ desc   ");
+                $user_ad = $_SESSION['user']['ter_id'];
+								$query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                $ter_ =  mysqli_fetch_array($query_ter);
+                $ter_ad = ($ter_['descrip']);
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, f.descrip as stat_descrip, f.que_stat_id as que_stat_, a.que_lat as que_lat, a.que_long as que_long   FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND  a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND to_ter = '$ter_ad' GROUP BY que_id ORDER BY que_stat_ desc   ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 								      	<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white;">
@@ -156,9 +163,9 @@ include('auth.php');
                                         <td style="width:10%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
                                         <td style="width:10%;text-align:center" >
-                                             <a style="font-size:1vw;padding:2px;padding-left:8px;padding-right:8px" class="label-primary">OnRoad</a>
+                                            <a style="font-size:1vw;padding:2px;padding-left:8px;padding-right:8px" class="label-primary">OnRoad</a>
                                             <br>
-										                      	<a  style="font-size:1vw; padding:2px;"href="#view_map<?php echo $row['que_id']; ?>" data-toggle="modal" class="btn "><ion-icon name="location"></ion-icon> MAP</a>
+										                      	<a  style="font-size:1vw; padding:2px;" id="map_js" href="#view_map<?php echo $row['que_id']; ?>" data-toggle="modal" class="btn "><ion-icon name="location"></ion-icon> MAP</a>
 										                      	<?php include('action/action_op_dash.php'); ?>
 									                    	</td>
 									</tr>
@@ -314,6 +321,9 @@ include('auth.php');
     </div>
 </div>
 
+<script>
+var map_op = document.getElementById("myBtn");
+</script>
 
 <script type="text/javascript">
 $(function() {

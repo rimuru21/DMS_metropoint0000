@@ -117,6 +117,7 @@ $(function() {
     }
 	else if ($(this).text() == "Available") {
       $(this).css('color', 'green');
+	  $(this).css('font-weight', '800');
     }
 	else if ($(this).text() == "Travelling") {
       $(this).css('color', 'yellow' );

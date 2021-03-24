@@ -155,7 +155,7 @@
 							<h4><b>DRIVER:</b></h4>
 						</div>
 						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['ass_dri']; ?></h4>
+							<h4 style="text-align:left"><?php echo $row['dri']; ?></h4>
 						</div>
 					</div>
 					<div class="row">
@@ -163,7 +163,7 @@
 							<h4><b>CONDUCTOR:</b></h4>
 						</div>
 						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['ass_con']; ?></h4>
+							<h4 style="text-align:left"><?php echo $row['con']; ?></h4>
 						</div>
 					</div>
 					<div class="row">
@@ -214,6 +214,14 @@
 							<h4 style="text-align:left"><?php echo $row['que_date']; ?></h4>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-lg-6"style="text-align:right" >
+							<h4><b>LATLONG:</b></h4>
+						</div>
+						<div class="col-lg-6">
+							<h4 style="text-align:left"><?php echo $row['que_lat'];?>, <?php echo $row['que_long'];?> </h4>
+						</div>
+					</div>
 				</div>
 
 				<div class="col-lg-8" style="">
@@ -225,7 +233,7 @@
 									</thead>
 									
 									<!-- dri ma display ang map -->
-									<tbody style="display: block;overflow:auto; width: 100%;height: 455px; word-break: break-word; scrollbar-width: none; background-size: cover;background-image: url(images/googlemap.png); background-repeat: no-repeat;  background-position: center;">
+									<tbody style="display: block;overflow:auto; width: 100%;height: 455px;  " id="mapid">
 									</tbody>
 									
 								</table>
@@ -241,8 +249,51 @@
                     <button type="button" class="btn btn-primary" data-dismiss="modal" style="padding:8px;border-radius:4px"><span class=""></span> OK</button>
                 </div>
 				</form>
+<?php
+
+$map_query_op = mysqli_query($conn, "SELECT * FROM que_details  ");
+
+?>
+
+				<script>
+	    var mymap = L.map('mapid').setView([7.461092, 125.798725], 11);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JoaXN1bGEiLCJhIjoiY2tqdjAzNjhwMnF1czJxcXVheG5zM2Z0dyJ9.ADUJmb8cso0RObOix5SzOQ', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 11,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'your.mapbox.access.token'
+        }).addTo(mymap);
+
+		var count = 0 ;
+		
+    <?php while($row1=mysqli_fetch_array($map_query_op)){		
+        ?>
+        var name = 'marker'+count;
+        name = L.marker([<?php echo $row1['que_lat']; ?>, <?php echo $row1['que_long']; ?>]).addTo(mymap);
+		name.bindPopup('<?php echo $row1['bus_no']; ?>').openPopup();
+        count++;
+        <?php
+    }
+    ?>
+
+    
+	var popup = L.popup();
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("You clicked the map at " + e.latlng.toString())
+			.openOn(mymap);
+	}
+
+	mymap.on('click', onMapClick);
+    
+    </script>	
             </div>
         </div>
 	</div>
-					
+
+		
 <!-- /.modal -->

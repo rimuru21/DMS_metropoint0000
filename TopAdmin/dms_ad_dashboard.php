@@ -1,12 +1,14 @@
 <?php
 require('conn.php');
 include('auth.php');
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Dashboard</title>
+    <title>Top Admin Dashboard</title>
     <link href="" rel="stylesheet">
+    <!-- <meta http-equiv="refresh" content="10"> -->
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />    
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -24,8 +26,8 @@ include('auth.php');
 <div class="row" >
     <div class="col-lg-12" style="position:fixed; background-color:rgba(255,255,255,0.3);left:.8em;margin-top:.5em;width:98.5%;"> 
     <h1 class="col-lg-3 ion-calendar" style="font-size:2vw;text-align:left;margin-top:15px"></h1>
-    <h1 class="col-lg-6" style="font-size:2vw;text-align:center;padding:0px;margin-top:15px"><b>MetroPoint</b> - <i><?php echo "" .$_SESSION['u_name']; ?></i></h1>
-    <h1 class="col-lg-3" style="font-size:2.2vw;text-align:right;padding-right: 20px;margin-top:15px""><span id="clock">&nbsp;</span></h1>
+    <h1 class="col-lg-6" style="font-size:2vw;text-align:center;padding:0px;margin-top:15px"><b>MetroPoint</b> - <i><?= print_r($_SESSION['user']['u_name']); ?></i></h1>
+    <h1 class="col-lg-3" style="font-size:2.2vw;text-align:right;padding-right: 20px;margin-top:15px"><span id="clock">&nbsp;</span></h1>
     </div>
         <script>
                 var objToday = new Date(),
@@ -69,39 +71,40 @@ include('auth.php');
             <div style="height:90%;"></div>
             <div class="" style=" width:49%; position: fixed;margin-left:1.4em">
                 <div style="height:10px;"></div>
-				        <table class="table table-striped table-bordered table-hover"  style="">
+				        <table class="table table-striped table-bordered table-hover"  style="" id="myTable">
                         <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>DEPARTURE</th>
 						</thead>
 						<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.3)">
-                                <th style="width:12%">TRIP #</th>
-                                <th style="width:10%">BUS #</th>
+                                <th style="width:17%">TRIP #</th>
+                                <th style="width:6%">BUS #</th>
                                 <th style="width:6%">TYPE</th>
                                 <th style="width:6%">SEAT CAP</th>
-                                <th style="width:10%">TO</th>
                                 <th style="width:8%">TIME</th>
                                 <th style="width:10%">DATE</th>
-								<th style="width:13.5%;padding-left:1.5em">STATUS</th>
+								<th style="width:11%;padding-left:1.5em">STATUS</th>
 						</thead>
 						<tbody style="display: block;overflow:auto; width: 100%;height: 235px; word-break: break-word; scrollbar-width: none; ">
                         <?php
 								include('conn.php');
-								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, b.descrip as type_descrip, a.seat_cap, a.to_ter as to_ter,  time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date FROM que_details a, bus_type b, ter_details c WHERE a.bus_type_id = b.bus_type_id AND from_ter = 'Tagum' AND a.que_stat_id = 4 GROUP BY que_id ORDER BY que_id desc  ");
+								// $user_ad = $_SESSION['user']['ter_id'];
+								// $query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                                // $ter_ =  mysqli_fetch_array($query_ter);
+                                // $ter_ad = ($ter_['descrip']);
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, b.descrip as type_descrip, a.seat_cap, a.to_ter as to_ter,  time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, d.descrip as stat FROM que_details a, bus_type b, ter_details c, que_stat d WHERE a.que_stat_id = d.que_stat_id AND  a.bus_type_id = b.bus_type_id  GROUP BY que_id ORDER BY que_id desc  ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white">
-                                        <td style="width:12%"><?php echo $row['trip_no']; ?></td>
-                                        <td style="width:10%"><?php echo $row['bus_no']; ?></td>
+                                        <td style="width:17%"><?php echo $row['trip_no']; ?></td>
+                                        <td style="width:6%"><?php echo $row['bus_no']; ?></td>
                                         <td style="width:6%;"><?php echo $row['type_descrip']; ?></td>
                                         <td style="width:6%;"><?php echo $row['seat_cap']; ?></td>
-                                        <td style="width:10%"><?php echo $row['to_ter']; ?></td>
                                         <td style="width:8%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
-                                        <td style="width:12%;text-align:center;padding-bottom:10px;padding-top:10px" >
-                                            <a style="font-size:1.2vw;padding:5px;padding-left:8px;padding-right:8px" class="label-success">Waiting</a>
+                                        <td style="width:10%;text-align:center" >
+                                             <a style="font-size:1vw;padding:2px;padding-left:8px;padding-right:8px" ><?php echo $row['stat']; ?></a>
                                             <br>
-										</td>
+								    	</td>
 									</tr>
 									<?php
 								}
@@ -145,39 +148,40 @@ include('auth.php');
             <div style="height:90%;"></div>
             <div class="" style=" width:49%; position: fixed;margin-left:1.4em">
                 <div style="height:10px;"></div>
-				        <table class="table table-striped table-bordered table-hover"  style="">
+				        <table class="table table-striped table-bordered table-hover"  style="" id="myTable">
                         <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
                                 <th style="width:50%;border-bottom:none; font-size:1.5vw"><span class="ion-android-bus" style="padding-right:.5em"></span>ARRIVAL</th>
 						</thead>
 						<thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.3)">
-                                <th style="width:12%">TRIP #</th>
-                                <th style="width:10%">BUS #</th>
+                                <th style="width:17%">TRIP #</th>
+                                <th style="width:6%">BUS #</th>
                                 <th style="width:6%">TYPE</th>
                                 <th style="width:6%">SEAT CAP</th>
-                                <th style="width:10%">FROM</th>
                                 <th style="width:8%">TIME</th>
                                 <th style="width:10%">DATE</th>
-								<th style="width:13.5%;padding-left:1.5em">STATUS</th>
+								<th style="width:11%;padding-left:1.5em">STATUS</th>
 						</thead>
 						<tbody style="display: block;overflow:auto; height: 235px; word-break: break-word; scrollbar-width: none; ;">
                         <?php
 								include('conn.php');
-								
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, b.descrip as type_descrip, a.seat_cap, a.to_ter as to_ter, a.from_ter as from_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date FROM que_details a, bus_type b, ter_details c WHERE a.bus_type_id = b.bus_type_id AND to_ter = 'Tagum' AND a.que_stat_id = 3 GROUP BY que_id ORDER BY que_id desc  ");
+                                $user_ad = $_SESSION['user']['ter_id'];
+								$query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                                $ter_ =  mysqli_fetch_array($query_ter);
+                                $ter_ad = ($ter_['descrip']);
+								$query = mysqli_query($conn," SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, b.descrip as type_descrip, a.seat_cap, a.to_ter as to_ter, a.from_ter as from_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, d.descrip as stat, a.que_lat as que_lat, a.que_long as que_long FROM que_details a, bus_type b, ter_details c, que_stat d WHERE a.que_stat_id = d.que_stat_id AND a.bus_type_id = b.bus_type_id AND to_ter = '$ter_ad' GROUP BY que_id ORDER BY que_id desc ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white">
-                                        <td style="width:12%"><?php echo $row['trip_no']; ?></td>
-                                        <td style="width:10%"><?php echo $row['bus_no']; ?></td>
+                                    <td style="width:17%"><?php echo $row['trip_no']; ?></td>
+                                        <td style="width:6%"><?php echo $row['bus_no']; ?></td>
                                         <td style="width:6%;"><?php echo $row['type_descrip']; ?></td>
                                         <td style="width:6%;"><?php echo $row['seat_cap']; ?></td>
-                                        <td style="width:10%"><?php echo $row['from_ter']; ?></td>
                                         <td style="width:8%"><?php echo $row['que_time']; ?></td>
                                         <td style="width:10%"><?php echo $row['que_date']; ?></td>
-                                        <td style="width:12%;text-align:center;padding-bottom:10px;padding-top:10px" >
-                                            <a style="font-size:1.2vw;padding:5px;padding-left:8px;padding-right:8px" class="label-primary">OnRoad</a>
+                                        <td style="width:10%;text-align:center" >
+                                             <a style="font-size:1vw;padding:2px;padding-left:8px;padding-right:8px" ><?php echo $row['stat']; ?></a>
                                             <br>
-										</td>
+								    	</td>
 									</tr>
 									<?php
 								}
@@ -201,6 +205,7 @@ include('auth.php');
                 <div style="height:10px;"></div>
 				        <table class="table table-striped table-bordered table-hover"  style="">
                         <thead style="display: block; overflow: hidden; word-break: break-word; background-color:rgba(255,255,255,0.2);">
+                    
                                 <th style="width:5%;border-bottom:none; font-size:1.5vw;text-align:center"><span class="ion-android-bus" style="padding-right:.5em"></span>RECENT DETAILS</th>
                         </thead>
 				        </table>
@@ -217,13 +222,26 @@ include('auth.php');
                         <tbody style="display: block;overflow:auto; height: 277px; word-break: break-word; scrollbar-width: none;">
                             <tr style="background-color:rgba(255,255,255,0.2);">
                                 <td style="width:2%;padding-bottom:6px;padding-top:6px; font-size:1.2vw;font-weight:bold">TERMINAL:</td>
-                                <td style="width:1%;padding-bottom:6px;padding-top:6px; font-size:1.2vw;font-weight:bold">TAGUM</td>
+                                <td style="width:1%;padding-bottom:6px;padding-top:6px; font-size:1.2vw;font-weight:bold">
+                                <?php
+									include('conn.php');          
+                                    $user_ad = $_SESSION['user']['ter_id'];
+                                    $query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                                    $ter_ =  mysqli_fetch_array($query_ter);
+                                    $ter_ad = ($ter_['descrip']);      
+									print_r($ter_ad)
+								?>
+                                </td>
                             </tr>
                             <tr>
                                 <td style="width:1%;padding-bottom:6px;padding-top:6px; font-size:1.1vw;font-weight:bold">TRAVELLING BUSES:</td>
                                 <?php
-									include('conn.php');                
-									$query=mysqli_query($conn,"SELECT COUNT('que_id') AS TotalBus FROM que_details WHERE que_stat_id = 3 AND to_ter ='Tagum' ;");
+									include('conn.php');          
+                                    $user_ad = $_SESSION['user']['ter_id'];
+                                    $query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                                    $ter_ =  mysqli_fetch_array($query_ter);
+                                    $ter_ad = ($ter_['descrip']);      
+									$query=mysqli_query($conn,"SELECT COUNT('que_id') AS TotalBus FROM que_details WHERE que_stat_id = 3 AND to_ter ='$ter_ad' ;");
 											while($row=mysqli_fetch_array($query)){
 								?>
                                 <td style="width:1%;padding-bottom:6px;padding-top:6px; font-size:1.1vw"><?php echo $row['TotalBus']; ?></td>
@@ -234,8 +252,12 @@ include('auth.php');
                             <tr>
                                 <td style="width:1%;padding-bottom:6px;padding-top:6px; font-size:1.1vw;font-weight:bold">TORNO BUSES:</td>
                                 <?php
-									include('conn.php');                
-									$query=mysqli_query($conn,"SELECT COUNT('que_id') AS TotalBus FROM que_details WHERE que_stat_id = 4 AND from_ter ='Tagum' ;");
+									include('conn.php');  
+                                    $user_ad = $_SESSION['user']['ter_id'];
+                                    $query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                                    $ter_ =  mysqli_fetch_array($query_ter);
+                                    $ter_ad = ($ter_['descrip']);               
+									$query=mysqli_query($conn,"SELECT COUNT('que_id') AS TotalBus FROM que_details WHERE que_stat_id = 4 AND from_ter ='$ter_ad' ;");
 											while($row=mysqli_fetch_array($query)){
 								?>
                                 <td style="width:1%;padding-bottom:6px;padding-top:6px; font-size:1.1vw"><?php echo $row['TotalBus']; ?></td>
@@ -324,7 +346,7 @@ include('auth.php');
                         <div class="inner">
                         <?php
                             include('conn.php');                
-                            $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE ass_dri = 'none';");
+                            $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE dri_id = 0;");
                                 while($row=mysqli_fetch_array($query)){
                         ?>
                         <h3><?php echo $row['TotalBus']; ?></h3>
@@ -345,7 +367,7 @@ include('auth.php');
                         <div class="inner">
                         <?php
                             include('conn.php');                
-                            $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE ass_con = 'none';");
+                            $query=mysqli_query($conn,"SELECT COUNT('bus_id') AS TotalBus FROM bus_details WHERE con_id = 0;");
                                 while($row=mysqli_fetch_array($query)){
                         ?>
                         <h3><?php echo $row['TotalBus']; ?></h3>
@@ -365,8 +387,12 @@ include('auth.php');
                     <div class="small-box bg-aqua" style="height:132px;padding-top:1.4em">
                         <div class="inner" >
                         <?php
-                         include('conn.php');                
-                         $query=mysqli_query($conn,"SELECT COUNT('que_id') AS TotalBus FROM que_details WHERE que_stat_id = 1 AND to_ter ='Tagum' ;");
+                         include('conn.php');  
+                         $user_ad = $_SESSION['user']['ter_id'];
+                         $query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                         $ter_ =  mysqli_fetch_array($query_ter);
+                         $ter_ad = ($ter_['descrip']);               
+                         $query=mysqli_query($conn,"SELECT COUNT('que_id') AS TotalBus FROM que_details WHERE que_stat_id = 1 AND to_ter ='$ter_ad' ;");
                                  while($row=mysqli_fetch_array($query)){
                         ?>
                         <h3><?php echo $row['TotalBus']; ?></h3>
@@ -386,8 +412,12 @@ include('auth.php');
                     <div class="small-box bg-aqua" style="height:132px;padding-top:1.4em">
                         <div class="inner" style="padding-top:.8em">
                         <?php
-                           include('conn.php');                
-                           $query=mysqli_query($conn,"SELECT COUNT('que_id') AS TotalBus FROM que_details WHERE que_stat_id = 2 AND from_ter ='Tagum' ;");
+                           include('conn.php');   
+                           $user_ad = $_SESSION['user']['ter_id'];
+                           $query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                           $ter_ =  mysqli_fetch_array($query_ter);
+                           $ter_ad = ($ter_['descrip']);              
+                           $query=mysqli_query($conn,"SELECT COUNT('que_id') AS TotalBus FROM que_details WHERE que_stat_id = 2 AND from_ter ='$ter_ad' ;");
                                    while($row=mysqli_fetch_array($query)){
                         ?>
                         <h3><?php echo $row['TotalBus']; ?></h3>
@@ -434,25 +464,31 @@ include('auth.php');
 </div>
 
 
-
-
 <script>
-
-    var mymap = L.map('mapid').setView([7.461092, 125.798725], 15);
+    var mymap = L.map('mapid').setView([7.461092, 125.798725], 11);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JoaXN1bGEiLCJhIjoiY2tqdjAzNjhwMnF1czJxcXVheG5zM2Z0dyJ9.ADUJmb8cso0RObOix5SzOQ', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 15,
+            maxZoom: 11,
             id: 'mapbox/streets-v11',
             tileSize: 512,
             zoomOffset: -1,
             accessToken: 'your.mapbox.access.token'
         }).addTo(mymap);
 
+    // $.ajax({
+    //     url: "sample_get_longlat.php",
+    //     type: "post",
+	// 	dataType: "json",
+    //         success: function(data) {
+	// 			L.marker(data['que_lat'], data['que_long']).addTo(mymap)
+	// 				.bindPopup("new").openPopup();
+    //         }
+    // });
 
-	L.marker([7.461092, 125.798725]).addTo(mymap)
-		.bindPopup("TAGUM TERMINAL").openPopup();
-
-
+	// L.marker([7.461092, 125.798725]).addTo(mymap)
+	// 	.bindPopup("TAGUM TERMINAL").openPopup();
+    L.marker(['<?php echo $row['que_lat'];?>' , '<?php echo $row['que_long'];?>']).addTo(mymap)
+		.bindPopup('<?php echo $row['bus_no'];?>').openPopup();
 	var popup = L.popup();
 
 	function onMapClick(e) {
@@ -465,6 +501,27 @@ include('auth.php');
 	mymap.on('click', onMapClick);
     
     </script>
-   
+   <script type="text/javascript">
+$(function() {
+  $("#myTable td a").each(function() {
+    if ($(this).text() == "Waiting") {
+      $(this).css('color', 'white');
+      $(this).css('background-color', 'red');
+    }
+	else if ($(this).text() == "Departed") {
+      $(this).css('color', 'white');
+      $(this).css('background-color', 'green');
+    }
+	else if ($(this).text() == "OnRoad") {
+      $(this).css('color', 'black' );
+      $(this).css('background-color', 'yellow');
+    }
+	else if ($(this).text() == "Arrived") {
+      $(this).css('color', 'black');
+      $(this).css('background-color', 'orange');
+    }
+  });
+});
+</script>
 </body>
 </html>
