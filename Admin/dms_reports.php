@@ -26,7 +26,6 @@
             <li style="left:1em;font-family: 'Source Sans Pro';"><a href="dms_trip_reports.php">TRIP</a></li>
             <li style="left:.5em;font-family: 'Source Sans Pro';"><a href="dms_dri_reports.php">DRIVER</a></li>
             <li style="left:.4em;font-family: 'Source Sans Pro';"><a href="dms_con_reports.php">CONDUCTOR</a></li>
-            <li style="left:.4em;font-family: 'Source Sans Pro';"><a href="dms_ter_reports.php">TERMINAL</a></li>
 				<input style="width:140px;margin-left:1.5em" type = "number" class = "form-control" id="myInput" onkeyup="myFunction()" placeholder="Type bus number...">
 				<input style="width:180px;margin-left:.5em" type = "date" class = "form-control"   id = "date1"/>
 				<input style="width:180px;margin-left:.5em" type = "date" class = "form-control"  id = "date2"/>
@@ -49,17 +48,17 @@
                                 <th style="width:10%">CONDUCTOR</th>
                                 <th style="width:10%">ROUTE</th>
 								<th style="width:8%">TORNO TIME</th>
-								<th style="width:8%">DEPARTURE TIME</th>
-								<th style="width:8%">DEPARTURE DATE</th>
-								<th style="width:8%">ARRIVAL TIME</th>
-								<th style="width:8%">ARRIVAL DATE</th>
+								<th style="width:8%">DEP. TIME</th>
+								<th style="width:8%">DEP. DATE</th>
+								<th style="width:8%">ARR. TIME</th>
+								<th style="width:8%">ARR. DATE</th>
 						</thead>
 						<tbody  id = "load_data" style="display: block;overflow:auto; width: 100%;height: 550px; word-break: break-word; scrollbar-width: none; border-bottom:1px solid white">
 							<?php
 								include('conn.php');  
-								$query=mysqli_query($conn,"SELECT a.trip_no as trip_no, a.bus_no as bus_no, a.ass_dri as ass_dri, a.ass_con as ass_con, b.bus_type_id as bus_type_id, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_time as que_time, a.que_date as que_date, a.dep_time as dep_time, a.dep_date as dep_date, a.arr_time as arr_time, a.arr_date as arr_date
-								FROM que_details a, bus_type b 
-								WHERE a.bus_type_id = b.bus_type_id 
+								$query=mysqli_query($conn,"SELECT a.trip_no as trip_no, a.bus_no as bus_no, b.bus_type_id as bus_type_id, CONCAT(c.l_name,' ',c.f_name) as dri, CONCAT(d.l_name,' ',d.f_name) as con, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_time as que_time, a.que_date as que_date, a.dep_time as dep_time, a.dep_date as dep_date, a.arr_time as arr_time, a.arr_date as arr_date
+								FROM que_details a, bus_type b, user_dri c, user_con d 
+								WHERE a.bus_type_id = b.bus_type_id AND a.dri_id = c.dri_id AND a.con_id = d.con_id
 								ORDER BY que_id desc ");
 								 
 								while($row=mysqli_fetch_array($query)){

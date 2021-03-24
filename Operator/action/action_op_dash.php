@@ -38,7 +38,7 @@
 							<h4><b>DRIVER:</b></h4>
 						</div>
 						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['ass_dri']; ?></h4>
+							<h4 style="text-align:left"><?php echo $row['dri']; ?></h4>
 						</div>
 					</div>
 					<div class="row">
@@ -46,7 +46,7 @@
 							<h4><b>CONDUCTOR:</b></h4>
 						</div>
 						<div class="col-lg-6">
-							<h4 style="text-align:left"><?php echo $row['ass_con']; ?></h4>
+							<h4 style="text-align:left"><?php echo $row['con']; ?></h4>
 						</div>
 					</div>
 					<div class="row">
