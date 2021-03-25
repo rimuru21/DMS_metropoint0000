@@ -464,15 +464,19 @@ include('auth.php');
 </div>
 <?php
     $user_ad = $_SESSION['user']['ter_id'];
+	$que_n = ($row['que_id']);
     $map_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
     $map_query = mysqli_query($conn, "SELECT * FROM que_details");
     $ter_ =  mysqli_fetch_array($map_ter);
     $row1 = mysqli_fetch_array($map_query);
     $bus_n = ($row1['bus_no']);
+    $que_la = ($row1['que_lat']);
+    $que_lo = ($row1['que_long']); 
     $ter_lat = ($ter_['ter_lat']);
     $ter_long = ($ter_['ter_long']); 
     $ter_name = ($ter_['descrip']); 
-?>
+	
+	?>
 
 <script>
     var mymap = L.map('mapid').setView([<?php echo $ter_lat?>, <?php echo $ter_long?>], 12);
@@ -484,14 +488,14 @@ include('auth.php');
             zoomOffset: -1,
             accessToken: 'your.mapbox.access.token'
         }).addTo(mymap);
-
-        var count = 0;
-        <?php while($row1 = mysqli_fetch_array($map_query)){  
+        
+        var count = 1;
+        <?php while($row1 = mysqli_fetch_array($map_query) ){  
         ?>
-        var name = 'marker' + count;
-        name = L.marker([<?php echo $row1['que_lat']?>, <?php echo $row1['que_long']?>]).addTo(mymap)
+        var name = 'marker'+count;
+         name = L.marker([<?php print_r($row1['que_lat'])?>, <?php print_r($row1['que_long'])?>]).addTo(mymap)
             .bindTooltip("<?php echo $row1['bus_no']?>", { permanent: true, offset: [-12, 1] }); 
-	    count++;
+            count++;
         <?php
     }
     ?>
