@@ -7,7 +7,7 @@ include('auth.php');
 <head>
     <title>Admin Dashboard</title>
     <link href="" rel="stylesheet">
-    <meta http-equiv="refresh" content="5">
+    <!-- <meta http-equiv="refresh" content="5"> -->
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />    
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />

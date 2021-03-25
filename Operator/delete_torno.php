@@ -3,6 +3,9 @@
 	include('conn.php');
 	
 	$que_id=$_GET['que_id'];
+    $dri_id=$_GET['dri_id'];
+    $con_id=$_GET['con_id'];
+    $bus_id=$_GET['bus_id'];
     $trip_stat_id = 0;
 
 	mysqli_query($conn,"DELETE from que_details where que_id='$que_id'");

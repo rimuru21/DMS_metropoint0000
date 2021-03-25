@@ -11,7 +11,7 @@
     $to_ter = $_POST['to_ter'];
     $que_time = $_POST['que_time'];
     $que_date = $_POST['que_date'];
-    $que_stat_id = 4;
+    $que_stat_id = 0;
     $trip_stat_id = 1;
 
     mysqli_query($conn,"INSERT INTO `que_details`(`trip_no`, `bus_no`, `dri_id`, `con_id`, `bus_type_id`, `seat_cap`, `from_ter`, `to_ter`, `que_time`, `que_date`, `que_stat_id`) VALUES ('$trip_no', '$bus_no','$dri_id', '$con_id', '$bus_type_id', '$seat_cap', '$from_ter', '$to_ter', '$que_time', '$que_date', '$que_stat_id')");
