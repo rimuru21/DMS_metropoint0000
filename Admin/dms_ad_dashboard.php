@@ -8,7 +8,7 @@ include('auth.php');
 <head>
     <title>Admin Dashboard</title>
     <link href="" rel="stylesheet">
-    <!-- <meta http-equiv="refresh" content="10"> -->
+    <meta http-equiv="refresh" content="10">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />    
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -478,10 +478,10 @@ $user_ad = $_SESSION['user']['ter_id'];
 ?>
 
 <script>
-    var mymap = L.map('mapid').setView([<?php echo $ter_lat?>, <?php echo $ter_long?>], 16);
+    var mymap = L.map('mapid').setView([<?php echo $ter_lat?>, <?php echo $ter_long?>], 12);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JoaXN1bGEiLCJhIjoiY2tqdjAzNjhwMnF1czJxcXVheG5zM2Z0dyJ9.ADUJmb8cso0RObOix5SzOQ', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 16,
+            maxZoom: 12,
             id: 'mapbox/streets-v11',
             tileSize: 512,
             zoomOffset: -1,
@@ -497,10 +497,10 @@ $user_ad = $_SESSION['user']['ter_id'];
         ?>
         
         var name = 'marker'+count;
-        var label = "";
+        var label= "";
         name = L.marker([<?php echo $row1['que_lat']; ?>, <?php echo $row1['que_long']; ?>]).addTo(mymap);
         // //.bindPopup('<?php echo $row1['bus_no']; ?>').openPopup();
-        // label.bindTooltip("<?php echo $bus_n?>", { permanent: true, offset: [0, 12] });
+        //.bindTooltip("<?php echo $bus_n?>", { permanent: true, offset: [0, 12] });
         count++;
         
         <?php
