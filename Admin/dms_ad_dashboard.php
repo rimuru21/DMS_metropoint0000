@@ -8,7 +8,7 @@ include('auth.php');
 <head>
     <title>Admin Dashboard</title>
     <link href="" rel="stylesheet">
-    <meta http-equiv="refresh" content="10">
+    <meta http-equiv="refresh" content="5">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />    
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -464,17 +464,15 @@ include('auth.php');
     </div>
 </div>
 <?php
-
-$map_query = mysqli_query($conn, "SELECT * FROM que_details where to_ter = '$ter_ad'");
-$user_ad = $_SESSION['user']['ter_id'];
+    $user_ad = $_SESSION['user']['ter_id'];
     $map_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+    $map_query = mysqli_query($conn, "SELECT * FROM que_details ");
     $ter_ =  mysqli_fetch_array($map_ter);
-    $map_ =  mysqli_fetch_array($map_query);
-    $bus_n =($map_['bus_no']);
+    $row1 = mysqli_fetch_array($map_query);
+    $bus_n = ($row1['bus_no']);
     $ter_lat = ($ter_['ter_lat']);
     $ter_long = ($ter_['ter_long']); 
     $ter_name = ($ter_['descrip']); 
-    
 ?>
 
 <script>
@@ -488,25 +486,21 @@ $user_ad = $_SESSION['user']['ter_id'];
             accessToken: 'your.mapbox.access.token'
         }).addTo(mymap);
 
-        L.marker([<?php echo $ter_lat?>, <?php echo $ter_long?>]).addTo(mymap)
-		// .bindPopup('<?php echo $ter_name?>').openPopup(); 
-        .bindTooltip("<?php echo $ter_name?>", { permanent: true, offset: [-12, 1] }); 
-        
-        var count = 0 ;
-    <?php while($row1=mysqli_fetch_array($map_query)){
+        var count = 0;
+        <?php while($row1 = mysqli_fetch_array($map_query)){  
         ?>
-        
-        var name = 'marker'+count;
-        var label= "";
-        name = L.marker([<?php echo $row1['que_lat']; ?>, <?php echo $row1['que_long']; ?>]).addTo(mymap);
-        // //.bindPopup('<?php echo $row1['bus_no']; ?>').openPopup();
-        //.bindTooltip("<?php echo $bus_n?>", { permanent: true, offset: [0, 12] });
-        count++;
+        var name = 'marker' + count;
+        name = L.marker([<?php echo $row1['que_lat']?>, <?php echo $row1['que_long']?>]).addTo(mymap)
+        .bindTooltip("<?php echo $row1['bus_no']?>", { permanent: true, offset: [-12, 1] }); 
+	    count++;
         
         <?php
     }
     ?>
-	
+        L.marker([<?php echo $ter_lat?>, <?php echo $ter_long?>]).addTo(mymap)
+		// .bindPopup('<?php echo $ter_name?>').openPopup(); 
+        .bindTooltip("<?php echo $ter_name?>", { permanent: true, offset: [-12, 1] }); 
+        
 	var popup = L.popup();
 
 	function onMapClick(e) {
