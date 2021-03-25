@@ -133,7 +133,7 @@
 						</div>
                         <div style="height:10px;"></div>
 						<div class="col-lg-6">
-						  	<input type="text" class="form-control" id="from_te" name="from_ter" value="Tagum" placehoder="Tagum" disabled />	
+						  	<input type="text" class="form-control" id="from_te" name="from_ter" value="<?php echo $ter_['descrip']; ?>" placehoder="<?php echo $ter_['descrip']; ?>"  readonly/>	
 						</div>
 						<div class="col-lg-6">
 							<select class="form-control" id="to_te" name="to_ter" placeholder="" >

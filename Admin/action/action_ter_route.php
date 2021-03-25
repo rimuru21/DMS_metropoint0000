@@ -78,6 +78,20 @@
 						<div class="col-lg-8">
 							<input type="text" class="form-control" id="descrip" name="descrip" value="<?php echo $row['descrip']; ?>" />
 						</div>
+						<div class="col-lg-6">
+							<label class="control-label" style="position:relative; top:7px;">Latitude:</label>
+						</div>
+						<div class="col-lg-6">
+							<label class="control-label" style="position:relative; top:7px;">Longitude:</label>
+						</div>
+						<div style="height:10px"></div>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" id="ter_lat" name="ter_lat" value="<?php echo $row['ter_lat']; ?>" />
+						</div>
+						<div class="col-lg-6">
+							<input type="text" class="form-control" id="ter_long" name="ter_long" value="<?php echo $row['ter_long']; ?>" />
+						</div>
+
 					</div>
                 </div> 
 				</div>

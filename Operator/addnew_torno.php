@@ -7,7 +7,7 @@
     $con_id = $_POST['con_id'];
     $bus_type_id = $_POST['bus_type_id'];
     $seat_cap = $_POST['seat_cap'];
-    $from_ter = 'Tagum';
+    $from_ter = $_POST['from_ter'];;
     $to_ter = $_POST['to_ter'];
     $que_time = $_POST['que_time'];
     $que_date = $_POST['que_date'];

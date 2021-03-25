@@ -1,3 +1,7 @@
+<?php
+require('conn.php');
+include('auth.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +23,13 @@
 	<div class="container" style="padding-top:3em;margin-left:-2.5em">
 	<div style="height:90%;"></div>
 	<div class="" style=" width:100%;">
-
+	<?php
+		include('conn.php');  
+		$user_ad = $_SESSION['user']['ter_id'];
+		$query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+        $ter_ =  mysqli_fetch_array($query_ter);
+        $ter_ad = ($ter_['descrip']);
+	?>
 		<span class="pull-right"><a style="padding:8px; margin-right:0em; margin-bottom:.5em; border-radius:4px "href="#addnew_torno" data-toggle="modal" class="btn btn-primary"><span class="ion-plus-round" style="padding-right:.5em"></span> ADD TORNO</a></span>
 		
 		<div style="height:10px;"></div>
@@ -38,9 +48,13 @@
 						<tbody style="display: block;overflow:auto; width: 100%;height: 280px; word-break: break-word; scrollbar-width: none; ">
 							<?php
 								include('conn.php');  
+								 $user_ad = $_SESSION['user']['ter_id'];
+								$query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                                $ter_ =  mysqli_fetch_array($query_ter);
+                                $ter_ad = ($ter_['descrip']);
 								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no, b.bus_type_id as bus_type_id, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_date as qued_date, time_format(a.que_time, '%h:%i %p')  as qued_time, CONCAT(c.l_name,' ',c.f_name) as dri,CONCAT(d.l_name,' ',d.f_name) as con, c.dri_id as dri_id, d.con_id as con_id
 								FROM que_details a, bus_type b, user_dri c, user_con d
-								WHERE a.dri_id = c.dri_id AND a.con_id = d.con_id AND a.bus_type_id = b.bus_type_id AND que_stat_id = 4 AND from_ter = 'Tagum'
+								WHERE a.dri_id = c.dri_id AND a.con_id = d.con_id AND a.bus_type_id = b.bus_type_id AND que_stat_id = 4 AND from_ter = '$ter_ad'
 								ORDER BY que_id desc ");
 								 
 								while($row=mysqli_fetch_array($query)){
@@ -73,10 +87,14 @@
 						</thead>
 						<tbody style="display: block;overflow:auto; width: 100%;height: 240px; word-break: break-word; scrollbar-width: none; ">
 							<?php
-								include('conn.php');  
+								include('conn.php'); 
+								$user_ad = $_SESSION['user']['ter_id'];
+								$query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+                                $ter_ =  mysqli_fetch_array($query_ter);
+                                $ter_ad = ($ter_['descrip']); 
 								$query=mysqli_query($conn,"SELECT a.trip_no as trip_no, a.bus_no as bus_no, b.bus_type_id as bus_type_id, b.abbr as abbr, a.seat_cap as seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, a.que_date as qued_date, time_format(a.que_time, '%h:%i %p') as qued_time, time_format(a.dep_time, '%h:%i %p') as dep_time, CONCAT(c.l_name,' ',c.f_name) as dri, CONCAT(d.l_name,' ',d.f_name) as con, c.dri_id as dri_id, d.con_id as con_id
 								FROM que_details a, bus_type b, user_dri c, user_con d
-								WHERE a.dri_id = c.dri_id AND a.con_id = d.con_id AND a.bus_type_id = b.bus_type_id AND que_stat_id = 2 AND from_ter = 'Tagum'
+								WHERE a.dri_id = c.dri_id AND a.con_id = d.con_id AND a.bus_type_id = b.bus_type_id AND que_stat_id = 2 AND from_ter = '$ter_ad'
 								ORDER BY que_id desc ");
 								 
 								while($row=mysqli_fetch_array($query)){

@@ -45,7 +45,7 @@
 							<?php
 								include('conn.php');
 								
-								$query=mysqli_query($conn,"select * from `ter_details` ORDER BY ter_id desc");
+								$query=mysqli_query($conn,"SELECT * from `ter_details` ORDER BY ter_id desc");
 								while($row=mysqli_fetch_array($query)){
 									?>
 									<tr class="<?php echo $row['ter_id']; ?>"style="border-bottom:1px solid white;margin-bottom:5px;height:50px">

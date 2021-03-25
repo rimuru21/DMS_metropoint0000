@@ -276,7 +276,7 @@
 						</div>
                         <div style="height:10px;"></div>
 						<div class="col-lg-6">
-                             <input type="text" class="form-control" id="from_ter" name="from_ter" value="Tagum" placehoder="Tagum" disabled />	
+                             <input type="text" class="form-control" id="from_ter" name="from_ter" value="<?= print_r($ter_ad) ?>" placehoder="<?= print_r($ter_ad)?>" disabled />	
 						</div>
 						<div class="col-lg-6">
 							<select class="form-control" id="to_ter" name="to_ter" placeholder="" >

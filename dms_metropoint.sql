@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2021 at 09:59 AM
+-- Generation Time: Mar 25, 2021 at 01:27 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -49,10 +49,13 @@ CREATE TABLE `bus_details` (
 --
 
 INSERT INTO `bus_details` (`bus_id`, `bus_no`, `bus_type_id`, `dri_id`, `con_id`, `eng_id`, `plate_no`, `sap_code`, `route_id`, `seat_cap`, `bus_stat_id`, `time_stamp`, `trip_stat_id`) VALUES
-(48, 'DDN-1001', '8', 10, 20, 1, ' ABC-1234', 123456, 1, 50, 1, '2021-03-24 00:32:41', 0),
+(48, 'DDN-1001', '8', 10, 20, 1, ' ABC-1234', 123456, 1, 50, 1, '2021-03-24 15:24:13', 1),
 (50, 'NB-1002', '10', 5, 11, 1, ' POI-1234', 123131, 2, 50, 1, '2021-03-23 23:22:44', 1),
 (51, 'DVC-1004', '3', 0, 0, 1, ' LKJ-14134', 21231, 1, 50, 2, '2021-03-23 22:12:32', 0),
-(52, 'LK-2001', '11', 16, 22, 1, ' YTR-87646', 1313132, 3, 50, 1, '2021-03-23 23:17:00', 1);
+(52, 'LK-2001', '11', 16, 22, 1, ' YTR-87646', 1313132, 3, 50, 1, '2021-03-23 23:17:00', 1),
+(53, 'POIR-15425', '2', 15, 19, 2, ' 5225-FFDD', 441414, 1, 50, 1, '2021-03-24 15:38:09', 1),
+(54, 'DGG-7635-EW', '5', 11, 21, 2, ' 1131-RYER', 13213123, 3, 60, 1, '2021-03-24 15:48:02', 1),
+(55, '78124yuwer', '9', 14, 19, 2, ' uyqwetu71374134', 2147483647, 4, 59, 1, '2021-03-24 16:24:15', 1);
 
 -- --------------------------------------------------------
 
@@ -148,6 +151,7 @@ CREATE TABLE `que_details` (
   `arr_time` time NOT NULL,
   `arr_date` date NOT NULL,
   `que_stat_id` int(50) NOT NULL,
+  `que_stat_arr_id` int(50) NOT NULL,
   `que_long` decimal(10,6) NOT NULL,
   `que_lat` decimal(10,6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -156,10 +160,15 @@ CREATE TABLE `que_details` (
 -- Dumping data for table `que_details`
 --
 
-INSERT INTO `que_details` (`que_id`, `trip_no`, `bus_no`, `dri_id`, `con_id`, `bus_type_id`, `seat_cap`, `from_ter`, `to_ter`, `que_time`, `que_date`, `dep_time`, `dep_date`, `arr_time`, `arr_date`, `que_stat_id`, `que_long`, `que_lat`) VALUES
-(58, 'VAC-243202171658-New Bataan', 'LK-2001', 16, 22, 11, 50, 'Tagum', 'New Bataan', '07:16:00', '2021-03-24', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '0.000000', '0.000000'),
-(59, 'SC-243202172242-Davao', 'NB-1002', 5, 11, 10, 50, 'Tagum', 'Davao', '07:22:00', '2021-03-24', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '125.832993', '7.464092'),
-(60, 'SC-243202202242-Davao', 'NB-1002', 5, 11, 10, 50, 'Laak', 'Davao', '07:22:00', '2021-03-24', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 4, '125.920197', '7.516513');
+INSERT INTO `que_details` (`que_id`, `trip_no`, `bus_no`, `dri_id`, `con_id`, `bus_type_id`, `seat_cap`, `from_ter`, `to_ter`, `que_time`, `que_date`, `dep_time`, `dep_date`, `arr_time`, `arr_date`, `que_stat_id`, `que_stat_arr_id`, `que_long`, `que_lat`) VALUES
+(58, 'VAC-243202171658-New Bataan', 'LK-2001', 16, 22, 11, 50, 'Tagum', 'New Bataan', '07:16:00', '2021-03-24', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 0, 0, '0.000000', '0.000000'),
+(59, 'SC-243202172242-Davao', 'NB-1002', 5, 11, 10, 50, 'Tagum', 'Davao', '07:22:00', '2021-03-24', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 0, 0, '125.832993', '7.464092'),
+(60, 'SC-243202202242-Davao', 'NB-1002', 5, 11, 10, 50, 'Laak', 'Davao', '07:22:00', '2021-03-24', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 0, 0, '125.574299', '7.075340'),
+(61, 'GDAC-2432021231028-Tagum', 'DDN-1001', 0, 0, 8, 50, 'Tagum', 'Tagum', '23:10:00', '2021-03-24', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 0, 0, '0.000000', '0.000000'),
+(62, 'GDAC-243202123245-New Bataan', 'DDN-1001', 15, 17, 8, 50, 'Tagum', 'New Bataan', '23:23:00', '2021-03-24', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 0, 0, '0.000000', '0.000000'),
+(63, 'AC-2432021233759-Maragusan', 'POIR-15425', 13, 19, 2, 50, 'Tagum', 'Maragusan', '23:37:00', '2021-03-24', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 1, 0, '0.000000', '0.000000'),
+(64, 'CAAC-2432021234757-New Bataan', 'DGG-7635-EW', 17, 21, 5, 60, 'Davao', 'New Bataan', '23:47:00', '2021-03-24', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 0, 0, '0.000000', '0.000000'),
+(65, 'GDC-25320210246-Tagum', '78124yuwer', 14, 19, 9, 59, 'Davao', 'Tagum', '00:23:00', '2021-03-25', '00:00:00', '0000-00-00', '00:00:00', '0000-00-00', 1, 0, '125.870018', '7.497962');
 
 -- --------------------------------------------------------
 
@@ -177,10 +186,27 @@ CREATE TABLE `que_stat` (
 --
 
 INSERT INTO `que_stat` (`que_stat_id`, `descrip`) VALUES
+(0, 'Waiting'),
+(1, 'Departed');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `que_stat_arr`
+--
+
+CREATE TABLE `que_stat_arr` (
+  `que_stat_arr_id` int(50) NOT NULL,
+  `descrip` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `que_stat_arr`
+--
+
+INSERT INTO `que_stat_arr` (`que_stat_arr_id`, `descrip`) VALUES
 (1, 'Arrived'),
-(2, 'Departed'),
-(3, 'OnRoad'),
-(4, 'Waiting');
+(2, 'OnRoad');
 
 -- --------------------------------------------------------
 
@@ -216,6 +242,8 @@ CREATE TABLE `ter_details` (
   `ter_id` int(50) NOT NULL,
   `descrip` varchar(250) NOT NULL,
   `ter_abbr` varchar(50) NOT NULL,
+  `ter_lat` decimal(10,6) NOT NULL,
+  `ter_long` decimal(10,6) NOT NULL,
   `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -223,15 +251,15 @@ CREATE TABLE `ter_details` (
 -- Dumping data for table `ter_details`
 --
 
-INSERT INTO `ter_details` (`ter_id`, `descrip`, `ter_abbr`, `time_stamp`) VALUES
-(1, 'Tagum', 'TGM', '2021-03-21 10:27:39'),
-(2, 'Davao', 'DVO', '2021-03-21 10:27:40'),
-(3, 'New Bataan', 'NB', '2021-03-21 10:27:41'),
-(4, 'Maragusan', 'MAR', '2021-03-21 10:27:41'),
-(5, 'Nabunturan', 'NAB', '2021-03-21 10:27:41'),
-(6, 'Laak', 'LK', '2021-03-21 10:27:41'),
-(8, 'Monkayo', 'MONK', '2021-03-21 10:27:41'),
-(9, 'Montivista', 'MONT', '2021-03-21 10:27:41');
+INSERT INTO `ter_details` (`ter_id`, `descrip`, `ter_abbr`, `ter_lat`, `ter_long`, `time_stamp`) VALUES
+(1, 'Tagum', 'TGM', '7.461092', '125.798725', '2021-03-24 23:27:42'),
+(2, 'Davao', 'DVO', '7.070911', '125.597506', '2021-03-24 23:27:42'),
+(3, 'New Bataan', 'NB', '0.000000', '0.000000', '2021-03-21 10:27:41'),
+(4, 'Maragusan', 'MAR', '0.000000', '0.000000', '2021-03-21 10:27:41'),
+(5, 'Nabunturan', 'NAB', '0.000000', '0.000000', '2021-03-21 10:27:41'),
+(6, 'Laak', 'LK', '0.000000', '0.000000', '2021-03-21 10:27:41'),
+(8, 'Monkayo', 'MONK', '0.000000', '0.000000', '2021-03-21 10:27:41'),
+(9, 'Montivista', 'MONT', '0.000000', '0.000000', '2021-03-21 10:27:41');
 
 -- --------------------------------------------------------
 
@@ -342,7 +370,9 @@ INSERT INTO `user` (`user_id`, `type_id`, `u_name`, `l_name`, `f_name`, `m_intl`
 (137, 1, 'topadmin', 'soratos', 'dave', 'c', 'III', 'Female', 5, '827ccb0eea8a706c4c34a16891f84e7b', 1313, 1, '2021-03-21 12:19:03'),
 (138, 7, 'new_driver', 'driver', 'new', 'D', 'III', 'Male', 1, '827ccb0eea8a706c4c34a16891f84e7b', 2147483647, 1, '2021-03-23 06:58:39'),
 (139, 0, 'no Driver', 'no driver', '', '', '', '', 0, '827ccb0eea8a706c4c34a16891f84e7b', 0, 1, '2021-03-23 06:58:39'),
-(141, 5, 'op_davao', 'soratoe', 'dave', 'D', 'Sr.', 'Male', 2, '827ccb0eea8a706c4c34a16891f84e7b', 31243, 1, '2021-03-24 07:02:53');
+(141, 5, 'op_davao', 'soratoe', 'dave', 'D', 'Sr.', 'Male', 2, '827ccb0eea8a706c4c34a16891f84e7b', 31243, 1, '2021-03-24 07:02:53'),
+(142, 2, 'admin_davao', 'Perez', 'Carl Luis', 'D', 'III', 'Male', 2, '827ccb0eea8a706c4c34a16891f84e7b', 11214, 1, '2021-03-24 16:27:35'),
+(143, 2, 'admin_tgm', 'Perez', 'Armando ', 'D', 'Sr.', 'Male', 1, '827ccb0eea8a706c4c34a16891f84e7b', 12314314, 1, '2021-03-24 16:28:47');
 
 -- --------------------------------------------------------
 
@@ -381,7 +411,9 @@ INSERT INTO `user_admin` (`ad_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_i
 (8, 47, 'lucy876', 'Bittinger', 'Lucy', 'R', '', 'Female', 3, 'ecfb2ca9428299f31f0bbb9b5ea28dc3', 2147483647, 1, '2021-02-02 19:22:13'),
 (9, 48, 'jamika', 'Errico', 'Jamika', 'J', '', 'Female', 1, '304be235474a099c09c4bdfd10f84173', 2147483647, 1, '2021-02-02 19:23:33'),
 (10, 49, 'ommar_shannon123', 'Shannon', 'Omar', 'C', '', 'Male', 3, '92453097b261f830da92dd403a75eb9d', 2147483647, 2, '2021-02-17 18:44:32'),
-(11, 136, 'admin', 'soratos', 'dave', 'D', 'III', 'Male', 2, '827ccb0eea8a706c4c34a16891f84e7b', 1114134134, 1, '2021-03-21 12:17:53');
+(11, 136, 'admin', 'soratos', 'dave', 'D', 'III', 'Male', 2, '827ccb0eea8a706c4c34a16891f84e7b', 1114134134, 1, '2021-03-21 12:17:53'),
+(12, 142, 'admin_davao', 'Perez', 'Carl Luis', 'D', 'III', 'Male', 2, '827ccb0eea8a706c4c34a16891f84e7b', 11214, 1, '2021-03-24 16:27:35'),
+(13, 143, 'admin_tgm', 'Perez', 'Armando ', 'D', 'Sr.', 'Male', 1, '827ccb0eea8a706c4c34a16891f84e7b', 12314314, 1, '2021-03-24 16:28:47');
 
 -- --------------------------------------------------------
 
@@ -414,11 +446,11 @@ CREATE TABLE `user_con` (
 INSERT INTO `user_con` (`con_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_intl`, `sufx`, `sex`, `ter_id`, `pass`, `cont_no`, `stat_id`, `emp_date`, `time_stamp`, `trip_stat_id`) VALUES
 (11, 104, 'admin_dave', 'Jay', 'Jay', 'A', 'Jr.', 'Male', 2, '3c5bb4887627a4ec06c9a7cc483dd10c', 414134, 2, '2021-01-31', '2021-03-23 23:22:44.801474', 1),
 (16, 115, 'marlan2021po', 'Crawford', 'Mathew', 'R', '', 'Male', 5, 'cdf31ac7f55c5fc887e06dc82c34efae', 926737342, 1, '2021-03-05', '2021-02-03 16:03:16.397964', 0),
-(17, 116, 'mao nani', 'Froville', 'Sander', 'T', '', 'Male', 6, 'c4db835db844412ea9633db357d0cee0', 2147483647, 2, '2020-12-14', '2021-03-23 22:05:37.809555', 0),
+(17, 116, 'mao nani', 'Froville', 'Sander', 'T', '', 'Male', 6, 'c4db835db844412ea9633db357d0cee0', 2147483647, 2, '2020-12-14', '2021-03-24 15:24:13.043908', 1),
 (18, 117, 'POttehhh', 'Rolous', 'Raven', 'W', '', 'Male', 7, 'e8e7819db2bcdba5de39af4ba9d5e847', 935763678, 1, '2021-02-11', '2021-02-03 16:07:19.126783', 0),
-(19, 118, 'naolaghwan', 'Napala', 'Winslet', 'Q', '', 'Male', 1, '16b1807e9792eae2786687c88ca52d15', 2147483647, 2, '2020-05-07', '2021-02-03 16:09:14.506201', 0),
+(19, 118, 'naolaghwan', 'Napala', 'Winslet', 'Q', '', 'Male', 1, '16b1807e9792eae2786687c88ca52d15', 2147483647, 2, '2020-05-07', '2021-03-24 16:24:15.416843', 1),
 (20, 125, 'luffypist', 'Pist', 'Luffy', 'C', 'Sr.', 'Male', 1, '256384f6b309e501768bf7e04769a8fe', 2147483647, 1, '2017-06-28', '2021-03-23 23:14:24.139105', 1),
-(21, 127, 'HenOlive', 'Guillimo', 'Henry Oliver', 'A', 'III', 'Male', 3, '57f2b58889831eaa3b506b6bfabd409e', 2147483647, 1, '2017-05-11', '2021-02-08 17:40:49.432340', 0),
+(21, 127, 'HenOlive', 'Guillimo', 'Henry Oliver', 'A', 'III', 'Male', 3, '57f2b58889831eaa3b506b6bfabd409e', 2147483647, 1, '2017-05-11', '2021-03-24 15:48:02.048442', 1),
 (22, 128, 'Ypilrico', 'Ypil', 'Rico', 'A', 'Jr.', 'Male', 1, '18982f72ff35b9431651929148c76cdd', 2147483647, 1, '2018-10-09', '2021-03-23 23:17:00.714940', 1),
 (23, 130, 'jilmicivc', 'Jilmico', 'Vincent', 'P', 'I', 'Male', 5, '3cc98d0d2d1cbd6bbb2f33fb15deb3b0', 2147483647, 4, '2017-02-09', '2021-03-23 19:48:12.516830', 3),
 (25, 133, 'dortaman', 'Dorta', 'Norman', 'P', 'Jr.', 'Male', 6, '6f136730567879f1357b19b1a17f14b6', 2147483647, 3, '2015-06-02', '2021-03-23 19:48:18.569146', 3);
@@ -498,11 +530,11 @@ INSERT INTO `user_dri` (`dri_id`, `user_id`, `u_name`, `l_name`, `f_name`, `m_in
 (9, 112, 'Dantov23o02', 'Tovar', 'Danielle ', 'Z', 'I', 'Male', 1, '345770c9dff54e94d3a92217a4762502', 2147483647, 1, '2021-01-18', 'DO2-2459-794', '2025-06-25', '2021-03-21 11:58:38.640491', 3),
 (10, 113, 'dEMONdon231', 'Demonteverde', 'Donatello', 'K.', '', 'Male', 2, '4903e0be5f3a8e7246bd99480684d2f9', 2147483647, 1, '2019-10-28', 'D04-4532-568', '2024-02-28', '2021-03-23 23:14:23.973072', 1),
 (11, 114, 'alexbantaw9009', 'Bantawil', 'Alexander', 'M.', '', 'Male', 4, 'dcc104e20978c4b2a361f0c88a8a9975', 2147483647, 3, '2019-05-06', 'D01-12-12357', '2023-04-03', '2021-03-23 19:34:53.251286', 3),
-(13, 124, 'ddenit', 'Denit', 'Doneto', 'P', 'Jr.', 'Male', 1, 'ba542c5ebc9ed3060201181cb9e1dd6b', 936984621, 2, '2018-02-13', 'D01-12-123458', '2022-09-08', '2021-03-23 22:10:11.099110', 0),
-(14, 126, 'Fdela', 'Dela Cerna', 'Francis', 'D', 'I', 'Male', 2, 'ed03ad98d56c9b291259c5e64a38651d', 2147483647, 4, '2017-09-05', 'D01-12-123459', '2022-01-04', '2021-03-23 19:34:42.940231', 3),
-(15, 132, 'lovider', 'Devilla', 'Lovimer', 'P', 'Sr.', 'Male', 3, '2e9c985f4025a79e24a7bbdbb163e35e', 2147483647, 2, '2017-09-13', 'D01-12-123410', '2024-05-07', '2021-03-23 22:10:11.188595', 0),
+(13, 124, 'ddenit', 'Denit', 'Doneto', 'P', 'Jr.', 'Male', 1, 'ba542c5ebc9ed3060201181cb9e1dd6b', 936984621, 2, '2018-02-13', 'D01-12-123458', '2022-09-08', '2021-03-24 15:38:09.047464', 1),
+(14, 126, 'Fdela', 'Dela Cerna', 'Francis', 'D', 'I', 'Male', 2, 'ed03ad98d56c9b291259c5e64a38651d', 2147483647, 1, '2017-09-05', 'D01-12-123459', '2022-01-04', '2021-03-24 16:24:15.239716', 1),
+(15, 132, 'lovider', 'Devilla', 'Lovimer', 'P', 'Sr.', 'Male', 3, '2e9c985f4025a79e24a7bbdbb163e35e', 2147483647, 2, '2017-09-13', 'D01-12-123410', '2024-05-07', '2021-03-24 15:24:12.811141', 1),
 (16, 134, 'marvye', 'Ye', 'Marven', 'A', 'I', 'Male', 2, '6f9acffab2d7c8ae2176c8509514954a', 926729532, 1, '2019-05-06', 'D01-12-123411', '2023-09-24', '2021-03-23 23:17:00.495487', 1),
-(17, 135, 'Maxwealth', 'Moon', 'Maxwell', 'M', 'IV', 'Male', 2, 'eaef071efe2f6452d4ef1755add80dfb', 2147483647, 1, '2020-01-01', 'D01-12-123412', '2025-01-01', '2021-02-08 17:57:44.567392', 0),
+(17, 135, 'Maxwealth', 'Moon', 'Maxwell', 'M', 'IV', 'Male', 2, 'eaef071efe2f6452d4ef1755add80dfb', 2147483647, 1, '2020-01-01', 'D01-12-123412', '2025-01-01', '2021-03-24 15:48:01.903285', 1),
 (18, 138, 'new_driver', 'driver', 'new', 'D', 'III', 'Male', 1, '827ccb0eea8a706c4c34a16891f84e7b', 2147483647, 1, '2021-03-02', '12131-akjsakh-121', '2021-04-01', '2021-03-23 19:16:55.953064', 2);
 
 -- --------------------------------------------------------
@@ -669,6 +701,12 @@ ALTER TABLE `que_stat`
   ADD PRIMARY KEY (`que_stat_id`);
 
 --
+-- Indexes for table `que_stat_arr`
+--
+ALTER TABLE `que_stat_arr`
+  ADD PRIMARY KEY (`que_stat_arr_id`);
+
+--
 -- Indexes for table `route_details`
 --
 ALTER TABLE `route_details`
@@ -755,7 +793,7 @@ ALTER TABLE `user_t_ad`
 -- AUTO_INCREMENT for table `bus_details`
 --
 ALTER TABLE `bus_details`
-  MODIFY `bus_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `bus_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `bus_eng_type`
@@ -779,13 +817,19 @@ ALTER TABLE `bus_type`
 -- AUTO_INCREMENT for table `que_details`
 --
 ALTER TABLE `que_details`
-  MODIFY `que_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `que_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `que_stat`
 --
 ALTER TABLE `que_stat`
   MODIFY `que_stat_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `que_stat_arr`
+--
+ALTER TABLE `que_stat_arr`
+  MODIFY `que_stat_arr_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `route_details`
@@ -803,13 +847,13 @@ ALTER TABLE `ter_details`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `user_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
 -- AUTO_INCREMENT for table `user_admin`
 --
 ALTER TABLE `user_admin`
-  MODIFY `ad_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ad_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user_con`

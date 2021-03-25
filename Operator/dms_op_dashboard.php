@@ -16,11 +16,19 @@ include('auth.php');
     <link rel="stylesheet" href="css/main.css" />
     <link href="css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
   
-	<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+	<!-- <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script> -->
+  <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
 	<script src="js/bootstrap.crud.min.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+   <style>
+  #map{
+    
+  }
+   </style>
 </head>
 <body  onload="updateClock(); setInterval('updateClock()', 1000 )">
 <div class="row" >
@@ -92,7 +100,7 @@ include('auth.php');
 								include('conn.php');
                 $user_ad = $_SESSION['user']['ter_id'];
 								$query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
-                                $ter_ =  mysqli_fetch_array($query_ter);
+                                $ter_ =  mysqli_fetch_array($query_ter, MYSQLI_ASSOC);
                                 $ter_ad = ($ter_['descrip']);
 								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, f.descrip as stat_descrip, f.que_stat_id as que_stat_ FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND from_ter = '$ter_ad'  GROUP BY que_id ORDER BY que_stat_ desc  ");
 								while($row=mysqli_fetch_array($query)){
@@ -151,7 +159,7 @@ include('auth.php');
 								$query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
                 $ter_ =  mysqli_fetch_array($query_ter);
                 $ter_ad = ($ter_['descrip']);
-								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, f.descrip as stat_descrip, f.que_stat_id as que_stat_, a.que_lat as que_lat, a.que_long as que_long   FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND  a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND to_ter = '$ter_ad' GROUP BY que_id ORDER BY que_stat_ desc   ");
+								$query=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, b.abbr as abbr, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, f.descrip as stat_descrip, f.que_stat_id as que_stat_, a.que_lat as que_lat, a.que_long as que_long   FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND  a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND to_ter = '$ter_ad' GROUP BY que_id ORDER BY que_stat_ desc   ");
 								while($row=mysqli_fetch_array($query)){
 									?>
 								      	<tr class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white;">
