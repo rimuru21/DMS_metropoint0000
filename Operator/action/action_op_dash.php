@@ -249,39 +249,43 @@
 				</form>
 
 <?php
-include('conn.php');   
-$user_ad = $_SESSION['user']['ter_id'];
-$query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
-$ter_ =  mysqli_fetch_array($query_ter);
-$ter_ad = ($ter_['descrip']); 
-$map_query = mysqli_query($conn, "SELECT * FROM que_details where que_id = '".$row['que_id']."'");
+    $user_ad = $_SESSION['user']['ter_id'];
+    $map_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
+    $map_query = mysqli_query($conn, "SELECT * FROM que_details ");
+    $ter_ =  mysqli_fetch_array($map_ter);
+    $row1 = mysqli_fetch_array($map_query);
+    $bus_n = ($row1['bus_no']);
+    $ter_lat = ($ter_['ter_lat']);
+    $ter_long = ($ter_['ter_long']); 
+    $ter_name = ($ter_['descrip']); 
 ?>
 
-<script type="text/javascript">
-    var mymap = L.map('mapid').setView([7.461092, 125.798725], 11);
+<script>
+    var mymap = L.map('mapid').setView([<?php echo $ter_lat?>, <?php echo $ter_long?>], 12);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JoaXN1bGEiLCJhIjoiY2tqdjAzNjhwMnF1czJxcXVheG5zM2Z0dyJ9.ADUJmb8cso0RObOix5SzOQ', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 11,
+            maxZoom: 12,
             id: 'mapbox/streets-v11',
             tileSize: 512,
             zoomOffset: -1,
             accessToken: 'your.mapbox.access.token'
         }).addTo(mymap);
 
-        var count = 0 ;
-    <?php while($rows=mysqli_fetch_array($map_query)){
+        var count = 0;
+        <?php while($row1 = mysqli_fetch_array($map_query)){  
         ?>
-        var name = 'marker'+count;
-        name = L.marker([<?php echo $rows['que_lat']; ?>, <?php echo $rows['que_long']; ?>]).addTo(mymap);
-			   name.bindTooltip(<?php echo $rows['que_id']; ?>).addTo(mymap);
-			   count++
+        var name = 'marker' + count;
+        name = L.marker([<?php echo $row1['que_lat']?>, <?php echo $row1['que_long']?>]).addTo(mymap)
+        .bindTooltip("<?php echo $row1['bus_no']?>", { permanent: true, offset: [-12, 1] }); 
+	    count++;
+        
         <?php
-		
     }
     ?>
-	L.marker([7.461092, 125.798725]).addTo(mymap)
-		.bindPopup("TAGUM TERMINAL").openPopup();
-
+        L.marker([<?php echo $ter_lat?>, <?php echo $ter_long?>]).addTo(mymap)
+		// .bindPopup('<?php echo $ter_name?>').openPopup(); 
+        .bindTooltip("<?php echo $ter_name?>", { permanent: true, offset: [-12, 1] }); 
+        
 	var popup = L.popup();
 
 	function onMapClick(e) {
