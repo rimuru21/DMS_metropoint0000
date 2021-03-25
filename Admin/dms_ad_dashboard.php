@@ -465,7 +465,7 @@ include('auth.php');
 <?php
     $user_ad = $_SESSION['user']['ter_id'];
     $map_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
-    $map_query = mysqli_query($conn, "SELECT * FROM que_details ");
+    $map_query = mysqli_query($conn, "SELECT * FROM que_details");
     $ter_ =  mysqli_fetch_array($map_ter);
     $row1 = mysqli_fetch_array($map_query);
     $bus_n = ($row1['bus_no']);
@@ -490,9 +490,8 @@ include('auth.php');
         ?>
         var name = 'marker' + count;
         name = L.marker([<?php echo $row1['que_lat']?>, <?php echo $row1['que_long']?>]).addTo(mymap)
-        .bindTooltip("<?php echo $row1['bus_no']?>", { permanent: true, offset: [-12, 1] }); 
+            .bindTooltip("<?php echo $row1['bus_no']?>", { permanent: true, offset: [-12, 1] }); 
 	    count++;
-        
         <?php
     }
     ?>

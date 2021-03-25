@@ -67,8 +67,8 @@
                                         <td style="width:8.5%"><?php echo $row['bus_no']; ?></td>
                                         <td style="width:8%"><?php echo $row['trip_no']; ?></td>
 										<td style="width:8%"><?php echo $row['abbr']; ?></td>
-										<td style="width:8%"><?php echo $row['ass_dri']; ?></td>
-										<td style="width:9%"><?php echo $row['ass_con']; ?></td>
+										<td style="width:8%"><?php echo $row['dri']; ?></td>
+										<td style="width:9%"><?php echo $row['con']; ?></td>
                                         <td style="width:10%"><?php echo $row['from_ter']; ?> - <?php echo $row['to_ter']; ?></td>
                                         <td style="width:7%"><?php echo $row['que_time']; ?></td>
 										<td style="width:7%"><?php echo $row['dep_time']; ?></td>
