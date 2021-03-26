@@ -468,6 +468,8 @@ include('auth.php');
     $map_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
     $map_query = mysqli_query($conn, "SELECT * FROM que_details");
     $ter_ =  mysqli_fetch_array($map_ter);
+    
+    $map_query = mysqli_query($conn, "SELECT * FROM que_details");
     $row1 = mysqli_fetch_array($map_query);
     $bus_n = ($row1['bus_no']);
     $que_la = ($row1['que_lat']);
@@ -490,19 +492,21 @@ include('auth.php');
         }).addTo(mymap);
         
         var count = 1;
-        <?php while($row1 = mysqli_fetch_array($map_query) ){  
+        <?php 
+        $map_query = mysqli_query($conn, "SELECT * FROM que_details");
+        while($row1 = mysqli_fetch_array($map_query) ){  
         ?>
-        var name = 'marker'+count;
-         name = L.marker([<?php print_r($row1['que_lat'])?>, <?php print_r($row1['que_long'])?>]).addTo(mymap)
+         L.marker([<?php print_r($row1['que_lat'])?>, <?php print_r($row1['que_long'])?>]).addTo(mymap)
             .bindTooltip("<?php echo $row1['bus_no']?>", { permanent: true, offset: [-12, 1] }); 
-            count++;
-        <?php
+         
+            <?php
     }
     ?>
         L.marker([<?php echo $ter_lat?>, <?php echo $ter_long?>]).addTo(mymap)
 		// .bindPopup('<?php echo $ter_name?>').openPopup(); 
         .bindTooltip("<?php echo $ter_name?>", { permanent: true, offset: [-12, 1] }); 
         
+
 	var popup = L.popup();
 
 	function onMapClick(e) {
