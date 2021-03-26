@@ -253,7 +253,7 @@
     $user_ad = $_SESSION['user']['ter_id'];
 	$que_n = ($row['que_id']);
     $map_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
-    $map_query = mysqli_query($conn, "SELECT * FROM que_details where que_id = '$que_n'");
+    $map_query = mysqli_query($conn, "SELECT * FROM que_details ");
     $ter_ =  mysqli_fetch_array($map_ter);
     $row1 = mysqli_fetch_array($map_query);
     $bus_n = ($row1['bus_no']);
@@ -262,9 +262,6 @@
     $ter_name = ($ter_['descrip']); 
 	
 	?>
-
-<?php echo $row1['bus_no']?>
-<?php echo $row1['que_lat']?>
 <script>
     var mymap = L.map('mapid').setView([<?php echo $ter_lat?>, <?php echo $ter_long?>], 12);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JoaXN1bGEiLCJhIjoiY2tqdjAzNjhwMnF1czJxcXVheG5zM2Z0dyJ9.ADUJmb8cso0RObOix5SzOQ', {
