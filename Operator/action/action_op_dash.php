@@ -2,7 +2,7 @@
 <!-- view -->
 <div class="modal fade" id="view_que<?php echo $row['que_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" style="width:93%;left:8em">
+            <div class="modal-content" style="width:93%;left:8em; top:-1em">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h3 class="modal-title" id="myModalLabel" style="text-align:left; margin-left:.5em">TORNO DETAILS</h3>
@@ -95,6 +95,22 @@
 						</div>
 						<div class="col-lg-6">
 							<h4 style="text-align:left"><?php echo $row['que_date']; ?></h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6" style="text-align:right">
+							<h4><b>DEP. TIME:</b></h4>
+						</div>
+						<div class="col-lg-6">
+							<h4 style="text-align:left"><?php echo $row['dep_time']; ?></h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6"style="text-align:right" >
+							<h4><b>DEP. DATE:</b></h4>
+						</div>
+						<div class="col-lg-6">
+							<h4 style="text-align:left"><?php echo $row['dep_date']; ?></h4>
 						</div>
 					</div>
 	
@@ -232,7 +248,7 @@
 											<th style="width:100%;border-bottom:none; font-size:1.5vw"><ion-icon name="location"style="padding-right:.5em"></ion-icon>LOCATION</th>
 									</thead>
 									<!-- dri ma display ang map -->
-									<tbody style="display: block;overflow:auto; width: 100%;height: 486px; word-break: break-word; scrollbar-width: none; overflow: hidden; " id="mapid">
+									<tbody style="display: block;overflow:auto; width: 100%;height: 486px; word-break: break-word; scrollbar-width: none; overflow: hidden; " id="op_mapid">
 									</tbody>
 									
 								</table>
@@ -253,17 +269,17 @@
     $user_ad = $_SESSION['user']['ter_id'];
 	$que_n = ($row['que_id']);
     $map_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
-    $map_query = mysqli_query($conn, "SELECT * FROM que_details ");
     $ter_ =  mysqli_fetch_array($map_ter);
-    $row1 = mysqli_fetch_array($map_query);
-    $bus_n = ($row1['bus_no']);
+    $map_query = mysqli_query($conn, "SELECT * FROM que_details WHERE que_id = '$user_ad'");
+    $row1 = mysqli_fetch_array($map_query); 
     $ter_lat = ($ter_['ter_lat']);
     $ter_long = ($ter_['ter_long']); 
     $ter_name = ($ter_['descrip']); 
 	
 	?>
+
 <script>
-    var mymap = L.map('mapid').setView([<?php echo $ter_lat?>, <?php echo $ter_long?>], 12);
+    var mymap_ = L.map('op_mapid').setView([<?php echo $ter_lat?>, <?php echo $ter_long?>], 12);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid3JoaXN1bGEiLCJhIjoiY2tqdjAzNjhwMnF1czJxcXVheG5zM2Z0dyJ9.ADUJmb8cso0RObOix5SzOQ', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 12,
@@ -271,23 +287,24 @@
             tileSize: 512,
             zoomOffset: -1,
             accessToken: 'your.mapbox.access.token'
-        }).addTo(mymap);
-		
-        var count = 0;
-        <?php while($row1 = mysqli_fetch_array($map_query)){  
-        ?>
-        var name = 'marker' + count;
-        name = L.marker([<?php echo $row1['que_lat']?>, <?php echo $row1['que_long']?>]).addTo(mymap)
-        .bindTooltip("<?php echo $row1['bus_no']?>", { permanent: true, offset: [-12, 1] }); 
-	    count++;
+        }).addTo(mymap_);
         
-        <?php
-    }
-    ?>
-        L.marker([<?php echo $ter_lat?>, <?php echo $ter_long?>]).addTo(mymap)
+    //     var count = 1;
+    //     <?php 
+    //     $map_query = mysqli_query($conn, "SELECT * FROM que_details");
+    //     while($row1 = mysqli_fetch_array($map_query) ){  
+    //     ?>
+    //      L.marker([<?php print_r($row1['que_lat'])?>, <?php print_r($row1['que_long'])?>]).addTo(mymap)
+    //         .bindTooltip("<?php echo $row1['bus_no']?>", { permanent: true, offset: [-12, 1] }); 
+         
+    //         <?php
+    // }
+    // ?>
+        L.marker([<?php echo $ter_lat?>, <?php echo $ter_long?>]).addTo(mymap_)
 		// .bindPopup('<?php echo $ter_name?>').openPopup(); 
         .bindTooltip("<?php echo $ter_name?>", { permanent: true, offset: [-12, 1] }); 
         
+
 	var popup = L.popup();
 
 	function onMapClick(e) {

@@ -7,7 +7,7 @@ include('auth.php');
 <head>
     <title>Admin Dashboard</title>
     <link href="" rel="stylesheet">
-    <!-- <meta http-equiv="refresh" content="5"> -->
+    <meta http-equiv="refresh" content="300">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />    
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -466,14 +466,9 @@ include('auth.php');
     $user_ad = $_SESSION['user']['ter_id'];
 	$que_n = ($row['que_id']);
     $map_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
-    $map_query = mysqli_query($conn, "SELECT * FROM que_details");
     $ter_ =  mysqli_fetch_array($map_ter);
-    
     $map_query = mysqli_query($conn, "SELECT * FROM que_details");
-    $row1 = mysqli_fetch_array($map_query);
-    $bus_n = ($row1['bus_no']);
-    $que_la = ($row1['que_lat']);
-    $que_lo = ($row1['que_long']); 
+    $row1 = mysqli_fetch_array($map_query); 
     $ter_lat = ($ter_['ter_lat']);
     $ter_long = ($ter_['ter_long']); 
     $ter_name = ($ter_['descrip']); 
@@ -535,7 +530,7 @@ $(function() {
       $(this).css('background-color', 'yellow');
     }
 	else if ($(this).text() == "Arrived") {
-      $(this).css('color', 'black');
+      $(this).css('color', 'white');
       $(this).css('background-color', 'blue');
     }
   });

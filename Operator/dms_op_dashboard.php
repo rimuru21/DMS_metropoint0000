@@ -102,7 +102,7 @@ include('auth.php');
               $query_ter = mysqli_query($conn, "SELECT * FROM ter_details WHERE ter_id = '$user_ad'");
                               $ter_ =  mysqli_fetch_array($query_ter);
                               $ter_ad = ($ter_['descrip']);
-              $query1=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, f.descrip as stat, f.que_stat_id as que_stat_ FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND from_ter = '$ter_ad'  GROUP BY que_id ORDER BY que_stat_ desc   ");
+              $query1=mysqli_query($conn,"SELECT a.que_id as que_id, a.trip_no as trip_no, a.bus_no as bus_no,CONCAT(d.l_name,' ',d.f_name) as dri, CONCAT(e.l_name,' ',e.f_name) as con, b.descrip as type_descrip, a.seat_cap, a.from_ter as from_ter, a.to_ter as to_ter, time_format(a.que_time, '%h:%i %p') as que_time, a.que_date as que_date, time_format(a.dep_time, '%h:%i %p') as dep_time, a.dep_date as dep_date, f.descrip as stat, f.que_stat_id as que_stat_ FROM que_details a, bus_type b, ter_details c, user_dri d, user_con e, que_stat f WHERE a.que_stat_id = f.que_stat_id AND a.dri_id = d.dri_id AND a.con_id = e.con_id AND  a.bus_type_id = b.bus_type_id AND from_ter = '$ter_ad'  GROUP BY que_id ORDER BY que_id desc   ");
 								while($row=mysqli_fetch_array($query1)){
 									?>
 								      	<tr mouseclick="href='#view_que<?php echo $row['que_id']; ?>'"  class="<?php echo $row['que_id']; ?>"style="border-bottom:1px solid white;">
@@ -348,9 +348,9 @@ $(function() {
       $(this).css('color', 'black' );
       $(this).css('background-color', 'yellow');
     }
-	else if ($(this).text() == "Arrived") {
-      $(this).css('color', 'black');
-      $(this).css('background-color', 'orange');
+    else if ($(this).text() == "Arrived") {
+      $(this).css('color', 'white');
+      $(this).css('background-color', 'blue');
     }
   });
 });
